@@ -1,0 +1,1849 @@
+<title>ডা. আরিফ রহমান</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap">
+<style>
+/* Layout: sticky header, single-page site with 8 switchable pages; teal base, coral reserved for the booking CTA */
+:root{
+  --bg:#F7FBFC; --surface:#FFFFFF; --fg:#2B3A42; --muted:#5B6D76; --line:#DCEBEF;
+  --head:#0B4F6C; --teal:#0E9FA0; --btn:#0B7F82; --btn-fg:#FFFFFF; --link:#0B7F82;
+  --coral:#FF6B5B; --coral-fg:#0B2F3F; --sky:#4DA8DA; --mint:#7ED9B5; --amber:#FFC857;
+  --t-teal:#E3F5F5; --t-sky:#E5F2FA; --t-mint:#E4F7EF; --t-coral:#FFEDEA; --t-amber:#FFF5DC;
+  --foot:#0B4F6C; --foot-fg:#E6F4F7; --foot-muted:#A9CBD6;
+  --shadow:0 10px 30px rgba(14,159,160,.12); --shadow-lg:0 18px 44px rgba(11,79,108,.16);
+  --ok:#157A55; --err:#B3261E;
+  --f-body:"Hind Siliguri","Noto Sans Bengali",system-ui,sans-serif;
+  --f-disp:"Poppins","Hind Siliguri",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0B1A21; --surface:#12262F; --fg:#E4EEF1; --muted:#9DB2BB; --line:#23404C;
+    --head:#BFE6F2; --teal:#3CC4C5; --btn:#3CC4C5; --btn-fg:#06232A; --link:#5FD6D7;
+    --coral:#FF8576; --coral-fg:#2A0E0A; --sky:#6DBBE8; --mint:#7ED9B5; --amber:#FFD27A;
+    --t-teal:#123A3F; --t-sky:#12303F; --t-mint:#12382F; --t-coral:#3A2220; --t-amber:#3A3018;
+    --foot:#071217; --foot-fg:#E4EEF1; --foot-muted:#8FA9B3;
+    --shadow:0 10px 30px rgba(0,0,0,.35); --shadow-lg:0 18px 44px rgba(0,0,0,.45);
+    --ok:#5FD6A4; --err:#FF8A80; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0B1A21; --surface:#12262F; --fg:#E4EEF1; --muted:#9DB2BB; --line:#23404C;
+  --head:#BFE6F2; --teal:#3CC4C5; --btn:#3CC4C5; --btn-fg:#06232A; --link:#5FD6D7;
+  --coral:#FF8576; --coral-fg:#2A0E0A; --sky:#6DBBE8; --mint:#7ED9B5; --amber:#FFD27A;
+  --t-teal:#123A3F; --t-sky:#12303F; --t-mint:#12382F; --t-coral:#3A2220; --t-amber:#3A3018;
+  --foot:#071217; --foot-fg:#E4EEF1; --foot-muted:#8FA9B3;
+  --shadow:0 10px 30px rgba(0,0,0,.35); --shadow-lg:0 18px 44px rgba(0,0,0,.45);
+  --ok:#5FD6A4; --err:#FF8A80; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:17px;line-height:1.75;padding-bottom:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-disp);color:var(--head);line-height:1.3;margin:0;text-wrap:balance}
+h1{font-size:clamp(30px,5vw,52px);font-weight:600}
+h2{font-size:clamp(25px,3.6vw,37px);font-weight:600}
+h3{font-size:clamp(18px,2vw,22px);font-weight:600}
+p{margin:0}
+a{color:var(--link)}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--sky);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.i{width:1.25em;height:1.25em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none;vertical-align:-.22em}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* demo notice */
+.notice{background:var(--t-amber);color:var(--fg);font-size:14.5px;line-height:1.5}
+.notice .wrap{display:flex;gap:12px;align-items:center;justify-content:space-between;padding-block:8px}
+.notice button{background:none;border:0;cursor:pointer;padding:6px;border-radius:8px;color:var(--fg);flex:none}
+
+/* header */
+.hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--surface);border-bottom:1px solid var(--line);transition:box-shadow .3s}
+.hdr.sc{box-shadow:0 6px 24px rgba(11,79,108,.12)}
+.hdr .wrap{display:flex;align-items:center;gap:20px;padding-block:12px;transition:padding .3s}
+.hdr.sc .wrap{padding-block:7px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--head);background:none;border:0;cursor:pointer;padding:0;text-align:left}
+.brand .logo{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,var(--teal),var(--sky));display:grid;place-items:center;color:#fff;flex:none}
+.brand b{display:block;font-family:var(--f-disp);font-size:16.5px;font-weight:600;line-height:1.2}
+.brand small{display:block;font-size:12.5px;color:var(--muted);line-height:1.2}
+.nav{display:flex;gap:4px;margin-left:auto}
+.nav a{display:block;padding:8px 13px;border-radius:50px;color:var(--fg);text-decoration:none;font-weight:500;font-size:16px;cursor:pointer}
+.nav a:hover{background:var(--t-teal)}
+.nav a[aria-current="page"]{background:var(--t-teal);color:var(--head);font-weight:600}
+.hdr-cta{display:flex;gap:10px;align-items:center}
+.menu-btn{display:none;background:var(--t-teal);border:0;border-radius:12px;width:44px;height:44px;cursor:pointer;color:var(--head);place-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:50px;padding:12px 24px;font-weight:600;font-size:16.5px;border:2px solid transparent;cursor:pointer;text-decoration:none;transition:transform .2s,box-shadow .2s,filter .2s;min-height:46px;line-height:1.2}
+.btn:hover{transform:translateY(-2px) scale(1.02)}
+.btn-cta{background:var(--coral);color:var(--coral-fg);box-shadow:0 8px 20px rgba(255,107,91,.32)}
+.btn-cta:hover{filter:brightness(1.05)}
+.btn-pri{background:var(--btn);color:var(--btn-fg)}
+.btn-out{background:transparent;color:var(--head);border-color:var(--line)}
+.btn-out:hover{border-color:var(--teal);background:var(--t-teal)}
+.btn-sm{padding:8px 18px;font-size:15px;min-height:40px}
+.btn[disabled]{opacity:.5;cursor:not-allowed;transform:none}
+
+/* sections */
+.page{animation:pgin .5s ease-out both}
+@keyframes pgin{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.sec{padding-block:clamp(48px,7vw,90px)}
+.sec.alt{background:var(--t-teal)}
+.sec.alt2{background:var(--t-sky)}
+.eyebrow{display:inline-block;background:var(--t-teal);color:var(--head);font-weight:600;font-size:14.5px;padding:4px 14px;border-radius:50px;margin-bottom:14px}
+.alt .eyebrow,.alt2 .eyebrow{background:var(--surface)}
+.sec-head{max-width:680px;margin-bottom:38px}
+.sec-head.c{margin-inline:auto;text-align:center}
+.sec-head p{color:var(--muted);margin-top:12px}
+.grid{display:grid;gap:22px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:26px;box-shadow:var(--shadow);transition:transform .3s,box-shadow .3s;min-width:0}
+.card.lift:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.ico{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;margin-bottom:16px;font-size:24px}
+.c-teal{background:var(--t-teal);color:var(--link)}
+.c-sky{background:var(--t-sky);color:var(--sky)}
+.c-mint{background:var(--t-mint);color:var(--ok)}
+.c-coral{background:var(--t-coral);color:var(--coral)}
+.c-amber{background:var(--t-amber);color:#B27A00}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .c-amber{color:var(--amber)}}
+:root[data-theme="dark"] .c-amber{color:var(--amber)}
+.card p{color:var(--muted);font-size:16px}
+.link-more{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-weight:600;color:var(--link);background:none;border:0;cursor:pointer;padding:0;text-decoration:none}
+.link-more:hover{text-decoration:underline}
+
+/* hero */
+.hero{background:radial-gradient(900px 420px at 85% 10%,var(--t-sky),transparent 70%),radial-gradient(700px 400px at 0% 100%,var(--t-mint),transparent 70%);padding-block:clamp(36px,6vw,76px)}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.tag{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);padding:6px 16px;border-radius:50px;font-weight:600;font-size:15px;color:var(--head);margin-bottom:18px}
+.hero h1 span{color:var(--link)}
+.hero .lead{margin-top:18px;color:var(--muted);font-size:18.5px;max-width:560px}
+.hero .actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
+.badges{display:flex;flex-wrap:wrap;gap:26px;margin-top:34px}
+.badges div{min-width:0}
+.badges b{display:block;font-family:var(--f-disp);font-size:28px;color:var(--head);line-height:1.2}
+.badges div>span{font-size:14.5px;color:var(--muted)}
+.portrait{position:relative;max-width:440px;margin-inline:auto;width:100%}
+.portrait svg.pt{width:100%;height:auto;display:block}
+.fl{position:absolute;background:var(--surface);border-radius:16px;padding:12px 16px;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:12px;animation:bob 4s ease-in-out infinite;border:1px solid var(--line)}
+.fl b{display:block;font-family:var(--f-disp);color:var(--head);font-size:17px;line-height:1.2}
+.fl small{color:var(--muted);font-size:13px;line-height:1.2;display:block}
+.fl.a{left:-4%;bottom:16%}
+.fl.b{right:-2%;top:12%;animation-delay:1.6s}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.ph-note{text-align:center;font-size:13px;color:var(--muted);margin-top:8px}
+
+/* awards */
+.awards{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+.aw{display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);padding:11px 20px;border-radius:50px;font-weight:600;font-size:15.5px;color:var(--head);filter:grayscale(.7);transition:filter .3s,transform .3s}
+.aw:hover{filter:none;transform:translateY(-3px)}
+.aw .i{color:var(--amber)}
+
+/* stats */
+.stat{text-align:center}
+.stat b{display:block;font-family:var(--f-disp);font-size:clamp(34px,4.5vw,48px);color:var(--link);line-height:1.2}
+.stat>span{color:var(--muted);font-size:16px}
+
+/* steps */
+.step{position:relative}
+.step .n{width:46px;height:46px;border-radius:50%;background:var(--btn);color:var(--btn-fg);display:grid;place-items:center;font-family:var(--f-disp);font-weight:600;margin-bottom:14px}
+
+/* stars + reviews */
+.stars{display:inline-flex;gap:2px;color:var(--amber)}
+.stars .i{fill:var(--amber);stroke:var(--amber);width:1.05em;height:1.05em}
+.rev p{margin-top:12px;color:var(--fg)}
+.rev .who{display:flex;align-items:center;gap:12px;margin-top:16px}
+.av{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-weight:700;flex:none}
+.who small{color:var(--muted);display:block;line-height:1.3;font-size:14px}
+.sample{display:inline-block;font-size:12px;font-weight:600;background:var(--t-amber);color:var(--fg);padding:1px 9px;border-radius:50px;margin-left:6px;vertical-align:middle}
+.vid{aspect-ratio:16/10;border-radius:16px;background:linear-gradient(135deg,var(--t-sky),var(--t-teal));display:grid;place-items:center;position:relative;border:1px dashed var(--line);max-width:100%}
+.vid .pl{width:62px;height:62px;border-radius:50%;background:var(--surface);display:grid;place-items:center;color:var(--link);box-shadow:var(--shadow-lg);font-size:22px}
+.vid small{position:absolute;bottom:12px;left:14px;right:14px;color:var(--muted);font-size:13.5px}
+
+/* cta band */
+.band{background:linear-gradient(120deg,var(--btn),var(--sky));border-radius:24px;padding:clamp(28px,5vw,54px);color:#fff;display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .band{color:#06232A}}
+:root[data-theme="dark"] .band{color:#06232A}
+.band h2{color:inherit}
+.band p{margin-top:8px;opacity:.95}
+.band .acts{display:flex;gap:12px;flex-wrap:wrap}
+.band .btn-out{color:inherit;border-color:currentColor}
+.band .btn-out:hover{background:rgba(255,255,255,.18)}
+
+/* page header */
+.ph{background:linear-gradient(180deg,var(--t-teal),var(--bg));padding-block:clamp(36px,5vw,64px)}
+.ph p{color:var(--muted);margin-top:12px;max-width:640px}
+
+/* timeline */
+.tl{position:relative;padding-left:30px;display:grid;gap:22px}
+.tl::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:3px;background:linear-gradient(var(--teal),var(--sky));border-radius:3px}
+.tl .it{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 20px}
+.tl .it::before{content:"";position:absolute;left:-29px;top:22px;width:15px;height:15px;border-radius:50%;background:var(--surface);border:4px solid var(--teal)}
+.tl .yr{font-family:var(--f-disp);font-weight:600;color:var(--link);font-size:15px}
+.tl b{display:block;color:var(--head);font-size:18px;line-height:1.4}
+.tl span{color:var(--muted);font-size:15.5px}
+.q{font-size:clamp(20px,2.4vw,26px);font-family:var(--f-disp);font-weight:500;color:var(--head);line-height:1.5}
+
+/* chips / filters */
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{border:1px solid var(--line);background:var(--surface);color:var(--fg);padding:8px 18px;border-radius:50px;cursor:pointer;font-weight:500;font-size:15.5px;min-height:40px}
+.chip:hover{border-color:var(--teal)}
+.chip[aria-pressed="true"]{background:var(--btn);color:var(--btn-fg);border-color:var(--btn)}
+
+/* service detail */
+.svc-list{display:grid;gap:22px}
+.svc{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start}
+.svc ul{margin:12px 0 0;padding-left:20px;color:var(--muted);font-size:16px}
+.svc .acts{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+.meta{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px;font-size:14.5px;color:var(--muted)}
+.meta span{display:inline-flex;gap:6px;align-items:center}
+
+/* forms */
+.form{display:grid;gap:18px}
+.field{display:grid;gap:6px;min-width:0}
+.field label,.lbl{font-weight:600;font-size:15.5px;color:var(--head)}
+.in{width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;background:var(--surface);min-height:48px}
+.in:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 4px var(--t-teal)}
+textarea.in{min-height:96px;resize:vertical}
+.row2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.err{color:var(--err);font-size:14.5px;min-height:1.2em}
+.hint{color:var(--muted);font-size:14px}
+.chk{display:flex;gap:10px;align-items:flex-start;font-size:15px;color:var(--muted)}
+.chk input{width:20px;height:20px;margin-top:4px;flex:none;accent-color:var(--btn)}
+.opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.opt{border:1.5px solid var(--line);background:var(--surface);border-radius:14px;padding:11px 12px;cursor:pointer;text-align:center;font-weight:500;min-width:0;line-height:1.35}
+.opt:hover{border-color:var(--teal)}
+.opt[aria-pressed="true"]{border-color:var(--teal);background:var(--t-teal);color:var(--head);font-weight:600}
+.opt[disabled]{opacity:.45;cursor:not-allowed;text-decoration:line-through}
+.opt small{display:block;color:var(--muted);font-weight:400;font-size:13px}
+
+/* booking layout */
+.book{display:grid;grid-template-columns:1.5fr 1fr;gap:28px;align-items:start}
+.stepper{display:flex;gap:10px;margin-bottom:24px}
+.stepper li{list-style:none;flex:1;min-width:0;text-align:center;font-size:14.5px;color:var(--muted);border-top:4px solid var(--line);padding-top:8px;font-weight:500}
+.stepper li.on{border-color:var(--teal);color:var(--head);font-weight:600}
+.stepper li.done{border-color:var(--ok);color:var(--ok)}
+.stepper{padding:0;margin-top:0}
+.nav-row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:8px}
+.done-box{text-align:center;padding:10px 0}
+.done-box .ok{width:72px;height:72px;border-radius:50%;background:var(--t-mint);color:var(--ok);display:grid;place-items:center;margin:0 auto 16px;font-size:34px;animation:pop .5s ease-out both}
+@keyframes pop{from{transform:scale(.4);opacity:0}to{transform:none;opacity:1}}
+.sum{display:grid;gap:10px;text-align:left;background:var(--t-teal);border-radius:14px;padding:18px 20px;margin:20px 0}
+.sum div{display:flex;justify-content:space-between;gap:16px}
+.sum span{color:var(--muted)}
+.sum b{text-align:right;color:var(--head)}
+
+/* tables */
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:420px}
+th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line);font-size:16px}
+th{background:var(--t-teal);color:var(--head);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+.pill{display:inline-block;padding:2px 12px;border-radius:50px;font-size:13.5px;font-weight:600;white-space:nowrap}
+.p-ok{background:var(--t-mint);color:var(--ok)}
+.p-wait{background:var(--t-amber);color:var(--fg)}
+.p-off{background:var(--t-coral);color:var(--err)}
+
+/* portal */
+.portal{display:grid;grid-template-columns:minmax(0,440px);justify-content:center}
+.dash-top{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center;margin-bottom:26px}
+.dash-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:22px;margin-bottom:22px}
+.rx{border:1px solid var(--line);border-radius:14px;margin-top:12px;background:var(--surface)}
+.rx>div{display:flex;gap:14px;align-items:center;justify-content:space-between;padding:14px 16px;flex-wrap:wrap}
+.rx pre{margin:0;padding:14px 16px;border-top:1px dashed var(--line);white-space:pre-wrap;font-family:var(--f-body);font-size:15.5px;color:var(--muted);background:var(--t-sky);border-radius:0 0 14px 14px;overflow-x:auto}
+.sec-note{background:var(--t-amber);border-radius:12px;padding:12px 16px;font-size:14.5px;line-height:1.55;color:var(--fg);margin-top:18px}
+
+/* blog */
+.post{cursor:pointer;display:flex;flex-direction:column;gap:10px;height:100%}
+.post .thumb{aspect-ratio:16/9;border-radius:12px;display:grid;place-items:center;font-size:34px;margin-bottom:6px}
+.post .m{display:flex;gap:12px;font-size:14px;color:var(--muted);flex-wrap:wrap}
+.search{display:flex;gap:10px;align-items:center;max-width:380px;flex:1 1 240px}
+.tools{display:flex;gap:16px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin-bottom:26px}
+.art{max-width:760px;margin-inline:auto}
+.art h2{margin:10px 0 14px}
+.art p{margin-top:16px}
+.art .by{display:flex;gap:12px;align-items:center;margin:20px 0;padding:14px 16px;background:var(--t-teal);border-radius:14px;font-size:15px;color:var(--muted)}
+details{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:4px 20px}
+details+details{margin-top:12px}
+summary{cursor:pointer;font-weight:600;color:var(--head);padding:14px 0;list-style:none;display:flex;justify-content:space-between;gap:14px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:24px;color:var(--link);line-height:1;flex:none}
+details[open] summary::after{content:"−"}
+details p{color:var(--muted);padding-bottom:16px}
+
+/* contact */
+.ch h3{display:flex;gap:10px;align-items:center}
+.ch ul{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:10px;font-size:16px;color:var(--muted)}
+.ch li{display:flex;gap:10px;align-items:flex-start}
+.ch li .i{color:var(--link);margin-top:4px}
+.hot{border:2px solid var(--coral);background:var(--t-coral);border-radius:18px;padding:22px 24px;display:flex;gap:18px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+.hot b{font-family:var(--f-disp);font-size:clamp(22px,3vw,30px);color:var(--head);letter-spacing:.5px}
+.hot p{color:var(--muted);font-size:15px}
+.socials{display:flex;gap:10px;flex-wrap:wrap}
+.socials a{padding:8px 16px;border:1px solid var(--line);border-radius:50px;text-decoration:none;font-weight:500;color:var(--fg);background:var(--surface);font-size:15px}
+.socials a:hover{border-color:var(--teal)}
+.mapbox{border-radius:16px;background:linear-gradient(135deg,var(--t-sky),var(--t-mint));padding:26px;min-height:150px;display:flex;flex-direction:column;justify-content:center;gap:12px;align-items:flex-start;border:1px dashed var(--line)}
+
+/* footer */
+.ftr{background:var(--foot);color:var(--foot-fg);padding-block:54px 28px;margin-top:0}
+.ftr h4{color:var(--foot-fg);font-size:17px;margin-bottom:14px}
+.ftr .cols{display:grid;grid-template-columns:1.4fr 1fr 1.2fr 1.2fr;gap:30px}
+.ftr p,.ftr li{color:var(--foot-muted);font-size:15.5px}
+.ftr ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.ftr a,.ftr .fl-btn{color:var(--foot-fg);text-decoration:none;background:none;border:0;padding:0;cursor:pointer;font-size:15.5px;text-align:left}
+.ftr a:hover,.ftr .fl-btn:hover{text-decoration:underline}
+.ftr .bot{border-top:1px solid rgba(255,255,255,.16);margin-top:34px;padding-top:20px;font-size:14px;color:var(--foot-muted);display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between}
+.news{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.news .in{flex:1 1 150px;background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2);color:var(--foot-fg)}
+.news .in::placeholder{color:var(--foot-muted)}
+
+/* floating + mobile bar */
+.wa{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:40;background:#1F9D55;color:#fff;border-radius:50px;padding:12px 18px;font-weight:600;display:flex;gap:8px;align-items:center;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.25);font-size:15.5px}
+.mbar{display:none}
+.toast{position:fixed;left:50%;bottom:calc(86px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--head);color:var(--bg);padding:10px 20px;border-radius:50px;font-size:15px;z-index:80;box-shadow:var(--shadow-lg);max-width:calc(100% - 32px);text-align:center}
+
+/* responsive */
+@media (max-width:980px){
+  .nav,.hdr-cta .btn-out{display:none}
+  .menu-btn{display:grid}
+  .hdr-cta{margin-left:auto}
+  .hero .wrap,.book,.dash-grid{grid-template-columns:minmax(0,1fr)}
+  .g4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .g3{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ftr .cols{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .portrait{max-width:380px}
+}
+.mnav{display:none;background:var(--surface);border-bottom:1px solid var(--line)}
+.mnav.open{display:block}
+.mnav .wrap{display:grid;gap:4px;padding-block:10px 16px}
+.mnav a{padding:12px 14px;border-radius:12px;text-decoration:none;color:var(--fg);font-weight:500;cursor:pointer}
+.mnav a[aria-current="page"]{background:var(--t-teal);color:var(--head);font-weight:600}
+@media (max-width:640px){
+  body{font-size:16.5px;padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}
+  .g2,.g3,.g4,.row2,.ftr .cols{grid-template-columns:minmax(0,1fr)}
+  .hdr-cta .btn-cta{display:none}
+  .brand small{display:none}
+  .card{padding:20px}
+  .badges{gap:18px}
+  .fl.a{left:0}.fl.b{right:0}
+  .svc{grid-template-columns:minmax(0,1fr)}
+  .wa{display:none}
+  .mbar{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:45;background:var(--surface);border-top:1px solid var(--line);padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+  .toast{bottom:calc(92px + env(safe-area-inset-bottom,0px))}
+  .stepper li{font-size:13px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+
+/* ===== v3 additions: tabs, portal, staff panel, charts ===== */
+.tabs{display:flex;gap:6px;overflow-x:auto;padding:5px;background:var(--t-teal);border-radius:50px;margin-bottom:22px;max-width:100%;scrollbar-width:thin}
+.tabs button{flex:none;border:0;background:transparent;color:var(--fg);padding:9px 17px;border-radius:50px;font-weight:500;cursor:pointer;white-space:nowrap;min-height:42px;font-size:16px}
+.tabs button:hover{background:var(--surface)}
+.tabs button[aria-selected="true"]{background:var(--surface);color:var(--head);font-weight:600;box-shadow:var(--shadow)}
+.tabs .bd{display:inline-block;background:var(--amber);color:#3A2A00;border-radius:50px;font-size:12.5px;padding:0 8px;margin-left:6px;font-weight:700;line-height:1.6}
+.p-sky{background:var(--t-sky);color:var(--head)}
+.p-gray{background:var(--line);color:var(--muted)}
+.sw{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:7px;vertical-align:baseline}
+.sw.sq{border-radius:2px}
+.sw.dash{width:20px;height:0;border-top:2px dashed var(--muted);border-radius:0;background:none!important;vertical-align:middle}
+.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:14.5px;color:var(--muted);margin-bottom:6px}
+.chart{width:100%;height:auto;display:block;max-width:100%}
+.prog{height:10px;border-radius:10px;background:var(--line);margin-top:12px;overflow:hidden}
+.prog i{display:block;height:100%;background:var(--btn);border-radius:10px;transition:width .4s}
+.clist{margin:12px 0 0;padding-left:20px;color:var(--muted);display:grid;gap:6px;font-size:16px}
+.med{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.med:last-child{border-bottom:0}
+.thread{display:grid;gap:10px;max-height:360px;overflow:auto;padding:4px}
+.msg{max-width:88%;padding:10px 14px;border-radius:14px;background:var(--t-teal);display:grid;gap:4px;justify-self:start;min-width:0;overflow-wrap:anywhere}
+.msg.me{justify-self:end;background:var(--t-sky)}
+.msg small{color:var(--muted);font-size:12.5px}
+.rx>div>span:first-child{min-width:0}
+.rx pre{max-width:100%}
+.done-box .sum{max-width:520px;margin-inline:auto}
+.banner{background:var(--t-sky);border-radius:14px;padding:12px 14px}
+.tagc{display:inline-block;padding:2px 12px;border-radius:50px;background:var(--t-sky);color:var(--head);font-size:14px;margin:2px 6px 2px 0}
+.tagc.al{background:var(--t-coral);color:var(--err);font-weight:600}
+.row4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-bottom:22px}
+.kpis .stat b{font-size:clamp(24px,3vw,34px)}
+.kpis .card{padding:18px}
+
+/* staff panel */
+.dbar{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;margin-bottom:20px}
+.role{display:inline-flex;gap:8px;align-items:center;padding:6px 14px;border-radius:50px;background:var(--t-amber);font-weight:600;font-size:15px;color:var(--fg)}
+.aptl{display:grid;gap:10px}
+.apt{display:grid;grid-template-columns:92px minmax(0,1.5fr) minmax(0,1fr) minmax(0,auto);gap:14px;align-items:center;padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+.ser{display:grid;place-items:center;text-align:center;background:var(--t-teal);color:var(--head);border-radius:12px;padding:8px 6px;line-height:1.25}
+.ser b{font-family:var(--f-disp);font-size:20px}
+.ser small{font-size:12.5px;color:var(--muted)}
+.ai,.am{min-width:0;overflow-wrap:anywhere}
+.ac{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.ac select.in{min-height:40px;width:auto;padding:6px 10px}
+.plink{background:none;border:0;padding:0;font-weight:600;color:var(--head);cursor:pointer;font-size:17px;text-align:left}
+.plink:hover{text-decoration:underline}
+.paidb{margin-top:4px;border:1px solid var(--line);background:var(--surface);border-radius:50px;padding:4px 12px;font-size:14px;cursor:pointer;color:var(--muted)}
+.paidb.on{background:var(--t-mint);color:var(--ok);border-color:transparent;font-weight:600}
+.plist{display:grid;gap:8px;align-content:start}
+.prow{display:flex;gap:12px;align-items:center;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px;cursor:pointer;width:100%;min-width:0}
+.prow:hover,.prow.on{border-color:var(--teal);background:var(--t-teal)}
+.prow .pi{flex:1;min-width:0;display:grid;line-height:1.4}
+.prow .pi small,.prow .pm{color:var(--muted);font-size:14px}
+.prow .pm{text-align:right;flex:none}
+.msgl{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:22px;align-items:start}
+.rxrow{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1.3fr) minmax(0,.8fr) auto;gap:8px;margin-bottom:10px}
+.bars{display:flex;align-items:stretch;gap:8px;height:200px}
+.bars .b{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;gap:4px}
+.bars .bt{flex:1;width:100%;display:flex;align-items:flex-end;justify-content:center;min-height:0}
+.bars .bt i{display:block;width:100%;max-width:34px;background:var(--btn);border-radius:5px 5px 0 0}
+.bars .bv{font-size:13px;font-weight:600;color:var(--fg)}
+.bars .bl{font-size:12px;color:var(--muted);white-space:nowrap}
+.hbars{display:grid;gap:10px}
+.hb{display:grid;grid-template-columns:minmax(0,34%) minmax(0,1fr) auto;gap:10px;align-items:center;font-size:15px}
+.hb .hl{overflow-wrap:anywhere}
+.hb .ht{height:12px;background:var(--line);border-radius:12px;overflow:hidden}
+.hb .ht i{display:block;height:100%;background:var(--btn);border-radius:12px}
+.hb .hv{font-weight:600;color:var(--fg)}
+.big-role{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:18px}
+.big-role .btn{flex-direction:column;padding:18px 12px;border-radius:18px;gap:6px;text-align:center}
+@media (max-width:980px){
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .msgl{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:760px){
+  .apt{grid-template-columns:84px minmax(0,1fr)}
+  .apt .am,.apt .ac{grid-column:1/-1;justify-content:flex-start}
+  .rxrow{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rxrow>:first-child{grid-column:1/-1}
+  .row4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tabs button{padding:9px 14px;font-size:15px}
+  .prow .pm{display:none}
+}
+@media (max-width:420px){
+  .kpis{gap:10px}.kpis .card{padding:14px 10px}
+  .bars{gap:4px}.bars .bl{font-size:11px}
+  .hb{grid-template-columns:minmax(0,38%) minmax(0,1fr) auto}
+}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></symbol>
+    <symbol id="i-act" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"/></symbol>
+    <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></symbol>
+    <symbol id="i-video" viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></symbol>
+    <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polygon points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+    <symbol id="i-msg" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6M10 11v6M14 11v6M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></symbol>
+  </defs>
+</svg>
+
+<div class="notice" id="notice"><div class="wrap"><span>এটি একটি নমুনা ডিজাইন। সব নাম, ছবি, নম্বর ও রিভিউ কাল্পনিক। বুকিং, বার্তা ইত্যাদি শুধু আপনার ব্রাউজারে থাকে, কোথাও পাঠানো হয় না।</span><button type="button" id="noticeX" aria-label="বার্তা বন্ধ করুন"><svg class="i"><use href="#i-x"/></svg></button></div></div>
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <button class="brand" type="button" data-go="home" aria-label="হোম পেজে যান">
+      <span class="logo"><svg class="i" style="width:24px;height:24px"><use href="#i-heart"/></svg></span>
+      <span><b>ডা. আরিফ রহমান</b><small>কার্ডিওলজি ও মেডিসিন বিশেষজ্ঞ</small></span>
+    </button>
+    <nav class="nav" aria-label="প্রধান মেনু" id="nav">
+      <a data-go="home">হোম</a><a data-go="about">পরিচিতি</a><a data-go="services">সেবাসমূহ</a><a data-go="testimonials">রোগীর মতামত</a><a data-go="blog">স্বাস্থ্য ব্লগ</a><a data-go="contact">যোগাযোগ</a>
+    </nav>
+    <div class="hdr-cta">
+      <button class="btn btn-out btn-sm" type="button" data-go="portal"><svg class="i"><use href="#i-lock"/></svg>রোগী লগইন</button>
+      <button class="btn btn-cta btn-sm" type="button" data-go="book">অ্যাপয়েন্টমেন্ট নিন</button>
+      <button class="menu-btn" type="button" id="menuBtn" aria-label="মেনু খুলুন" aria-expanded="false"><svg class="i"><use href="#i-menu"/></svg></button>
+    </div>
+  </div>
+  <div class="mnav" id="mnav"><div class="wrap">
+    <a data-go="home">হোম</a><a data-go="about">পরিচিতি</a><a data-go="services">সেবাসমূহ</a><a data-go="testimonials">রোগীর মতামত</a><a data-go="blog">স্বাস্থ্য ব্লগ</a><a data-go="contact">যোগাযোগ</a><a data-go="portal">রোগী লগইন</a>
+  </div></div>
+</header>
+
+<main id="main">
+
+<!-- HOME -->
+<section class="page" id="p-home" aria-label="হোম">
+  <div class="hero"><div class="wrap">
+    <div>
+      <span class="tag"><svg class="i"><use href="#i-heart"/></svg>কনসালট্যান্ট কার্ডিওলজিস্ট</span>
+      <h1>আপনার হৃদয়ের যত্নে <span>অভিজ্ঞ হাতে</span> সঠিক চিকিৎসা</h1>
+      <p class="lead">আমি ডা. আরিফ রহমান। হৃদরোগ, উচ্চ রক্তচাপ ও ডায়াবেটিসের চিকিৎসায় রোগীর কথা মন দিয়ে শুনে সহজ ভাষায় বুঝিয়ে চিকিৎসা দিই।</p>
+      <div class="actions">
+        <button class="btn btn-cta" type="button" data-go="book"><svg class="i"><use href="#i-cal"/></svg>অ্যাপয়েন্টমেন্ট নিন</button>
+        <button class="btn btn-out" type="button" data-go="about">আমার সম্পর্কে জানুন</button>
+      </div>
+      <div class="badges">
+        <div><b><span data-count="15">১৫</span>+</b><span>বছরের অভিজ্ঞতা</span></div>
+        <div><b><span data-count="12000" data-sep="1">১২,০০০</span>+</b><span>রোগী দেখা হয়েছে</span></div>
+        <div><b>৪.৯</b><span>রোগীদের রেটিং (নমুনা)</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="portrait">
+        <svg class="pt" viewBox="0 0 400 440" role="img" aria-label="ডাক্তারের ছবির জায়গা">
+          <path d="M60 330c-30-80-10-200 80-250 80-45 190-20 220 70 28 85-20 160-70 200-60 50-190 80-230-20z" style="fill:var(--t-sky)"/>
+          <path d="M120 400c-40-60-50-150 10-210 50-50 150-60 200-10 40 40 40 120 0 180-40 50-170 80-210 40z" style="fill:var(--t-teal)"/>
+          <path d="M70 440v-40c0-60 50-96 130-96s130 36 130 96v40z" style="fill:var(--btn)"/>
+          <path d="M150 304l50 70 50-70" style="fill:var(--surface)"/>
+          <path d="M150 304c-6 40 6 90 50 110 44-20 56-70 50-110" fill="none" style="stroke:var(--surface)" stroke-width="10" stroke-linecap="round" opacity=".0"/>
+          <rect x="178" y="250" width="44" height="60" rx="16" style="fill:#E8B596"/>
+          <ellipse cx="200" cy="200" rx="64" ry="76" style="fill:#F2C3A5"/>
+          <path d="M134 190c-6-60 40-96 82-90 44 6 62 40 50 90-10-30-30-48-64-48-30 0-56 14-68 48z" style="fill:#2B3A42"/>
+          <circle cx="178" cy="206" r="5" style="fill:#2B3A42"/><circle cx="222" cy="206" r="5" style="fill:#2B3A42"/>
+          <path d="M184 238c10 10 22 10 32 0" fill="none" style="stroke:#9A5B45" stroke-width="4" stroke-linecap="round"/>
+          <path d="M150 310c-10 30-4 70 24 84M250 310c10 30 4 70-24 84" fill="none" style="stroke:var(--head)" stroke-width="7" stroke-linecap="round"/>
+          <circle cx="200" cy="398" r="13" style="fill:var(--amber)"/>
+        </svg>
+        <div class="fl a"><span class="ico c-mint" style="margin:0;width:42px;height:42px;font-size:19px"><svg class="i"><use href="#i-award"/></svg></span><div><b>FCPS, MBBS</b><small>বিশেষজ্ঞ চিকিৎসক</small></div></div>
+        <div class="fl b"><span class="ico c-amber" style="margin:0;width:42px;height:42px;font-size:19px"><svg class="i"><use href="#i-star"/></svg></span><div><b>৪.৯ রেটিং</b><small>নমুনা তথ্য</small></div></div>
+      </div>
+      <p class="ph-note">ডাক্তারের নিজের পেশাদার ছবি এখানে বসবে</p>
+    </div>
+  </div></div>
+
+  <div class="sec" style="padding-block:34px 10px"><div class="wrap">
+    <div class="awards" aria-label="সনদ ও স্বীকৃতি">
+      <span class="aw"><svg class="i"><use href="#i-award"/></svg>MBBS (ঢাকা)</span>
+      <span class="aw"><svg class="i"><use href="#i-award"/></svg>FCPS (মেডিসিন)</span>
+      <span class="aw"><svg class="i"><use href="#i-award"/></svg>কার্ডিওলজি ফেলোশিপ</span>
+      <span class="aw"><svg class="i"><use href="#i-award"/></svg>সেরা চিকিৎসক সম্মাননা ২০২৪</span>
+      <span class="aw"><svg class="i"><use href="#i-shield"/></svg>BMDC নিবন্ধিত</span>
+    </div>
+  </div></div>
+
+  <div class="sec"><div class="wrap">
+    <div class="sec-head"><span class="eyebrow">বিশেষজ্ঞতার ক্ষেত্র</span><h2>যেসব সমস্যায় আমি আপনার পাশে আছি</h2><p>প্রতিটি সেবার বিস্তারিত দেখতে কার্ডে ক্লিক করুন।</p></div>
+    <div class="grid g3" id="homeSvc"></div>
+  </div></div>
+
+  <div class="sec alt"><div class="wrap">
+    <div class="grid g2" style="align-items:center;gap:40px">
+      <div>
+        <span class="eyebrow">আমার কথা</span>
+        <h2>রোগীকে শোনা দিয়েই শুরু হয় চিকিৎসা</h2>
+        <p style="margin-top:16px;color:var(--muted)">পনেরো বছরের বেশি সময় ধরে হাসপাতাল ও চেম্বারে রোগী দেখছি। আমার বিশ্বাস, রোগী যখন নিজের রোগ বোঝেন, তখন চিকিৎসা অর্ধেক সফল হয়ে যায়।</p>
+        <ul style="margin:18px 0 0;padding:0;list-style:none;display:grid;gap:10px">
+          <li><svg class="i" style="color:var(--ok)"><use href="#i-check"/></svg> প্রতি রোগীর জন্য পর্যাপ্ত সময়</li>
+          <li><svg class="i" style="color:var(--ok)"><use href="#i-check"/></svg> সহজ ভাষায় রোগ ও ওষুধের ব্যাখ্যা</li>
+          <li><svg class="i" style="color:var(--ok)"><use href="#i-check"/></svg> অপ্রয়োজনীয় পরীক্ষা ও ওষুধ এড়িয়ে চলা</li>
+        </ul>
+        <button class="link-more" type="button" data-go="about">বিস্তারিত পড়ুন <svg class="i"><use href="#i-arrow"/></svg></button>
+      </div>
+      <div class="grid g2">
+        <div class="card stat"><b><span data-count="15">১৫</span>+</b><span>বছরের অভিজ্ঞতা</span></div>
+        <div class="card stat"><b><span data-count="12000" data-sep="1">১২,০০০</span>+</b><span>রোগী</span></div>
+        <div class="card stat"><b><span data-count="3500" data-sep="1">৩,৫০০</span>+</b><span>ইকো ও ইসিজি</span></div>
+        <div class="card stat"><b><span data-count="3">৩</span></b><span>হাসপাতালে সেবা</span></div>
+      </div>
+    </div>
+  </div></div>
+
+  <div class="sec"><div class="wrap">
+    <div class="sec-head c"><span class="eyebrow">সহজ প্রক্রিয়া</span><h2>এক মিনিটে অ্যাপয়েন্টমেন্ট</h2></div>
+    <div class="grid g3">
+      <div class="card step lift"><div class="n">১</div><h3>সেবা বেছে নিন</h3><p>কোন বিষয়ে পরামর্শ চান এবং কোন চেম্বারে আসবেন, তা ঠিক করুন।</p></div>
+      <div class="card step lift"><div class="n">২</div><h3>সময় নির্বাচন করুন</h3><p>খালি থাকা তারিখ ও সময় দেখে নিজের সুবিধামতো স্লট নিন।</p></div>
+      <div class="card step lift"><div class="n">৩</div><h3>নিশ্চিতকরণ পান</h3><p>নাম ও ফোন নম্বর দিন। লাইভ সাইটে SMS ও ইমেইলে নিশ্চিতকরণ চলে যাবে।</p></div>
+    </div>
+    <div style="text-align:center;margin-top:30px"><button class="btn btn-cta" type="button" data-go="book">এখনই বুক করুন</button></div>
+  </div></div>
+
+  <div class="sec alt2"><div class="wrap">
+    <div class="sec-head"><span class="eyebrow">রোগীর মতামত <span class="sample" style="margin:0">নমুনা</span></span><h2>যাঁরা আমার কাছে এসেছেন</h2></div>
+    <div class="grid g3" id="homeRev"></div>
+    <button class="link-more" type="button" data-go="testimonials">সব মতামত দেখুন <svg class="i"><use href="#i-arrow"/></svg></button>
+  </div></div>
+
+  <div class="sec"><div class="wrap">
+    <div class="sec-head"><span class="eyebrow">স্বাস্থ্য ব্লগ</span><h2>সুস্থ থাকার সহজ পরামর্শ</h2></div>
+    <div class="grid g3" id="homePosts"></div>
+  </div></div>
+
+  <div class="sec" style="padding-top:0"><div class="wrap">
+    <div class="band">
+      <div><h2>প্রথম পদক্ষেপটা আজই নিন</h2><p>দেরি না করে আপনার সুবিধামতো সময়ে চেম্বারে বা অনলাইনে দেখা করুন।</p></div>
+      <div class="acts"><button class="btn btn-cta" type="button" data-go="book">অ্যাপয়েন্টমেন্ট নিন</button><button class="btn btn-out" type="button" data-go="contact">যোগাযোগ</button></div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ABOUT -->
+<section class="page" id="p-about" hidden aria-label="পরিচিতি">
+  <div class="ph"><div class="wrap">
+    <span class="eyebrow">আমার পরিচিতি</span>
+    <h1>চিকিৎসা আমার পেশা, মানবসেবা আমার অঙ্গীকার</h1>
+    <p>শিক্ষা, প্রশিক্ষণ, কর্মজীবন এবং রোগীর প্রতি আমার দৃষ্টিভঙ্গি।</p>
+  </div></div>
+  <div class="sec"><div class="wrap grid g2" style="gap:40px;align-items:start">
+    <div>
+      <h2>আমার গল্প</h2>
+      <p style="margin-top:16px;color:var(--muted)">ছোটবেলায় গ্রামে চিকিৎসার অভাবে স্বজনের কষ্ট দেখেই ডাক্তার হওয়ার স্বপ্ন দেখেছিলাম। ঢাকা মেডিকেল কলেজ থেকে এমবিবিএস শেষ করে মেডিসিনে এফসিপিএস করি এবং পরে কার্ডিওলজিতে বিশেষ প্রশিক্ষণ নিই।</p>
+      <p style="margin-top:14px;color:var(--muted)">আজ পর্যন্ত হাজার হাজার রোগীর সেবা করেছি। প্রতিটি রোগীই আমাকে নতুন কিছু শিখিয়েছেন, আর সেই শিক্ষাই আমাকে আরও যত্নশীল চিকিৎসক হতে সাহায্য করেছে।</p>
+      <p class="sec-note">এই লেখা নমুনা। ডাক্তারের নিজের জীবনকাহিনি দিয়ে বদলে নিন।</p>
+    </div>
+    <div>
+      <h2 style="margin-bottom:20px">শিক্ষা ও প্রশিক্ষণ</h2>
+      <div class="tl">
+        <div class="it"><span class="yr">২০০৬</span><b>MBBS</b><span>ঢাকা মেডিকেল কলেজ (নমুনা)</span></div>
+        <div class="it"><span class="yr">২০০৯</span><b>ইন্টার্নশিপ ও মেডিকেল অফিসার</b><span>জেলা সদর হাসপাতাল (নমুনা)</span></div>
+        <div class="it"><span class="yr">২০১৩</span><b>FCPS (মেডিসিন)</b><span>বাংলাদেশ কলেজ অব ফিজিশিয়ানস অ্যান্ড সার্জনস</span></div>
+        <div class="it"><span class="yr">২০১৬</span><b>কার্ডিওলজি ফেলোশিপ</b><span>জাতীয় হৃদরোগ ইনস্টিটিউট (নমুনা)</span></div>
+        <div class="it"><span class="yr">২০১৮ - বর্তমান</span><b>কনসালট্যান্ট কার্ডিওলজিস্ট</b><span>একাধিক হাসপাতাল ও ব্যক্তিগত চেম্বার</span></div>
+      </div>
+    </div>
+  </div></div>
+
+  <div class="sec alt"><div class="wrap">
+    <div class="sec-head"><span class="eyebrow">হাসপাতাল</span><h2>যেসব প্রতিষ্ঠানে সেবা দিই</h2></div>
+    <div class="grid g3">
+      <div class="card lift"><div class="ico c-sky"><svg class="i"><use href="#i-plus"/></svg></div><h3>সিটি হার্ট হাসপাতাল</h3><p>কনসালট্যান্ট, কার্ডিওলজি বিভাগ। ২০১৮ থেকে (নমুনা)</p></div>
+      <div class="card lift"><div class="ico c-mint"><svg class="i"><use href="#i-plus"/></svg></div><h3>লাইফ কেয়ার মেডিকেল সেন্টার</h3><p>পরামর্শক চিকিৎসক, মেডিসিন বিভাগ। ২০২০ থেকে (নমুনা)</p></div>
+      <div class="card lift"><div class="ico c-coral"><svg class="i"><use href="#i-plus"/></svg></div><h3>ন্যাশনাল ডায়গনস্টিক সেন্টার</h3><p>ইকোকার্ডিওগ্রাফি বিশেষজ্ঞ। ২০২১ থেকে (নমুনা)</p></div>
+    </div>
+  </div></div>
+
+  <div class="sec"><div class="wrap">
+    <div class="sec-head c"><span class="eyebrow">চিকিৎসা দর্শন</span><h2>আমার যত্নের চার নীতি</h2></div>
+    <div class="grid g4">
+      <div class="card lift"><div class="ico c-teal"><svg class="i"><use href="#i-msg"/></svg></div><h3>আগে শুনি</h3><p>রোগীর পুরো কথা না শুনে সিদ্ধান্ত নিই না।</p></div>
+      <div class="card lift"><div class="ico c-sky"><svg class="i"><use href="#i-file"/></svg></div><h3>স্পষ্ট করে বুঝিয়ে বলি</h3><p>রোগ, পরীক্ষা ও ওষুধ সহজ ভাষায় ব্যাখ্যা করি।</p></div>
+      <div class="card lift"><div class="ico c-mint"><svg class="i"><use href="#i-shield"/></svg></div><h3>নৈতিকতা মানি</h3><p>যেটুকু দরকার, শুধু সেটুকুই পরামর্শ দিই।</p></div>
+      <div class="card lift"><div class="ico c-coral"><svg class="i"><use href="#i-heart"/></svg></div><h3>ফলো-আপ রাখি</h3><p>চিকিৎসা শুরুর পরেও রোগীর খোঁজ রাখি।</p></div>
+    </div>
+    <div class="card" style="margin-top:30px;text-align:center;padding:34px"><p class="q">"ভালো চিকিৎসা শুরু হয় রোগীর প্রতি মনোযোগ থেকে, ওষুধের প্রেসক্রিপশন তার অনেক পরে।"</p></div>
+  </div></div>
+
+  <div class="sec" style="padding-top:0"><div class="wrap"><div class="band"><div><h2>আমার সঙ্গে দেখা করুন</h2><p>চেম্বারে বা অনলাইনে আপনার সুবিধামতো সময় বেছে নিন।</p></div><div class="acts"><button class="btn btn-cta" type="button" data-go="book">অ্যাপয়েন্টমেন্ট নিন</button></div></div></div></div>
+</section>
+
+<!-- SERVICES -->
+<section class="page" id="p-services" hidden aria-label="সেবাসমূহ">
+  <div class="ph"><div class="wrap">
+    <span class="eyebrow">সেবা ও বিশেষজ্ঞতা</span>
+    <h1>যেসব রোগের চিকিৎসা দিই</h1>
+    <p>প্রতিটি সেবায় কী কী হয়, কাদের জন্য উপযোগী এবং কতক্ষণ সময় লাগে, তা নিচে দেখুন।</p>
+  </div></div>
+  <div class="sec"><div class="wrap">
+    <div class="tools"><div class="chips" id="svcFilter" role="group" aria-label="সেবা ফিল্টার"></div></div>
+    <div class="svc-list" id="svcList"></div>
+    <div id="svcFees" style="margin-top:44px;margin-bottom:28px"></div>
+    <p class="sec-note">জরুরি অবস্থায় (বুকে তীব্র ব্যথা, শ্বাসকষ্ট, অজ্ঞান হয়ে যাওয়া) অনলাইনে অপেক্ষা না করে সরাসরি নিকটস্থ জরুরি বিভাগে যান বা জরুরি হটলাইনে কল করুন।</p>
+  </div></div>
+</section>
+
+<!-- BOOKING -->
+<section class="page" id="p-book" hidden aria-label="অ্যাপয়েন্টমেন্ট">
+  <div class="ph"><div class="wrap">
+    <span class="eyebrow" id="bkEyebrow">অনলাইন বুকিং</span>
+    <h1 id="bkTitle">এক মিনিটে অ্যাপয়েন্টমেন্ট নিন</h1>
+    <p id="bkSub">অ্যাকাউন্ট ছাড়াই বুক করা যায়। শুধু তিনটি ধাপ।</p>
+  </div></div>
+  <div class="sec" style="padding-top:34px"><div class="wrap book">
+    <div class="card" id="bookCard">
+      <ol class="stepper" id="stepper"><li class="on">১. সেবা</li><li>২. সময়</li><li>৩. আপনার তথ্য</li></ol>
+      <form class="form" id="bookForm" novalidate>
+        <div id="bs1">
+          <div class="form">
+            <div class="field"><span class="lbl">কোন সেবা প্রয়োজন?</span><div class="opts" id="bSvc" role="group" aria-label="সেবা"></div></div>
+            <div class="field"><span class="lbl">ভিজিটের ধরন</span><div class="opts" id="bType" role="group" aria-label="ভিজিটের ধরন"></div></div>
+            <div class="field"><span class="lbl">চেম্বার</span><div class="opts" id="bCh" role="group" aria-label="চেম্বার"></div></div>
+            <div class="nav-row"><span></span><button class="btn btn-pri" type="button" id="n1">পরের ধাপ <svg class="i"><use href="#i-arrow"/></svg></button></div>
+          </div>
+        </div>
+        <div id="bs2" hidden>
+          <div class="form">
+            <div class="field"><span class="lbl">তারিখ বেছে নিন</span><div class="opts" id="bDate" role="group" aria-label="তারিখ"></div><p class="hint" id="bDateHint"></p></div>
+            <div class="field"><span class="lbl">সময় বেছে নিন</span><div class="opts" id="bTime" role="group" aria-label="সময়"></div><p class="hint">কাটা চিহ্ন দেওয়া সময় ইতিমধ্যে বুক হয়ে আছে বা পেরিয়ে গেছে।</p></div>
+            <div class="err" id="e2" role="alert"></div>
+            <div class="nav-row"><button class="btn btn-out" type="button" id="b2">পিছনে</button><button class="btn btn-pri" type="button" id="n2">পরের ধাপ <svg class="i"><use href="#i-arrow"/></svg></button></div>
+          </div>
+        </div>
+        <div id="bs3" hidden>
+          <div class="form" id="bDet">
+            <div class="row2">
+              <div class="field"><label for="fName">রোগীর নাম</label><input class="in" id="fName" autocomplete="name" placeholder="যেমন: রহিম উদ্দিন"><div class="err" id="eName"></div></div>
+              <div class="field"><label for="fAge">বয়স</label><input class="in" id="fAge" inputmode="numeric" placeholder="যেমন: ৪৫"></div>
+            </div>
+            <div class="row2">
+              <div class="field"><label for="fPhone">মোবাইল নম্বর</label><input class="in" id="fPhone" inputmode="tel" autocomplete="tel" placeholder="01XXXXXXXXX"><div class="err" id="ePhone"></div></div>
+              <div class="field"><label for="fMail">ইমেইল (ঐচ্ছিক)</label><input class="in" id="fMail" type="email" autocomplete="email" placeholder="name@example.com"><div class="err" id="eMail"></div></div>
+            </div>
+            <div class="field"><label for="fWhy">সমস্যার সংক্ষিপ্ত বিবরণ (ঐচ্ছিক)</label><textarea class="in" id="fWhy" placeholder="যেমন: কয়েক দিন ধরে হালকা বুক ধড়ফড় করছে"></textarea><p class="hint">বিস্তারিত চিকিৎসা-ইতিহাস এই ফর্মে লিখবেন না। ভিজিটে সরাসরি বলবেন।</p></div>
+            <label class="chk"><input type="checkbox" id="fOk"><span>আমি গোপনীয়তা নীতি মেনে নিয়ে আমার তথ্য অ্যাপয়েন্টমেন্টের জন্য ব্যবহারে সম্মতি দিচ্ছি।</span></label>
+            <div class="err" id="e3" role="alert"></div>
+            <div class="nav-row"><button class="btn btn-out" type="button" id="b3">পিছনে</button><button class="btn btn-cta" type="submit">বুকিং নিশ্চিত করুন</button></div>
+            <p class="hint">আপনার মোবাইল নম্বরে একটি ৪ সংখ্যার কোড যাবে। কোডটি দিলে বুকিং নিশ্চিত হবে। এতে অন্যের নম্বরে ভুয়া বুকিং আটকানো যায়।</p>
+          </div>
+          <div class="form" id="bOtp" hidden>
+            <p>আপনার নম্বর <b id="otpTo"></b>-এ ৪ সংখ্যার কোড পাঠানো হয়েছে।</p>
+            <p class="sec-note" style="margin-top:0">ডেমো সাইটে SMS যায় না, তাই কোডটি এখানে দেখানো হলো: <b id="otpHint" style="font-size:22px;letter-spacing:4px;color:var(--head)"></b></p>
+            <div class="field"><label for="fOtp">কোড</label><input class="in" id="fOtp" inputmode="numeric" maxlength="4" autocomplete="one-time-code" style="max-width:200px;letter-spacing:6px;font-size:20px"></div>
+            <div class="err" id="eOtp" role="alert"></div>
+            <div class="nav-row"><button type="button" class="btn btn-out" id="otpBack">পিছনে</button><span style="display:flex;gap:10px;flex-wrap:wrap"><button type="button" class="btn btn-out" id="otpResend">নতুন কোড</button><button class="btn btn-cta" type="submit">কোড যাচাই করে নিশ্চিত করুন</button></span></div>
+          </div>
+        </div>
+      </form>
+      <div id="bDone" hidden class="done-box"></div>
+    </div>
+    <aside class="grid" style="gap:18px">
+      <div class="card" id="feeBox"></div>
+      <div class="card"><div class="ico c-sky"><svg class="i"><use href="#i-file"/></svg></div><h3>সঙ্গে আনবেন</h3><ul class="clist"><li>আগের প্রেসক্রিপশন ও রিপোর্ট</li><li>চলতি ওষুধের তালিকা বা বাক্স</li><li>আগের ইসিজি বা ইকো থাকলে সেগুলো</li></ul></div>
+      <div class="card"><div class="ico c-mint"><svg class="i"><use href="#i-clock"/></svg></div><h3>সময় বদল বা বাতিল</h3><p style="margin-top:8px">বুকিংয়ের পর "রোগী পোর্টাল" থেকে নিজেই সময় বদলানো বা বাতিল করা যায়। লাইভ সাইটে নিশ্চিতকরণ বার্তার লিংক থেকেও করা যাবে।</p></div>
+      <div class="card"><div class="ico c-coral"><svg class="i"><use href="#i-phone"/></svg></div><h3>ফোনে বুক করতে চান?</h3><p style="margin-top:8px">চেম্বারের নম্বরে কল করুন: <b style="color:var(--head)">০১৭০০-০০০০০০</b> (নমুনা)</p></div>
+    </aside>
+  </div></div>
+</section>
+
+<!-- PORTAL -->
+<section class="page" id="p-portal" hidden aria-label="রোগী পোর্টাল">
+  <div class="ph"><div class="wrap">
+    <span class="eyebrow">রোগী পোর্টাল</span>
+    <h1>আপনার স্বাস্থ্য-তথ্য এক জায়গায়</h1>
+    <p>অ্যাপয়েন্টমেন্ট, প্রেসক্রিপশন, ওষুধ, রক্তচাপ ও শর্করার গ্রাফ এবং ডাক্তারকে বার্তা।</p>
+  </div></div>
+  <div class="sec" style="padding-top:34px"><div class="wrap">
+    <div id="pLogin" class="portal">
+      <div class="card">
+        <div class="ico c-teal"><svg class="i"><use href="#i-lock"/></svg></div>
+        <h2 style="font-size:26px">রোগী লগইন</h2>
+        <form class="form" id="loginForm" style="margin-top:18px" novalidate>
+          <div class="field"><label for="lPhone">মোবাইল নম্বর</label><input class="in" id="lPhone" inputmode="tel" autocomplete="tel" placeholder="01XXXXXXXXX"></div>
+          <div id="lOtpBox" class="form" hidden>
+            <p class="sec-note" style="margin-top:0">ডেমো সাইটে SMS যায় না, তাই কোডটি এখানে দেখানো হলো: <b id="lHint" style="font-size:22px;letter-spacing:4px;color:var(--head)"></b></p>
+            <div class="field"><label for="lOtp">৪ সংখ্যার কোড</label><input class="in" id="lOtp" inputmode="numeric" maxlength="4" autocomplete="one-time-code" style="letter-spacing:6px;font-size:20px"></div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap"><button type="button" class="btn btn-out btn-sm" id="lBack">নম্বর বদলান</button><button type="button" class="btn btn-out btn-sm" id="lResend">নতুন কোড</button></div>
+          </div>
+          <div class="err" id="eLogin" role="alert"></div>
+          <button class="btn btn-pri" type="submit" id="lSend">কোড পাঠান</button>
+          <button class="btn btn-pri" type="submit" id="lGo" hidden>লগইন করুন</button>
+          <button class="btn btn-out" type="button" id="demoBtn">নমুনা রোগী হিসেবে দেখুন</button>
+        </form>
+        <p class="sec-note">পাসওয়ার্ড লাগে না, মোবাইলে আসা কোড দিয়েই প্রবেশ। অ্যাপয়েন্টমেন্ট বুক করলে সেই নম্বর দিয়ে এখানে লগইন করা যায়। নমুনা নম্বর: ০১৭১২৩৪৫৬৭৮।</p>
+      </div>
+    </div>
+    <div id="pDash" hidden></div>
+  </div></div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="page" id="p-testimonials" hidden aria-label="রোগীর মতামত">
+  <div class="ph"><div class="wrap">
+    <span class="eyebrow">রোগীর মতামত</span>
+    <h1>রোগীরা যা বলেন</h1>
+    <p>প্রকৃত রোগীর সম্মতি নিয়ে প্রকাশিত মতামত ও সুস্থ হওয়ার গল্প এখানে থাকবে।</p>
+  </div></div>
+  <div class="sec" style="padding-top:34px"><div class="wrap">
+    <div class="card" id="revSummary" style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;margin-bottom:28px"></div>
+    <div class="grid g3" id="allRev"></div>
+  </div></div>
+  <div class="sec alt"><div class="wrap">
+    <div class="sec-head"><span class="eyebrow">ভিডিও মতামত</span><h2>রোগীদের নিজের কথায়</h2></div>
+    <div class="grid g3">
+      <div class="vid"><span class="pl"><svg class="i"><use href="#i-play"/></svg></span><small>ভিডিও টেস্টিমোনিয়াল (নমুনা স্থান)</small></div>
+      <div class="vid"><span class="pl"><svg class="i"><use href="#i-play"/></svg></span><small>ভিডিও টেস্টিমোনিয়াল (নমুনা স্থান)</small></div>
+      <div class="vid"><span class="pl"><svg class="i"><use href="#i-play"/></svg></span><small>ভিডিও টেস্টিমোনিয়াল (নমুনা স্থান)</small></div>
+    </div>
+    <p class="hint" style="margin-top:14px">লাইভ সাইটে ইউটিউব বা ভিমিও ভিডিও থাম্বনেইল হিসেবে লোড হবে, ক্লিক করলে চলবে।</p>
+  </div></div>
+  <div class="sec"><div class="wrap grid g2" style="gap:36px;align-items:start">
+    <div>
+      <span class="eyebrow">আপনার অভিজ্ঞতা</span>
+      <h2>আপনিও মতামত জানান</h2>
+      <p style="margin-top:14px;color:var(--muted)">আপনার মতামত অন্য রোগীদের সঠিক সিদ্ধান্ত নিতে সাহায্য করে। প্রকাশের আগে যাচাই করা হবে এবং আপনার অনুমতি ছাড়া কোনো স্বাস্থ্য-তথ্য প্রকাশ হবে না।</p>
+    </div>
+    <div class="card">
+      <form class="form" id="revForm" novalidate>
+        <div class="field"><label for="rName">আপনার নাম (ইচ্ছে করলে শুধু প্রথম নাম)</label><input class="in" id="rName"></div>
+        <div class="field"><span class="lbl">রেটিং</span><div class="opts" id="rStars" role="group" aria-label="রেটিং"></div></div>
+        <div class="field"><label for="rText">আপনার মতামত</label><textarea class="in" id="rText"></textarea></div>
+        <label class="chk"><input type="checkbox" id="rOk"><span>আমার নাম ও মতামত ওয়েবসাইটে প্রকাশে আমি সম্মতি দিচ্ছি।</span></label>
+        <div class="err" id="eRev" role="alert"></div>
+        <button class="btn btn-pri" type="submit">মতামত জমা দিন</button>
+      </form>
+    </div>
+  </div></div>
+</section>
+
+<!-- BLOG -->
+<section class="page" id="p-blog" hidden aria-label="স্বাস্থ্য ব্লগ">
+  <div id="blogList">
+    <div class="ph"><div class="wrap">
+      <span class="eyebrow">স্বাস্থ্য ব্লগ ও প্রশ্নোত্তর</span>
+      <h1>সুস্থ থাকার সহজ পরামর্শ</h1>
+      <p>হৃদরোগ, রক্তচাপ ও ডায়াবেটিস নিয়ে সহজ ভাষায় লেখা।</p>
+    </div></div>
+    <div class="sec" style="padding-top:34px"><div class="wrap">
+      <div class="tools"><div class="chips" id="blogCats" role="group" aria-label="বিষয়"></div><div class="search"><label class="sr" for="blogQ">খুঁজুন</label><input class="in" id="blogQ" type="search" placeholder="লেখা খুঁজুন"></div></div>
+      <div class="grid g3" id="blogGrid"></div>
+      <p id="blogEmpty" class="hint" hidden>কোনো লেখা পাওয়া যায়নি।</p>
+    </div></div>
+    <div class="sec alt"><div class="wrap" style="max-width:860px">
+      <div class="sec-head"><span class="eyebrow">সাধারণ প্রশ্নোত্তর</span><h2>প্রায়ই যা জিজ্ঞেস করা হয়</h2></div>
+      <details><summary>প্রথমবার আসার সময় কী কী আনতে হবে?</summary><p>আগের সব প্রেসক্রিপশন, পরীক্ষার রিপোর্ট এবং বর্তমানে খাওয়া ওষুধের তালিকা সঙ্গে আনবেন।</p></details>
+      <details><summary>অনলাইন পরামর্শ কীভাবে হয়?</summary><p>বুকিংয়ের সময় "অনলাইন" ভিজিট বেছে নিন। নির্ধারিত সময়ে ভিডিও কলের লিংক SMS ও ইমেইলে পাঠানো হবে (লাইভ সাইটে)।</p></details>
+      <details><summary>ফি কত এবং কীভাবে দিতে হয়?</summary><p>নতুন রোগী ধানমন্ডিতে ৮০০ টাকা, ফলো-আপ ৪০০ টাকা (নমুনা)। সেবা পাতায় সব চেম্বারের ফি দেওয়া আছে। ফি ভিজিটের দিন চেম্বারে পরিশোধ করতে হয়।</p></details>
+      <details><summary>অ্যাপয়েন্টমেন্ট বাতিল বা সময় বদলানো যাবে?</summary><p>হ্যাঁ। নিশ্চিতকরণ বার্তার লিংক থেকে বা চেম্বারে ফোন করে সময় বদলানো যায়।</p></details>
+      <details><summary>জরুরি অবস্থায় কী করব?</summary><p>বুকে তীব্র ব্যথা, শ্বাসকষ্ট বা অজ্ঞান হয়ে গেলে অ্যাপয়েন্টমেন্টের অপেক্ষা না করে সঙ্গে সঙ্গে নিকটস্থ জরুরি বিভাগে যান বা জরুরি হটলাইনে কল করুন।</p></details>
+    </div></div>
+  </div>
+  <div id="blogArt" hidden class="sec"><div class="wrap art" id="artBody"></div></div>
+</section>
+
+<!-- CONTACT -->
+<section class="page" id="p-contact" hidden aria-label="যোগাযোগ">
+  <div class="ph"><div class="wrap">
+    <span class="eyebrow">যোগাযোগ ও ঠিকানা</span>
+    <h1>আমার চেম্বার ও যোগাযোগ</h1>
+    <p>চেম্বারের ঠিকানা, রোগী দেখার সময় এবং জরুরি যোগাযোগের নম্বর।</p>
+  </div></div>
+  <div class="sec" style="padding-top:34px"><div class="wrap">
+    <div class="hot" style="margin-bottom:28px">
+      <div><p style="font-weight:600;color:var(--head)">জরুরি হটলাইন (২৪ ঘণ্টা) <span class="sample">নমুনা</span></p><b id="hotNum">০১৭০০-০০০০০০</b><p style="margin-top:4px">প্রাণঘাতী জরুরি অবস্থায় সরাসরি ৯৯৯ বা নিকটস্থ হাসপাতালের জরুরি বিভাগে যান।</p></div>
+      <button class="btn btn-pri" type="button" id="copyHot"><svg class="i"><use href="#i-phone"/></svg>নম্বর কপি করুন</button>
+    </div>
+    <div class="grid g2">
+      <div class="card ch">
+        <h3><svg class="i" style="color:var(--link)"><use href="#i-pin"/></svg>ধানমন্ডি চেম্বার</h3>
+        <ul>
+          <li><svg class="i"><use href="#i-pin"/></svg>সিটি হার্ট হাসপাতাল, রোড ৫, ধানমন্ডি, ঢাকা (নমুনা ঠিকানা)</li>
+          <li><svg class="i"><use href="#i-clock"/></svg>শনি–বৃহস্পতি: বিকেল ৫:০০ – রাত ৯:০০</li>
+          <li><svg class="i"><use href="#i-phone"/></svg>০১৭০০-০০০০০১ (নমুনা)</li>
+        </ul>
+        <div class="mapbox" style="margin-top:18px"><span style="color:var(--muted);font-size:15px">মানচিত্র সাইটের ভেতরে দেখানো যায় না। নিচের বোতামে গুগল ম্যাপে খুলুন।</span><a class="btn btn-out btn-sm" href="https://www.google.com/maps/search/?api=1&query=Dhanmondi+Dhaka" target="_blank" rel="noopener">গুগল ম্যাপে দেখুন</a></div>
+      </div>
+      <div class="card ch">
+        <h3><svg class="i" style="color:var(--link)"><use href="#i-pin"/></svg>উত্তরা চেম্বার</h3>
+        <ul>
+          <li><svg class="i"><use href="#i-pin"/></svg>লাইফ কেয়ার মেডিকেল সেন্টার, সেক্টর ৭, উত্তরা, ঢাকা (নমুনা ঠিকানা)</li>
+          <li><svg class="i"><use href="#i-clock"/></svg>শনি, সোম, বুধ: সকাল ১০:০০ – দুপুর ১:০০</li>
+          <li><svg class="i"><use href="#i-phone"/></svg>০১৭০০-০০০০০২ (নমুনা)</li>
+        </ul>
+        <div class="mapbox" style="margin-top:18px"><span style="color:var(--muted);font-size:15px">মানচিত্র সাইটের ভেতরে দেখানো যায় না। নিচের বোতামে গুগল ম্যাপে খুলুন।</span><a class="btn btn-out btn-sm" href="https://www.google.com/maps/search/?api=1&query=Uttara+Dhaka" target="_blank" rel="noopener">গুগল ম্যাপে দেখুন</a></div>
+      </div>
+    </div>
+  </div></div>
+  <div class="sec alt"><div class="wrap grid g2" style="gap:36px;align-items:start">
+    <div>
+      <h2>রোগী দেখার সময়সূচি</h2>
+      <div class="tbl-wrap" style="margin-top:20px"><table><thead><tr><th>দিন</th><th>ধানমন্ডি</th><th>উত্তরা</th></tr></thead><tbody>
+        <tr><td>শনিবার</td><td>৫:০০ – ৯:০০ (সন্ধ্যা)</td><td>১০:০০ – ১:০০ (সকাল)</td></tr>
+        <tr><td>রবিবার</td><td>৫:০০ – ৯:০০ (সন্ধ্যা)</td><td>বন্ধ</td></tr>
+        <tr><td>সোমবার</td><td>৫:০০ – ৯:০০ (সন্ধ্যা)</td><td>১০:০০ – ১:০০ (সকাল)</td></tr>
+        <tr><td>মঙ্গলবার</td><td>৫:০০ – ৯:০০ (সন্ধ্যা)</td><td>বন্ধ</td></tr>
+        <tr><td>বুধবার</td><td>৫:০০ – ৯:০০ (সন্ধ্যা)</td><td>১০:০০ – ১:০০ (সকাল)</td></tr>
+        <tr><td>বৃহস্পতিবার</td><td>৫:০০ – ৯:০০ (সন্ধ্যা)</td><td>বন্ধ</td></tr>
+        <tr><td>শুক্রবার</td><td>বন্ধ</td><td>বন্ধ</td></tr>
+      </tbody></table></div>
+    </div>
+    <div>
+      <h2>বার্তা পাঠান</h2>
+      <div class="card" style="margin-top:20px">
+        <form class="form" id="msgForm" novalidate>
+          <div class="field"><label for="mName">আপনার নাম</label><input class="in" id="mName" autocomplete="name"></div>
+          <div class="field"><label for="mPhone">মোবাইল নম্বর</label><input class="in" id="mPhone" inputmode="tel" autocomplete="tel" placeholder="01XXXXXXXXX"></div>
+          <div class="field"><label for="mText">বার্তা</label><textarea class="in" id="mText"></textarea></div>
+          <label class="chk"><input type="checkbox" id="mOk"><span>যোগাযোগের জন্য আমার নম্বর ব্যবহারে সম্মতি দিচ্ছি।</span></label>
+          <div class="err" id="eMsg" role="alert"></div>
+          <button class="btn btn-pri" type="submit">বার্তা পাঠান</button>
+        </form>
+      </div>
+      <div class="socials" style="margin-top:20px"><a href="https://www.facebook.com" target="_blank" rel="noopener">ফেসবুক</a><a href="https://www.youtube.com" target="_blank" rel="noopener">ইউটিউব</a><a href="https://www.linkedin.com" target="_blank" rel="noopener">লিংকডইন</a></div>
+    </div>
+  </div></div>
+</section>
+
+<!-- STAFF -->
+<section class="page" id="p-doctor" hidden aria-label="স্টাফ প্যানেল">
+  <div class="ph"><div class="wrap">
+    <span class="eyebrow">স্টাফ প্যানেল (ডেমো)</span>
+    <h1>ডাক্তার ও সহকারীর কাজের প্যানেল</h1>
+    <p>আজকের রোগী, রোগীর পূর্ণ রেকর্ড, প্রেসক্রিপশন, সময়সূচি, বার্তা ও পরিসংখ্যান এক জায়গায়। লাইভ সাইটে এই পাতা শুধু লগইন করা স্টাফ দেখতে পাবেন।</p>
+  </div></div>
+  <div class="sec" style="padding-top:34px"><div class="wrap">
+    <div id="docGate" class="portal">
+      <div class="card">
+        <div class="ico c-teal"><svg class="i"><use href="#i-shield"/></svg></div>
+        <h2 style="font-size:26px">স্টাফ প্রবেশ</h2>
+        <p style="margin-top:8px;color:var(--muted)">কোন ভূমিকায় প্যানেল দেখতে চান?</p>
+        <div class="big-role">
+          <button class="btn btn-pri" type="button" data-role="doc"><svg class="i" style="width:28px;height:28px"><use href="#i-heart"/></svg>ডাক্তার<small style="font-weight:400">সব তথ্য</small></button>
+          <button class="btn btn-out" type="button" data-role="rec"><svg class="i" style="width:28px;height:28px"><use href="#i-users"/></svg>রিসেপশনিস্ট<small style="font-weight:400">চিকিৎসা-তথ্য ছাড়া</small></button>
+        </div>
+        <p class="sec-note">ডেমোতে পাসওয়ার্ড লাগে না। লাইভ সাইটে প্রত্যেক স্টাফের আলাদা লগইন ও ২-ধাপ যাচাই থাকবে এবং রিসেপশনিস্ট চিকিৎসা-নোট বা প্রেসক্রিপশন দেখতে পাবেন না।</p>
+      </div>
+    </div>
+    <div id="docApp" hidden></div>
+  </div></div>
+</section>
+
+<!-- LEGAL -->
+<section class="page" id="p-privacy" hidden aria-label="গোপনীয়তা নীতি">
+  <div class="ph"><div class="wrap"><h1>গোপনীয়তা নীতি ও শর্তাবলি</h1><p>রোগীর তথ্য কীভাবে সংগ্রহ, ব্যবহার ও সুরক্ষিত রাখা হয়।</p></div></div>
+  <div class="sec" style="padding-top:34px"><div class="wrap art">
+    <p class="sec-note">এই লেখা নমুনা। সাইট লাইভ করার আগে স্থানীয় স্বাস্থ্য-তথ্য সুরক্ষা আইন অনুযায়ী আইনজীবীকে দিয়ে যাচাই করিয়ে নিন।</p>
+    <h3 style="margin-top:26px">কোন তথ্য নেওয়া হয়</h3><p>অ্যাপয়েন্টমেন্টের জন্য নাম, বয়স, মোবাইল নম্বর ও ঐচ্ছিক ইমেইল। রোগের বিস্তারিত ইতিহাস অনলাইন ফর্মে নেওয়া হয় না।</p>
+    <h3 style="margin-top:26px">কেন ব্যবহার করা হয়</h3><p>শুধু অ্যাপয়েন্টমেন্ট নিশ্চিত, রিমাইন্ডার পাঠানো এবং চিকিৎসাসেবা দেওয়ার জন্য। তৃতীয় পক্ষের কাছে বিক্রি বা বিজ্ঞাপনে ব্যবহার করা হয় না।</p>
+    <h3 style="margin-top:26px">কতদিন সংরক্ষণ</h3><p>চিকিৎসা-রেকর্ড আইনি প্রয়োজনে নির্ধারিত সময় পর্যন্ত নিরাপদে রাখা হয়। রোগী নিজের তথ্য দেখতে, সংশোধন বা মুছে ফেলার অনুরোধ করতে পারবেন।</p>
+    <h3 style="margin-top:26px">চিকিৎসা-সংক্রান্ত দাবিত্যাগ</h3><p>এই ওয়েবসাইটের লেখা সাধারণ শিক্ষামূলক তথ্য। এটি সরাসরি চিকিৎসকের পরামর্শের বিকল্প নয়।</p>
+  </div></div>
+</section>
+
+</main>
+
+<footer class="ftr"><div class="wrap">
+  <div class="cols">
+    <div><h4>ডা. আরিফ রহমান</h4><p>কনসালট্যান্ট কার্ডিওলজিস্ট ও মেডিসিন বিশেষজ্ঞ। MBBS, FCPS (মেডিসিন)।</p><p style="margin-top:8px">BMDC নিবন্ধন নং: XXXXX (নমুনা)</p></div>
+    <div><h4>দ্রুত লিংক</h4><ul>
+      <li><button class="fl-btn" type="button" data-go="about">পরিচিতি</button></li>
+      <li><button class="fl-btn" type="button" data-go="services">সেবাসমূহ</button></li>
+      <li><button class="fl-btn" type="button" data-go="book">অ্যাপয়েন্টমেন্ট</button></li>
+      <li><button class="fl-btn" type="button" data-go="portal">রোগী পোর্টাল</button></li>
+      <li><button class="fl-btn" type="button" data-go="blog">স্বাস্থ্য ব্লগ</button></li>
+      <li><button class="fl-btn" type="button" data-go="doctor">স্টাফ প্রবেশ (ডেমো)</button></li>
+    </ul></div>
+    <div><h4>চেম্বার</h4><ul><li>ধানমন্ডি: শনি–বৃহস্পতি, সন্ধ্যা ৫–রাত ৯</li><li>উত্তরা: শনি, সোম, বুধ, সকাল ১০–দুপুর ১</li><li>জরুরি হটলাইন: ০১৭০০-০০০০০০</li></ul></div>
+    <div><h4>স্বাস্থ্য-সংবাদ</h4><p>নতুন স্বাস্থ্য-পরামর্শ ইমেইলে পেতে চান?</p>
+      <form class="news" id="newsForm" novalidate><label class="sr" for="nMail">ইমেইল</label><input class="in" id="nMail" type="email" placeholder="আপনার ইমেইল"><button class="btn btn-cta btn-sm" type="submit">সাবস্ক্রাইব</button></form>
+      <div class="err" id="eNews" style="color:var(--foot-muted)"></div>
+    </div>
+  </div>
+  <div class="bot"><span>© ২০২৬ ডা. আরিফ রহমান। সর্বস্বত্ব সংরক্ষিত।</span><span><button class="fl-btn" type="button" data-go="privacy">গোপনীয়তা নীতি ও শর্তাবলি</button> · এই সাইটের তথ্য চিকিৎসকের পরামর্শের বিকল্প নয়।</span></div>
+</div></footer>
+
+<a class="wa" href="https://wa.me/8801700000000" target="_blank" rel="noopener"><svg class="i"><use href="#i-msg"/></svg>হোয়াটসঅ্যাপ</a>
+<div class="mbar"><button class="btn btn-out" type="button" id="mCall"><svg class="i"><use href="#i-phone"/></svg>কল</button><button class="btn btn-cta" type="button" data-go="book">অ্যাপয়েন্টমেন্ট</button></div>
+<div class="toast" id="toast" hidden role="status"></div>
+
+<script>
+(function(){
+'use strict';
+/* ================= helpers ================= */
+const $=(s,r)=>(r||document).querySelector(s);
+const $$=(s,r)=>Array.from((r||document).querySelectorAll(s));
+const BN='০১২৩৪৫৬৭৮৯';
+const toBn=s=>String(s).replace(/\d/g,d=>BN[d]);
+const toEn=s=>String(s).replace(/[০-৯]/g,d=>BN.indexOf(d));
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const ico=(n,st)=>'<svg class="i"'+(st?' style="'+st+'"':'')+'><use href="#i-'+n+'"/></svg>';
+const money=n=>'৳'+toBn(Number(n).toLocaleString('en-US'));
+let uid=1000;const nid=p=>p+(++uid)+Math.floor(Math.random()*90+10);
+const pad=n=>(n<10?'0':'')+n;
+const dkey=d=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
+const pk=k=>{const a=k.split('-');return new Date(+a[0],+a[1]-1,+a[2],12,0,0)};
+const addDays=(k,n)=>{const d=pk(k);d.setDate(d.getDate()+n);return dkey(d)};
+const TODAY=dkey(new Date());
+const fdate=(k,o)=>pk(k).toLocaleDateString('bn-BD',o||{day:'numeric',month:'long',year:'numeric'});
+const fday=k=>pk(k).toLocaleDateString('bn-BD',{weekday:'long'});
+const fshort=k=>pk(k).toLocaleDateString('bn-BD',{day:'numeric',month:'short'});
+const dow=k=>pk(k).getDay();
+const tmin=t=>{const a=t.split(':');return +a[0]*60+ +a[1]};
+const minT=m=>pad(Math.floor(m/60))+':'+pad(m%60);
+const tlabel=t=>{const a=t.split(':'),h=+a[0];const h12=h%12||12;const p=h<12?'সকাল':h<15?'দুপুর':h<18?'বিকেল':h<20?'সন্ধ্যা':'রাত';return p+' '+toBn(h12+':'+a[1])};
+const fts=ts=>new Date(ts).toLocaleString('bn-BD',{day:'numeric',month:'short',hour:'numeric',minute:'2-digit'});
+const normPhone=s=>{let p=toEn(s).replace(/[\s\-()]/g,'');p=p.replace(/^\+?88/,'');return p};
+const phoneOk=p=>/^01[3-9]\d{8}$/.test(p);
+const mailOk=m=>!m||/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m);
+const num=v=>{const n=parseFloat(toEn(String(v).trim()));return isNaN(n)?null:n};
+
+/* ================= data ================= */
+var SERVICES=[
+    {id:'heart',cat:'হৃদরোগ',ic:'heart',col:'coral',t:'হৃদরোগ পরামর্শ',d:'বুক ব্যথা, ধড়ফড়, শ্বাসকষ্ট ও হার্টের সমস্যার মূল্যায়ন ও চিকিৎসা।',who:'বুকে চাপ বা ব্যথা, অল্পতেই হাঁপিয়ে যাওয়া, পরিবারে হৃদরোগের ইতিহাস আছে এমন ব্যক্তি',pts:['লক্ষণ ও ঝুঁকির পূর্ণ মূল্যায়ন','প্রয়োজনে ইসিজি, ইকো ও স্ট্রেস টেস্টের পরামর্শ','ওষুধ ও জীবনযাত্রার লিখিত পরিকল্পনা'],time:'৩০–৪০ মিনিট'},
+    {id:'test',cat:'পরীক্ষা',ic:'act',col:'sky',t:'ইসিজি ও ইকোকার্ডিওগ্রাফি',d:'হৃদযন্ত্রের কার্যকারিতা ও গঠন বোঝার নিরাপদ, ব্যথাহীন পরীক্ষা।',who:'হৃদরোগের লক্ষণ আছে বা নিয়মিত পর্যবেক্ষণে থাকা রোগী',pts:['ইসিজি: কয়েক মিনিটে হার্টের ছন্দ যাচাই','ইকো: হার্টের পাম্পিং ক্ষমতা ও ভাল্ভ দেখা','রিপোর্ট ব্যাখ্যা সহ হাতে হাতে'],time:'২০–৩০ মিনিট'},
+    {id:'bp',cat:'হৃদরোগ',ic:'shield',col:'teal',t:'উচ্চ রক্তচাপ ব্যবস্থাপনা',d:'রক্তচাপ নিয়ন্ত্রণে এনে হার্ট, কিডনি ও মস্তিষ্কের ক্ষতির ঝুঁকি কমানো।',who:'নতুন ধরা পড়া বা নিয়ন্ত্রণে না আসা উচ্চ রক্তচাপের রোগী',pts:['বাসায় রক্তচাপ মাপার সঠিক পদ্ধতি শেখানো','ওষুধ নির্বাচন ও নিয়মিত পর্যালোচনা','খাদ্য ও ব্যায়ামের বাস্তবসম্মত পরামর্শ'],time:'২৫–৩৫ মিনিট'},
+    {id:'dm',cat:'ডায়াবেটিস',ic:'drop',col:'mint',t:'ডায়াবেটিস ও হরমোন',d:'ডায়াবেটিস নিয়ন্ত্রণ এবং হার্টের ঝুঁকি একসঙ্গে সামলানোর চিকিৎসা।',who:'ডায়াবেটিস বা প্রি-ডায়াবেটিস আছে এমন ব্যক্তি',pts:['রক্তে শর্করা ও HbA1c পর্যালোচনা','ওষুধ, ইনসুলিন ও খাদ্য পরিকল্পনা','পা, চোখ ও কিডনির নিয়মিত পরীক্ষার তালিকা'],time:'৩০ মিনিট'},
+    {id:'gm',cat:'সাধারণ',ic:'plus',col:'amber',t:'জেনারেল মেডিসিন',d:'জ্বর, দুর্বলতা, গ্যাস্ট্রিক, শ্বাসকষ্টসহ সাধারণ অসুখের পরামর্শ।',who:'যেকোনো বয়সের প্রাপ্তবয়স্ক রোগী',pts:['পূর্ণ শারীরিক পরীক্ষা','প্রয়োজনীয় পরীক্ষার তালিকা, অপ্রয়োজনীয় নয়','প্রয়োজনে অন্য বিশেষজ্ঞের কাছে রেফার'],time:'২০–৩০ মিনিট'},
+    {id:'online',cat:'সাধারণ',ic:'video',col:'sky',t:'অনলাইন কনসালটেশন',d:'ঘরে বসে ভিডিও কলে পরামর্শ, ফলো-আপ ও রিপোর্ট দেখানো।',who:'দূরে থাকেন বা নিয়মিত ফলো-আপে থাকা রোগী',pts:['রিপোর্ট ছবি তুলে আগে পাঠানো যাবে','ভিডিও কলে পরামর্শ ও ডিজিটাল প্রেসক্রিপশন','জরুরি লক্ষণে সরাসরি চেম্বারে আসার নির্দেশ'],time:'১৫–২০ মিনিট'},
+    {id:'check',cat:'পরীক্ষা',ic:'shield',col:'mint',t:'হেলথ চেকআপ প্যাকেজ',d:'৪০ বছরের বেশি বয়সী বা ঝুঁকিতে থাকাদের জন্য হৃদয়-কেন্দ্রিক চেকআপ।',who:'৪০+ বয়সী, ধূমপায়ী, স্থূলতা বা পারিবারিক ঝুঁকি আছে এমন ব্যক্তি',pts:['ইসিজি, রক্তচাপ, ওজন-উচ্চতা (বিএমআই)','কোলেস্টেরল ও শর্করা পরীক্ষার পরামর্শ','ফলাফলসহ ব্যক্তিগত ঝুঁকি-আলোচনা'],time:'৪৫–৬০ মিনিট'}
+  ];
+  var REVIEWS=[
+    {n:'র',name:'রহিম সাহেব',tag:'উচ্চ রক্তচাপ',r:5,t:'রক্তচাপ নিয়ে অনেক ডাক্তার দেখিয়েছি। এখানে প্রথমবার কেউ আমাকে ধৈর্য ধরে সব বুঝিয়ে বলল।',col:'teal'},
+    {n:'ফ',name:'ফারজানা আপা',tag:'ডায়াবেটিস',r:5,t:'খাবার নিয়ে এমন সহজ পরামর্শ পেয়েছি, যা আসলেই মেনে চলা যায়। শর্করা এখন অনেক ভালো।',col:'mint'},
+    {n:'ক',name:'করিম সাহেব',tag:'অনলাইন পরামর্শ',r:4,t:'বিদেশে থেকেও বাবার জন্য অনলাইনে সময় নিতে পেরেছি। কলের সময় ঠিক সময়েই শুরু হয়েছে।',col:'sky'},
+    {n:'স',name:'সালমা বেগম',tag:'হৃদরোগ',r:5,t:'ইকো রিপোর্ট হাতে নিয়েই ডাক্তার সাহেব ছবি দেখিয়ে বুঝিয়ে দিয়েছেন। আর ভয় লাগে না।',col:'coral'},
+    {n:'জ',name:'জামাল উদ্দিন',tag:'ফলো-আপ',r:5,t:'প্রতি তিন মাসে ফলো-আপের মেসেজ আসে। ওষুধ বদলের আগে ভালো করে জেনে নেন।',col:'amber'},
+    {n:'ন',name:'নাসরিন আক্তার',tag:'হেলথ চেকআপ',r:4,t:'চেকআপের পর পুরো রিপোর্ট সহজ ভাষায় লিখে দিয়েছেন। কোন পরীক্ষা কেন, তা-ও বলেছেন।',col:'sky'}
+  ];
+  var POSTS=[
+    {id:1,cat:'হৃদরোগ',ic:'heart',col:'coral',t:'বুকে ব্যথা হলে কখন জরুরি বিভাগে যাবেন',rt:'৪ মিনিট',ex:'সব বুক ব্যথাই হার্ট অ্যাটাক নয়, তবে কিছু লক্ষণ কখনোই অবহেলা করা ঠিক নয়।',b:['বুকে চাপ ধরা বা ভার লাগা, যা কয়েক মিনিটের বেশি থাকে, তা অবহেলা করবেন না। ব্যথা বাম হাত, কাঁধ, চোয়াল বা পিঠে ছড়িয়ে গেলে, ঘাম হলে, শ্বাসকষ্ট বা মাথা ঘুরলে সন্দেহ আরও বাড়ে।','এমন লক্ষণ দেখা দিলে নিজে নিজে ওষুধ খেয়ে অপেক্ষা না করে সঙ্গে সঙ্গে নিকটস্থ জরুরি বিভাগে যান বা অ্যাম্বুলেন্স ডাকুন। নিজে গাড়ি চালিয়ে যাওয়া এড়িয়ে চলুন।','বুকজ্বালা, পেশির ব্যথা বা দুশ্চিন্তাতেও বুকে অস্বস্তি হতে পারে। তবে কোনটা কী, তা শুধু পরীক্ষার পরই বলা যায়। তাই সন্দেহ হলে দেরি না করে চিকিৎসকের পরামর্শ নিন।']},
+    {id:2,cat:'হৃদরোগ',ic:'shield',col:'teal',t:'উচ্চ রক্তচাপ: লক্ষণ ছাড়াই ক্ষতি করে',rt:'৫ মিনিট',ex:'রক্তচাপ বেশি থাকলেও অনেক সময় কিছুই টের পাওয়া যায় না। তাই নিয়মিত মাপা জরুরি।',b:['উচ্চ রক্তচাপ প্রায়ই নীরবে হার্ট, কিডনি ও মস্তিষ্কের ক্ষতি করে। তাই ৩০ বছরের পর অন্তত বছরে একবার রক্তচাপ মাপানো ভালো।','খাবারে লবণ কমান। বিশ্ব স্বাস্থ্য সংস্থা দিনে ৫ গ্রামের কম লবণ খেতে বলে। কাঁচা লবণ, আচার ও প্যাকেটজাত খাবার কমালে বেশ উপকার হয়।','সপ্তাহে অন্তত ১৫০ মিনিট দ্রুত হাঁটা বা সমতুল্য ব্যায়াম, ওজন নিয়ন্ত্রণ এবং ধূমপান ছাড়া রক্তচাপ কমাতে সাহায্য করে। চিকিৎসক ওষুধ দিলে নিজে থেকে বন্ধ করবেন না।']},
+    {id:3,cat:'ডায়াবেটিস',ic:'drop',col:'mint',t:'ডায়াবেটিস নিয়ন্ত্রণে প্রতিদিনের পাঁচ অভ্যাস',rt:'৪ মিনিট',ex:'ছোট ছোট নিয়মিত অভ্যাসই রক্তে শর্করা স্থির রাখার সবচেয়ে বড় ভরসা।',b:['ভাতের পরিমাণ কমিয়ে শাকসবজি, ডাল ও আঁশযুক্ত খাবার বাড়ান। মিষ্টি, কোমল পানীয় ও ফলের রস সীমিত করুন।','প্রতিদিন অন্তত ৩০ মিনিট হাঁটুন। খাওয়ার পর ১০–১৫ মিনিট হাঁটলে শর্করা বাড়ার গতি কমে।','নিয়মিত ওষুধ খান এবং চিকিৎসকের পরামর্শমতো রক্ত পরীক্ষা করান। প্রতিদিন পায়ের পাতা দেখুন, ক্ষত বা ফোসকা থাকলে দ্রুত জানান।']},
+    {id:4,cat:'জীবনযাত্রা',ic:'act',col:'sky',t:'হৃদয়বান্ধব খাবারের সহজ নিয়ম',rt:'৩ মিনিট',ex:'দামি খাবার নয়, ঘরের সাধারণ খাবার দিয়েই হার্টকে ভালো রাখা সম্ভব।',b:['ভাজাপোড়া ও ডালডা-ঘি কমিয়ে সরিষা বা সয়াবিন তেল পরিমিত ব্যবহার করুন। সপ্তাহে কয়েকবার মাছ খাওয়া হার্টের জন্য ভালো।','প্রতিদিন তাজা শাকসবজি ও মৌসুমি ফল রাখুন। লাল মাংস ও প্রক্রিয়াজাত মাংস সীমিত করুন।','সারাদিনে পর্যাপ্ত পানি পান করুন। ধূমপান ও তামাক সম্পূর্ণ ছেড়ে দেওয়াই হার্টের জন্য সবচেয়ে বড় উপহার।']},
+    {id:5,cat:'জীবনযাত্রা',ic:'plus',col:'amber',t:'৪০ বছরের পর কোন পরীক্ষাগুলো করানো উচিত',rt:'৪ মিনিট',ex:'রোগ ধরা পড়ার আগেই ঝুঁকি জানলে চিকিৎসা অনেক সহজ হয়।',b:['রক্তচাপ, রক্তে শর্করা ও কোলেস্টেরল পরীক্ষা এবং ওজন-উচ্চতার অনুপাত (বিএমআই) মাপা বেশিরভাগ মানুষের জন্য ভালো শুরু।','পরিবারে হৃদরোগ বা ডায়াবেটিসের ইতিহাস থাকলে চিকিৎসকের সঙ্গে কথা বলে ইসিজি বা ইকোর মতো পরীক্ষা আগে থেকে করানো যায়।','কোন পরীক্ষা কার জন্য দরকার, তা বয়স, লক্ষণ ও ঝুঁকির ওপর নির্ভর করে। তাই নিজে থেকে লম্বা তালিকা না করে চিকিৎসকের পরামর্শ নিন।']},
+    {id:6,cat:'ডায়াবেটিস',ic:'video',col:'coral',t:'অনলাইন পরামর্শ কখন কাজে লাগে, কখন লাগে না',rt:'৩ মিনিট',ex:'ফলো-আপে অনলাইন ভালো, কিন্তু কিছু অবস্থায় সরাসরি দেখাতেই হয়।',b:['নিয়মিত ফলো-আপ, রিপোর্ট দেখানো এবং ওষুধ নিয়ে প্রশ্নের জন্য অনলাইন পরামর্শ সুবিধাজনক ও সময় বাঁচায়।','প্রথমবারের গুরুতর লক্ষণ, বুক ব্যথা, শ্বাসকষ্ট বা শারীরিক পরীক্ষা জরুরি এমন ক্ষেত্রে সরাসরি চেম্বারে আসাই নিরাপদ।','ভিডিও কলের আগে পুরোনো রিপোর্ট, ওষুধের তালিকা ও সর্বশেষ রক্তচাপ বা শর্করার মান হাতের কাছে রাখুন।']}
+  ];
+  
+const CH={
+  dhm:{t:'ধানমন্ডি',addr:'সিটি হার্ট হাসপাতাল, রোড ৫, ধানমন্ডি, ঢাকা',fee:{new:800,fu:400,rep:300}},
+  utt:{t:'উত্তরা',addr:'লাইফ কেয়ার মেডিকেল সেন্টার, সেক্টর ৭, উত্তরা, ঢাকা',fee:{new:700,fu:350,rep:300}},
+  onl:{t:'অনলাইন',addr:'ভিডিও কল (লিংক SMS ও পোর্টালে আসবে)',fee:{new:600,fu:300,rep:250}}
+};
+const CHIDS=['dhm','utt','onl'];
+const TYPES=[{id:'new',t:'নতুন পরামর্শ'},{id:'fu',t:'ফলো-আপ'},{id:'rep',t:'রিপোর্ট দেখানো'}];
+const TN={new:'নতুন পরামর্শ',fu:'ফলো-আপ',rep:'রিপোর্ট দেখানো'};
+const STEP=20;
+const DAYN=['রবি','সোম','মঙ্গল','বুধ','বৃহস্পতি','শুক্র','শনি'];
+const ORDER=[6,0,1,2,3,4,5];
+const ST={booked:['বুকড','p-gray'],arrived:['এসেছেন','p-sky'],inprogress:['ভিজিটে','p-wait'],done:['সম্পন্ন','p-ok'],noshow:['আসেননি','p-off'],cancelled:['বাতিল','p-gray']};
+const pill=s=>'<span class="pill '+ST[s][1]+'">'+ST[s][0]+'</span>';
+const MEDSET={
+  'উচ্চ রক্তচাপ':[['Amlodipine 5 mg','1+0+0','সকালে',30],['Losartan 50 mg','0+0+1','রাতে',30]],
+  'ডায়াবেটিস':[['Metformin 500 mg','1+0+1','খাবারের পরে',30]],
+  'হৃদরোগ ফলো-আপ':[['Aspirin 75 mg','0+1+0','খাবারের পরে',30],['Atorvastatin 20 mg','0+0+1','রাতে',30]]
+};
+const DRUGS=['Amlodipine 5 mg','Losartan 50 mg','Metformin 500 mg','Aspirin 75 mg','Atorvastatin 20 mg','Bisoprolol 2.5 mg','Clopidogrel 75 mg','Pantoprazole 20 mg','Gliclazide 80 mg','Telmisartan 40 mg','Furosemide 40 mg','Paracetamol 500 mg','Vitamin D3'];
+const DXS=['উচ্চ রক্তচাপ','ডায়াবেটিস','হৃদরোগ ফলো-আপ','বুক ধড়ফড়','হেলথ চেকআপ','জেনারেল মেডিসিন','গ্যাস্ট্রিক'];
+const TEMPL={
+  ht:{n:'উচ্চ রক্তচাপ ফলো-আপ',dx:'উচ্চ রক্তচাপ',meds:[['Amlodipine 5 mg','1+0+0','সকালে',30]],advice:'লবণ কম খান, প্রতিদিন ৩০ মিনিট হাঁটুন, বাসায় রক্তচাপ মেপে লিখে রাখুন।',tests:'',fu:28},
+  dm:{n:'ডায়াবেটিস ফলো-আপ',dx:'ডায়াবেটিস',meds:[['Metformin 500 mg','1+0+1','খাবারের পরে',30]],advice:'মিষ্টি ও ভাত কমান, প্রতিদিন হাঁটুন, প্রতিদিন পায়ের পাতা দেখুন।',tests:'HbA1c',fu:42},
+  card:{n:'হৃদরোগ ফলো-আপ',dx:'হৃদরোগ ফলো-আপ',meds:[['Aspirin 75 mg','0+1+0','খাবারের পরে',30],['Atorvastatin 20 mg','0+0+1','রাতে',30]],advice:'ধূমপান সম্পূর্ণ বর্জন করুন, নিয়মিত হাঁটুন।',tests:'ইসিজি',fu:28},
+  gen:{n:'সাধারণ পরামর্শ',dx:'জেনারেল মেডিসিন',meds:[],advice:'',tests:'',fu:0}
+};
+const doseTimes=d=>{const m=/^(\d+)\+(\d+)\+(\d+)$/.exec(toEn(d).replace(/\s/g,''));if(!m)return['নির্দেশমতো'];const o=[];['সকাল','দুপুর','রাত'].forEach((n,i)=>{if(+m[i+1]>0)o.push(n)});return o.length?o:['নির্দেশমতো']};
+const mkMed=a=>({id:nid('m'),name:a[0],dose:a[1],rule:a[2],days:a[3],times:doseTimes(a[1])});
+
+/* ================= state ================= */
+const KEY='drsite.v3';
+let S=null;
+function loadState(){try{const r=localStorage.getItem(KEY);if(r){const o=JSON.parse(r);if(o&&o.v===3&&o.seedDay===TODAY)return o}}catch(e){}return null}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+const SESSION={pid:null};
+const DOC={role:null,tab:'today',date:TODAY,chf:'all',pid:null,search:'',rx:null,rxDone:null,mpid:null,sched:null};
+
+function slotList(sc){const o=[];for(let m=tmin(sc.from);m+STEP<=tmin(sc.to);m+=STEP)o.push(minT(m));return o}
+function firstOpenDay(sched,from){for(let i=0;i<21;i++){const k=addDays(from,i);if(CHIDS.some(c=>sched[c].days.indexOf(dow(k))>-1))return k}return from}
+
+function makeSeed(){
+  let sv=11;const rnd=()=>{sv=(sv*9301+49297)%233280;return sv/233280};
+  const sched={dhm:{days:[6,0,1,2,3,4],from:'17:00',to:'21:00'},utt:{days:[6,1,3],from:'10:00',to:'13:00'},onl:{days:[6,0,1,2,3,4],from:'14:00',to:'16:00'}};
+  const base=[
+    {n:'রহিম উদ্দিন',a:45,s:'পুরুষ',ph:'01712345678',em:'rahim@example.com',c:['উচ্চ রক্তচাপ'],al:['পেনিসিলিন'],dx:'উচ্চ রক্তচাপ',bp:[148,94,128,82],sg:null,w:78},
+    {n:'ফারজানা ইসলাম',a:52,s:'নারী',ph:'01811223344',em:'',c:['টাইপ-২ ডায়াবেটিস'],al:[],dx:'ডায়াবেটিস',bp:[136,86,126,80],sg:[9.4,7.2],w:68},
+    {n:'করিম মিয়া',a:61,s:'পুরুষ',ph:'01911000222',em:'',c:['হৃদরোগ (স্টেন্ট ২০২২)','উচ্চ রক্তচাপ'],al:[],dx:'হৃদরোগ ফলো-আপ',bp:[142,90,130,80],sg:null,w:74},
+    {n:'সালমা বেগম',a:38,s:'নারী',ph:'01611334455',em:'',c:[],al:['সালফা ওষুধ'],dx:'বুক ধড়ফড়',bp:[118,76,116,74],sg:null,w:59},
+    {n:'জামাল উদ্দিন',a:58,s:'পুরুষ',ph:'01511667788',em:'',c:['ডায়াবেটিস','উচ্চ রক্তচাপ'],al:[],dx:'উচ্চ রক্তচাপ',bp:[150,96,134,84],sg:[8.8,7.6],w:82},
+    {n:'নাসরিন আক্তার',a:44,s:'নারী',ph:'01311998877',em:'',c:[],al:[],dx:'হেলথ চেকআপ',bp:[122,80,120,78],sg:null,w:64},
+    {n:'তানভীর হোসেন',a:35,s:'পুরুষ',ph:'01411223399',em:'',c:[],al:[],dx:'জেনারেল মেডিসিন',bp:[120,78,118,76],sg:null,w:72},
+    {n:'শাহনাজ পারভীন',a:67,s:'নারী',ph:'01755443322',em:'',c:['হৃদরোগ'],al:[],dx:'হৃদরোগ ফলো-আপ',bp:[146,92,134,82],sg:null,w:66}
+  ];
+  const st={v:3,seedDay:TODAY,sched:sched,blocks:[],patients:[],appts:[],reviews:[],audit:[]};
+  base.forEach((b,i)=>{
+    const p={id:'p'+(i+1),name:b.n,age:b.a,sex:b.s,phone:b.ph,email:b.em,conds:b.c,allergies:b.al,meds:[],vitals:[],visits:[],reports:[],msgs:[],nextFu:null,
+      target:{sys:130,dia:80,sugar:b.sg?7.0:null},consent:[Date.now()-864e5*(90-i)],medLog:{}};
+    [84,70,56,42,28,14].forEach((ago,k)=>{const f=k/5;
+      const v={d:addDays(TODAY,-ago),sys:Math.round(b.bp[0]+(b.bp[2]-b.bp[0])*f+(rnd()*6-3)),dia:Math.round(b.bp[1]+(b.bp[3]-b.bp[1])*f+(rnd()*4-2)),by:k%2?'patient':'clinic'};
+      if(b.sg)v.sugar=+(b.sg[0]+(b.sg[1]-b.sg[0])*f+(rnd()*.8-.4)).toFixed(1);
+      v.wt=+(b.w+(rnd()*1.4-.7)).toFixed(1);p.vitals.push(v)});
+    (function(f){const o=[f];while(f-28>=3){f-=28;o.push(f)}return o})([88,80,71,63,52,41,29,18][i]).forEach((ago,k)=>{
+      const d=addDays(TODAY,-ago);const ch=(k===1&&i%3===0)?'utt':((k===2&&i%4===1)?'onl':'dhm');const type=k===0?'new':'fu';
+      const meds=(MEDSET[b.dx]||[]).map(mkMed);
+      const sl=slotList(sched[ch]);
+      const fee=CH[ch].fee[type];
+      p.visits.push({id:'v'+(i+1)+'_'+k,d:d,ch:ch,type:type,dx:b.dx,notes:k===0?'প্রথম পরামর্শ। ইতিহাস ও পরীক্ষা শেষ, চিকিৎসা শুরু।':'ফলো-আপ: অবস্থা স্থিতিশীল, ওষুধ চালু রাখা হলো।',
+        rx:{dx:b.dx,meds:meds.map(m=>({name:m.name,dose:m.dose,rule:m.rule,days:m.days})),advice:'নিয়মিত ওষুধ খান, লবণ ও ভাজাপোড়া কমান, প্রতিদিন হাঁটুন।',tests:k===0?'ইসিজি, রক্ত পরীক্ষা':'',fu:28},fee:fee,paid:true,sample:true});
+      st.appts.push({id:'a'+(i+1)+'_'+k,pid:p.id,d:d,time:sl[(k+i*2)%sl.length],ch:ch,type:type,svc:'',status:'done',paid:true,fee:fee,why:'',created:Date.now()-ago*864e5,via:'web'});
+    });
+    const last=p.visits[p.visits.length-1];
+    p.meds=last.rx.meds.map(mkMed2);
+    for(let ago=1;ago<=6;ago++){const lg={};p.meds.forEach(m=>m.times.forEach(t=>{lg[m.id+'|'+t]=rnd()>0.18}));p.medLog[addDays(TODAY,-ago)]=lg}
+    if(i%3===0)st.appts.push({id:'a'+(i+1)+'_n',pid:p.id,d:addDays(TODAY,-(66+i)),time:'18:00',ch:'dhm',type:'fu',svc:'',status:'noshow',paid:false,fee:400,why:'',created:Date.now()-70*864e5,via:'web'});
+    if(i===4)st.appts.push({id:'a5_c',pid:p.id,d:addDays(TODAY,-40),time:'19:00',ch:'dhm',type:'fu',svc:'',status:'cancelled',paid:false,fee:400,why:'',created:Date.now()-45*864e5,via:'web'});
+    st.patients.push(p);
+  });
+  function mkMed2(m){return {id:nid('m'),name:m.name,dose:m.dose,rule:m.rule,days:m.days,times:doseTimes(m.dose)}}
+  const P=id=>st.patients.filter(x=>x.id===id)[0];
+  const D0=firstOpenDay(sched,TODAY),D1=firstOpenDay(sched,addDays(D0,1));
+  const dsl=slotList(sched.dhm);
+  const roster=[['p3','fu','arrived','বুকে মাঝে মাঝে চাপ লাগে'],['p2','fu','booked','শর্করার রিপোর্ট দেখাতে চান'],['p7','new','booked','গত দুই সপ্তাহ ধরে বুক ধড়ফড়'],['p5','fu','booked','ওষুধ বদল নিয়ে প্রশ্ন'],['p8','fu','booked','শ্বাসকষ্ট কিছুটা বেড়েছে'],['p6','rep','booked','চেকআপের রিপোর্ট দেখাতে চান']];
+  const idx=[0,1,2,4,5,7];
+  roster.forEach((r,k)=>st.appts.push({id:'f0_'+k,pid:r[0],d:D0,time:dsl[idx[k]],ch:'dhm',type:r[1],svc:'',status:r[2],paid:k===0,fee:CH.dhm.fee[r[1]],why:r[3],created:Date.now()-864e5*(2+k),via:'web'}));
+  if(sched.utt.days.indexOf(dow(D0))>-1){const us=slotList(sched.utt);st.appts.push({id:'f0_u',pid:'p4',d:D0,time:us[1],ch:'utt',type:'fu',svc:'',status:'booked',paid:false,fee:CH.utt.fee.fu,why:'ধড়ফড় আছে কি না জানাতে চান',created:Date.now()-864e5*2,via:'web'})}
+  st.appts.push({id:'f1_0',pid:'p1',d:D1,time:dsl[3],ch:'dhm',type:'fu',svc:'bp',status:'booked',paid:false,fee:CH.dhm.fee.fu,why:'রক্তচাপ পর্যালোচনা',created:Date.now()-864e5*3,via:'web'});
+  st.appts.push({id:'f1_1',pid:'p2',d:D1,time:dsl[6],ch:'dhm',type:'fu',svc:'dm',status:'booked',paid:false,fee:CH.dhm.fee.fu,why:'',created:Date.now()-864e5,via:'web'});
+  P('p1').nextFu=D1;
+  P('p1').msgs.push({from:'p',t:Date.now()-864e5*3,text:'ডাক্তার সাহেব, সকালে মাঝে মাঝে মাথা হালকা ঘোরে। ওষুধের সময় কি বদলাতে পারি?'});
+  P('p3').msgs.push({from:'p',t:Date.now()-864e5*5,text:'রিপোর্ট ইমেইল করেছি, দেখেছেন কি?'},{from:'d',t:Date.now()-864e5*5+36e5,text:'হ্যাঁ দেখেছি। আগামী ভিজিটে আলোচনা করব, ওষুধ চালিয়ে যান।'});
+  P('p1').reports.push({id:'rp1',d:addDays(TODAY,-26),name:'রক্ত পরীক্ষা (লিপিড).pdf',size:182000});
+  const cols=['teal','mint','sky','coral','amber','sky'];
+  REVIEWS.forEach((r,k)=>st.reviews.push({id:'r'+(k+1),name:r.name,tag:r.tag,r:r.r,t:r.t,col:cols[k%6],status:'approved',sample:true,created:Date.now()-864e5*(30+k)}));
+  st.reviews.push({id:'r7',name:'আব্দুল হালিম',tag:'ফলো-আপ',r:5,t:'সময়মতো দেখেছেন, ওষুধ নিয়ে স্পষ্ট ধারণা দিয়েছেন।',col:'mint',status:'pending',sample:true,created:Date.now()-864e5});
+  st.reviews.push({id:'r8',name:'রোকেয়া খাতুন',tag:'উচ্চ রক্তচাপ',r:4,t:'ডাক্তার ভালো, তবে সন্ধ্যায় অপেক্ষা একটু বেশি ছিল।',col:'amber',status:'pending',sample:true,created:Date.now()-36e5*10});
+  st.audit.push({t:Date.now()-864e5*2,who:'ডাক্তার',text:'রোগীর রেকর্ড খুলেছেন: করিম মিয়া'},{t:Date.now()-864e5*2+6e5,who:'ডাক্তার',text:'প্রেসক্রিপশন সংরক্ষণ: করিম মিয়া'},{t:Date.now()-864e5,who:'রিসেপশনিস্ট',text:'ফি আদায় চিহ্নিত: ফারজানা ইসলাম'});
+  return st;
+}
+S=loadState()||makeSeed();save();
+
+const audit=text=>{S.audit.unshift({t:Date.now(),who:DOC.role==='rec'?'রিসেপশনিস্ট':(DOC.role==='doc'?'ডাক্তার':'রোগী'),text:text});S.audit=S.audit.slice(0,150);save()};
+const P_=id=>S.patients.filter(p=>p.id===id)[0];
+const byPhone=ph=>S.patients.filter(p=>p.phone===ph)[0];
+const A_=id=>S.appts.filter(a=>a.id===id)[0];
+
+/* ================= schedule logic ================= */
+const blocked=(d,ch)=>S.blocks.some(b=>b.d===d&&(b.ch==='all'||b.ch===ch));
+function slotsFor(ch,d){const sc=S.sched[ch];if(!sc||sc.days.indexOf(dow(d))<0||blocked(d,ch))return null;return slotList(sc)}
+const isBusy=(ch,d,t,ign)=>S.appts.some(a=>a.d===d&&a.ch===ch&&a.time===t&&a.status!=='cancelled'&&a.id!==ign);
+function openDates(ch,n,ign){
+  const out=[],now=new Date(),nm=now.getHours()*60+now.getMinutes();
+  for(let i=0;i<60&&out.length<n;i++){
+    const k=addDays(TODAY,i),s=slotsFor(ch,k);if(!s)continue;
+    let free=s.filter(t=>!isBusy(ch,k,t,ign));if(i===0)free=free.filter(t=>tmin(t)>nm+20);
+    if(free.length)out.push(k);
+  }
+  return out;
+}
+function daysText(days){
+  const on=ORDER.map(d=>days.indexOf(d)>-1);const parts=[];let i=0;
+  while(i<7){if(!on[i]){i++;continue}let j=i;while(j+1<7&&on[j+1])j++;
+    if(j-i>=2)parts.push(DAYN[ORDER[i]]+'–'+DAYN[ORDER[j]]);else for(let k=i;k<=j;k++)parts.push(DAYN[ORDER[k]]);i=j+1}
+  return parts.join(', ')||'বন্ধ';
+}
+const chHours=ch=>{const sc=S.sched[ch];return daysText(sc.days)+' · '+tlabel(sc.from)+' – '+tlabel(sc.to)};
+function serialOf(a){const l=S.appts.filter(x=>x.d===a.d&&x.ch===a.ch&&x.status!=='cancelled'&&x.via!=='walkin').sort((x,y)=>x.time<y.time?-1:x.time>y.time?1:0);return l.findIndex(x=>x.id===a.id)+1}
+const feeOf=(ch,type)=>CH[ch].fee[type];
+function gcal(a){
+  const d=a.d.replace(/-/g,''),s=a.time.replace(':','')+'00',e=minT(tmin(a.time)+STEP).replace(':','')+'00';
+  return 'https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent('ডা. আরিফ রহমানের সঙ্গে অ্যাপয়েন্টমেন্ট')+'&dates='+d+'T'+s+'/'+d+'T'+e+'&ctz=Asia/Dhaka&location='+encodeURIComponent(CH[a.ch].addr);
+}
+
+/* ================= vitals / rx text ================= */
+function rxText(v,p){
+  const L=['ডা. আরিফ রহমান · MBBS, FCPS (মেডিসিন)','তারিখ: '+fdate(v.d),'রোগী: '+p.name+', বয়স '+toBn(p.age),'নির্ণয়: '+v.rx.dx,''];
+  if(v.rx.meds.length){L.push('ওষুধ:');v.rx.meds.forEach((m,i)=>L.push(toBn(i+1)+'. '+m.name+' · '+toBn(m.dose)+(m.rule?' ('+m.rule+')':'')+(m.days?' · '+toBn(m.days)+' দিন':'')))}
+  if(v.rx.advice)L.push('','পরামর্শ: '+v.rx.advice);
+  if(v.rx.tests)L.push('পরীক্ষা: '+v.rx.tests);
+  if(v.rx.fu)L.push('পরবর্তী ভিজিট: '+toBn(v.rx.fu)+' দিন পর');
+  L.push('','(এটি নমুনা প্রেসক্রিপশন, প্রকৃত চিকিৎসার জন্য নয়)');
+  return L.join('\n');
+}
+const lastV=(p,k)=>p.vitals.filter(v=>v[k]!=null).sort((a,b)=>a.d<b.d?-1:1).pop();
+
+/* ================= charts ================= */
+function lineChart(o){
+  const W=560,H=240,L=46,R=58,T=14,B=34;
+  const pts=o.series.reduce((a,s)=>a.concat(s.pts),[]);
+  if(!pts.length)return '<p class="hint">এখনও কোনো রিডিং নেই।</p>';
+  const ts=pts.map(p=>pk(p.x).getTime());let x0=Math.min.apply(null,ts),x1=Math.max.apply(null,ts);if(x0===x1){x0-=6048e5;x1+=6048e5}
+  const ys=pts.map(p=>p.y);(o.target||[]).forEach(t=>ys.push(t.y));
+  let y0=Math.min.apply(null,ys),y1=Math.max.apply(null,ys);const pd=Math.max((y1-y0)*.18,o.dec?.5:3);
+  y0=o.dec?Math.floor((y0-pd)*2)/2:Math.floor(y0-pd);y1=o.dec?Math.ceil((y1+pd)*2)/2:Math.ceil(y1+pd);
+  const X=t=>L+(t-x0)/(x1-x0)*(W-L-R),Y=v=>T+(1-(v-y0)/(y1-y0))*(H-T-B);
+  let g='';
+  for(let i=0;i<=4;i++){const v=y0+(y1-y0)*i/4;g+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+Y(v).toFixed(1)+'" y2="'+Y(v).toFixed(1)+'" style="stroke:var(--line)" stroke-width="1"/><text x="'+(L-8)+'" y="'+(Y(v)+4).toFixed(1)+'" text-anchor="end" style="fill:var(--muted)" font-size="11">'+toBn(o.dec?v.toFixed(1):Math.round(v))+'</text>'}
+  const days=Array.from(new Set(pts.map(p=>p.x))).sort();
+  const pick=days.length<=4?days:[days[0],days[Math.floor(days.length/3)],days[Math.floor(days.length*2/3)],days[days.length-1]];
+  pick.forEach(d=>{g+='<text x="'+X(pk(d).getTime()).toFixed(1)+'" y="'+(H-12)+'" text-anchor="middle" style="fill:var(--muted)" font-size="11">'+fshort(d)+'</text>'});
+  (o.target||[]).forEach(t=>{g+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+Y(t.y).toFixed(1)+'" y2="'+Y(t.y).toFixed(1)+'" style="stroke:var(--muted)" stroke-width="1.5" stroke-dasharray="5 4"/>'});
+  o.series.forEach(s=>{
+    const sp=s.pts.slice().sort((a,b)=>a.x<b.x?-1:1);
+    if(sp.length>1)g+='<polyline fill="none" style="stroke:'+s.color+'" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" points="'+sp.map(p=>X(pk(p.x).getTime()).toFixed(1)+','+Y(p.y).toFixed(1)).join(' ')+'"/>';
+    sp.forEach((p,k)=>{
+      const x=X(pk(p.x).getTime()),y=Y(p.y),last=k===sp.length-1,tip='<title>'+fdate(p.x)+': '+toBn(p.y)+' '+(o.unit||'')+'</title>';
+      g+=s.shape==='sq'?'<rect x="'+(x-4).toFixed(1)+'" y="'+(y-4).toFixed(1)+'" width="8" height="8" rx="1.5" style="fill:'+s.color+';stroke:var(--surface)" stroke-width="2">'+tip+'</rect>':'<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="'+(last?5:4)+'" style="fill:'+s.color+';stroke:var(--surface)" stroke-width="2">'+tip+'</circle>';
+      if(last)g+='<text x="'+(x+9).toFixed(1)+'" y="'+(y+4).toFixed(1)+'" style="fill:var(--fg)" font-size="12" font-weight="600">'+toBn(o.dec?p.y.toFixed(1):p.y)+'</text>';
+    });
+  });
+  let lg='';
+  const items=o.series.map(s=>'<span><i class="sw'+(s.shape==='sq'?' sq':'')+'" style="background:'+s.color+'"></i>'+s.name+'</span>');
+  if(o.target&&o.target.length)items.push('<span><i class="sw dash"></i>'+esc(o.tlabel||'লক্ষ্যমাত্রা')+'</span>');
+  if(items.length>1||(o.target&&o.target.length))lg='<div class="legend">'+items.join('')+'</div>';
+  return lg+'<svg class="chart" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+esc(o.label)+'">'+g+'</svg>';
+}
+function vbars(items,label){
+  const mx=Math.max.apply(null,[1].concat(items.map(i=>i.v)));
+  return '<div class="bars" role="img" aria-label="'+esc(label)+'">'+items.map(i=>'<div class="b" title="'+esc(i.l)+': '+toBn(i.v)+'"><span class="bv">'+toBn(i.v)+'</span><div class="bt"><i style="height:'+Math.max(3,i.v/mx*100)+'%"></i></div><span class="bl">'+esc(i.l)+'</span></div>').join('')+'</div>';
+}
+function hbars(items){
+  const mx=Math.max.apply(null,[1].concat(items.map(i=>i.v)));
+  return '<div class="hbars">'+items.map(i=>'<div class="hb"><span class="hl">'+esc(i.l)+'</span><div class="ht"><i style="width:'+Math.max(2,i.v/mx*100)+'%"></i></div><span class="hv">'+toBn(i.v)+'</span></div>').join('')+'</div>';
+}
+const opt=(label,pressed,attr,sub,dis)=>'<button type="button" class="opt" '+attr+' aria-pressed="'+pressed+'"'+(dis?' disabled':'')+'>'+label+(sub?'<small>'+sub+'</small>':'')+'</button>';
+const stars=n=>{let s='';for(let i=0;i<n;i++)s+=ico('star');return '<span class="stars" aria-label="৫ এর মধ্যে '+toBn(n)+'">'+s+'</span>'};
+const initial=n=>esc(String(n).trim().charAt(0));
+
+/* ================= toast / router ================= */
+let tt;function toast(m){const t=$('#toast');t.textContent=m;t.hidden=false;clearTimeout(tt);tt=setTimeout(()=>{t.hidden=true},3600)}
+const PAGES=['home','about','services','testimonials','blog','contact','book','portal','doctor','privacy'];
+let PT='over';
+function countUp(root){
+  if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  $$('[data-count]',root).forEach(el=>{
+    const end=+el.getAttribute('data-count'),sep=el.getAttribute('data-sep');let t0=null;
+    const f=ts=>{if(!t0)t0=ts;const p=Math.min((ts-t0)/1100,1),v=Math.round(end*(1-Math.pow(1-p,3)));el.textContent=toBn(sep?v.toLocaleString('en-US'):String(v));if(p<1)requestAnimationFrame(f)};
+    requestAnimationFrame(f);
+  });
+}
+function go(name,o){
+  o=o||{};if(PAGES.indexOf(name)<0)name='home';
+  if(name==='book'&&!o.keepBook&&(B.resched||B.done))resetBook();
+  PAGES.forEach(p=>{const s=$('#p-'+p);if(s)s.hidden=(p!==name)});
+  const sec=$('#p-'+name);sec.style.animation='none';void sec.offsetWidth;sec.style.animation='';
+  if(name==='blog'&&!o.keep){$('#blogArt').hidden=true;$('#blogList').hidden=false}
+  $$('a[data-go]').forEach(a=>{if(a.getAttribute('data-go')===name)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
+  $('#mnav').classList.remove('open');$('#menuBtn').setAttribute('aria-expanded','false');
+  if(name==='portal')renderPortal();
+  if(name==='doctor')renderDoc();
+  if(name==='testimonials'||name==='home')renderReviews();
+  if(name==='book')drawBook();
+  if(name==='services')renderFees();
+  if(!o.noScroll)window.scrollTo({top:0});
+  if(!o.silent){try{history.replaceState(null,'','#'+name)}catch(x){}}
+  countUp(sec);
+}
+window.go=go;
+
+/* ================= public pages ================= */
+const svcCard=s=>'<article class="card lift"><div class="ico c-'+s.col+'">'+ico(s.ic)+'</div><h3>'+s.t+'</h3><p style="margin-top:8px">'+s.d+'</p><button class="link-more" type="button" data-go="services">বিস্তারিত '+ico('arrow')+'</button></article>';
+const postCard=p=>'<article class="card post lift" data-post="'+p.id+'" tabindex="0" role="button" aria-label="'+esc(p.t)+'"><div class="thumb c-'+p.col+'">'+ico(p.ic,'width:38px;height:38px')+'</div><div class="m"><span>'+p.cat+'</span><span>'+p.rt+' পড়া</span></div><h3>'+p.t+'</h3><p>'+p.ex+'</p></article>';
+const revCard=r=>'<article class="card rev lift">'+stars(r.r)+'<p>'+esc(r.t)+'</p><div class="who"><span class="av c-'+(r.col||'teal')+'">'+initial(r.name)+'</span><div><b>'+esc(r.name)+'</b><small>'+esc(r.tag)+(r.sample?'<span class="sample">নমুনা</span>':'')+'</small></div></div></article>';
+const approved=()=>S.reviews.filter(r=>r.status==='approved').sort((a,b)=>b.created-a.created);
+function renderReviews(){
+  const l=approved();
+  $('#homeRev').innerHTML=l.slice(0,3).map(revCard).join('');
+  $('#allRev').innerHTML=l.map(revCard).join('')||'<p class="hint">এখনও কোনো মতামত প্রকাশিত হয়নি।</p>';
+  const avg=l.length?(l.reduce((a,r)=>a+r.r,0)/l.length).toFixed(1):'০';
+  $('#revSummary').innerHTML='<div style="display:flex;gap:18px;align-items:center"><b style="font-family:var(--f-disp);font-size:48px;color:var(--head);line-height:1">'+toBn(avg)+'</b><div>'+stars(Math.round(avg))+'<p style="color:var(--muted);font-size:15px">'+toBn(l.length)+'টি প্রকাশিত মতামতের গড়</p></div></div><p class="hint" style="max-width:420px">জমা দেওয়া মতামত ডাক্তারের যাচাইয়ের পর এখানে আসে। "নমুনা" লেখা কার্ডগুলো ডিজাইনের উদাহরণ।</p>';
+}
+$('#homeSvc').innerHTML=SERVICES.slice(0,6).map(svcCard).join('');
+$('#homePosts').innerHTML=POSTS.slice(0,3).map(postCard).join('');
+
+let svcCat='সব';
+function drawSvc(){
+  const cats=['সব'].concat(SERVICES.map(s=>s.cat).filter((v,i,a)=>a.indexOf(v)===i));
+  $('#svcFilter').innerHTML=cats.map(c=>'<button class="chip" type="button" data-c="'+c+'" aria-pressed="'+(c===svcCat)+'">'+c+'</button>').join('');
+  $('#svcList').innerHTML=SERVICES.filter(s=>svcCat==='সব'||s.cat===svcCat).map(s=>'<article class="card svc lift"><div class="ico c-'+s.col+'" style="margin:0">'+ico(s.ic)+'</div><div><h3>'+s.t+'</h3><p style="margin-top:6px">'+s.d+'</p><div class="meta"><span>'+ico('clock')+s.time+'</span><span>'+ico('user')+s.who+'</span></div><ul>'+s.pts.map(x=>'<li>'+x+'</li>').join('')+'</ul><div class="acts"><button class="btn btn-cta btn-sm" type="button" data-go="book" data-svc="'+s.id+'">এই সেবার জন্য বুক করুন</button></div></div></article>').join('');
+}
+$('#svcFilter').addEventListener('click',e=>{const b=e.target.closest('[data-c]');if(!b)return;svcCat=b.getAttribute('data-c');drawSvc()});
+drawSvc();
+function renderFees(){
+  $('#svcFees').innerHTML='<div class="sec-head"><span class="eyebrow">ফি ও সময়সূচি</span><h2>ভিজিটের ফি এবং চেম্বারের সময়</h2><p>ফি নমুনা। ডাক্তারের নিজের ফি দিয়ে বদলে নিতে হবে। ফি ভিজিটের দিন চেম্বারে পরিশোধ করতে হয়।</p></div><div class="tbl-wrap"><table><thead><tr><th>চেম্বার</th><th>সময়</th><th>নতুন</th><th>ফলো-আপ</th><th>রিপোর্ট দেখানো</th></tr></thead><tbody>'+CHIDS.map(c=>'<tr><td><b>'+CH[c].t+'</b></td><td>'+chHours(c)+'</td><td>'+money(CH[c].fee.new)+'</td><td>'+money(CH[c].fee.fu)+'</td><td>'+money(CH[c].fee.rep)+'</td></tr>').join('')+'</tbody></table></div>';
+}
+
+/* blog */
+let blogCat='সব',blogQ='';
+function drawBlog(){
+  const cats=['সব'].concat(POSTS.map(p=>p.cat).filter((v,i,a)=>a.indexOf(v)===i));
+  $('#blogCats').innerHTML=cats.map(c=>'<button class="chip" type="button" data-c="'+c+'" aria-pressed="'+(c===blogCat)+'">'+c+'</button>').join('');
+  const list=POSTS.filter(p=>(blogCat==='সব'||p.cat===blogCat)&&(!blogQ||(p.t+p.ex).indexOf(blogQ)>-1));
+  $('#blogGrid').innerHTML=list.map(postCard).join('');
+  $('#blogEmpty').hidden=list.length>0;
+}
+$('#blogCats').addEventListener('click',e=>{const b=e.target.closest('[data-c]');if(!b)return;blogCat=b.getAttribute('data-c');drawBlog()});
+$('#blogQ').addEventListener('input',e=>{blogQ=e.target.value.trim();drawBlog()});
+drawBlog();
+function openPost(id){
+  const p=POSTS.filter(x=>x.id==id)[0];if(!p)return;
+  $('#artBody').innerHTML='<button class="link-more" type="button" id="artBack" style="margin:0 0 16px">← সব লেখা</button><span class="eyebrow">'+p.cat+'</span><h2>'+p.t+'</h2><div class="by">'+ico('user')+'<span>লেখক: ডা. আরিফ রহমান · '+p.rt+' পড়া · চিকিৎসক-পর্যালোচিত (নমুনা)</span></div>'+p.b.map(x=>'<p>'+x+'</p>').join('')+'<p class="sec-note">এই লেখা সাধারণ শিক্ষামূলক তথ্য। আপনার নিজের অবস্থার জন্য চিকিৎসকের পরামর্শ নিন।</p><div style="margin-top:24px"><button class="btn btn-cta" type="button" data-go="book">অ্যাপয়েন্টমেন্ট নিন</button></div>';
+  $('#blogList').hidden=true;$('#blogArt').hidden=false;window.scrollTo({top:0});
+  $('#artBack').addEventListener('click',()=>{$('#blogArt').hidden=true;$('#blogList').hidden=false;window.scrollTo({top:0})});
+}
+document.addEventListener('click',e=>{const c=e.target.closest('[data-post]');if(c){go('blog',{silent:true,keep:true});openPost(c.getAttribute('data-post'))}});
+document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches&&e.target.matches('[data-post]')){e.preventDefault();e.target.click()}});
+
+/* reviews form */
+let rate=5;
+function drawRate(){$('#rStars').innerHTML=[5,4,3,2,1].map(n=>opt(toBn(n)+' তারা',rate===n,'data-r="'+n+'"')).join('')}
+drawRate();
+$('#rStars').addEventListener('click',e=>{const b=e.target.closest('[data-r]');if(!b)return;rate=+b.getAttribute('data-r');drawRate()});
+$('#revForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  if($('#rText').value.trim().length<10){$('#eRev').textContent='মতামত অন্তত কয়েকটি বাক্যে লিখুন।';return}
+  if(!$('#rOk').checked){$('#eRev').textContent='প্রকাশের সম্মতি দিতে হবে।';return}
+  S.reviews.push({id:nid('r'),name:$('#rName').value.trim()||'বেনামী রোগী',tag:'রোগী',r:rate,t:$('#rText').value.trim(),col:'teal',status:'pending',sample:false,created:Date.now()});save();
+  $('#eRev').textContent='';e.target.reset();rate=5;drawRate();toast('ধন্যবাদ। ডাক্তারের যাচাইয়ের পর আপনার মতামত প্রকাশ হবে।');
+});
+
+/* contact + footer forms */
+$('#copyHot').addEventListener('click',()=>{
+  const n=toEn($('#hotNum').textContent);
+  const fb=()=>{const r=document.createRange();r.selectNodeContents($('#hotNum'));const s=getSelection();s.removeAllRanges();s.addRange(r);toast('নম্বরটি নির্বাচিত হয়েছে, কপি করে নিন')};
+  try{navigator.clipboard.writeText(n).then(()=>toast('নম্বর কপি হয়েছে'),fb)}catch(x){fb()}
+});
+$('#mCall').addEventListener('click',()=>{go('contact');setTimeout(()=>{const h=$('#hotNum');if(h)h.scrollIntoView({behavior:'smooth',block:'center'})},60)});
+$('#msgForm').addEventListener('submit',e=>{
+  e.preventDefault();const ph=normPhone($('#mPhone').value);
+  if($('#mName').value.trim().length<2){$('#eMsg').textContent='আপনার নাম লিখুন।';return}
+  if(!phoneOk(ph)){$('#eMsg').textContent='সঠিক মোবাইল নম্বর দিন।';return}
+  if($('#mText').value.trim().length<5){$('#eMsg').textContent='বার্তা লিখুন।';return}
+  if(!$('#mOk').checked){$('#eMsg').textContent='সম্মতি দিতে হবে।';return}
+  $('#eMsg').textContent='';e.target.reset();toast('বার্তা গৃহীত হয়েছে (ডেমোতে কিছু পাঠানো হয় না)');
+});
+$('#newsForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($('#nMail').value.trim())){$('#eNews').textContent='সঠিক ইমেইল দিন।';return}
+  $('#eNews').textContent='';e.target.reset();toast('সাবস্ক্রাইব সম্পন্ন (ডেমোতে কিছু সংরক্ষিত হয় না)');
+});
+
+/* ================= booking ================= */
+const newB=()=>({step:1,svc:SERVICES[0].id,type:'new',ch:'dhm',date:null,time:null,resched:null,otp:null,stage:'det',tries:0,det:null,done:false});
+let B=newB();
+function nowMin(){const n=new Date();return n.getHours()*60+n.getMinutes()}
+function drawBook(){
+  const rs=!!B.resched;
+  $('#bkEyebrow').textContent=rs?'সময় বদল':'অনলাইন বুকিং';
+  $('#bkTitle').textContent=rs?'নতুন সময় বেছে নিন':'এক মিনিটে অ্যাপয়েন্টমেন্ট নিন';
+  $('#bkSub').textContent=rs?'নতুন সময় নিশ্চিত হলে আগের সময়টি বাতিল হয়ে যাবে।':'অ্যাকাউন্ট ছাড়াই বুক করা যায়। শুধু তিনটি ধাপ।';
+  const lis=$$('#stepper li');lis[2].hidden=rs;
+  $('#bSvc').innerHTML=SERVICES.map(s=>opt(s.t,B.svc===s.id,'data-s="'+s.id+'"')).join('');
+  $('#bType').innerHTML=TYPES.map(s=>opt(s.t,B.type===s.id,'data-t="'+s.id+'"',money(feeOf(B.ch,s.id)))).join('');
+  $('#bCh').innerHTML=CHIDS.map(c=>opt(CH[c].t,B.ch===c,'data-c="'+c+'"',chHours(c))).join('');
+  const dts=openDates(B.ch,7,B.resched);
+  if(B.date&&dts.indexOf(B.date)<0){B.date=null;B.time=null}
+  $('#bDate').innerHTML=dts.length?dts.map(k=>opt(fday(k),B.date===k,'data-d="'+k+'"',fshort(k))).join(''):'<p class="hint">এই চেম্বারে এখন খালি সময় নেই। অন্য চেম্বার বা অনলাইন বেছে নিন।</p>';
+  $('#bDateHint').textContent=CH[B.ch].t+' চেম্বার: '+chHours(B.ch)+'। বন্ধ দিনগুলো তালিকায় আসে না।';
+  const sl=B.date?slotsFor(B.ch,B.date):null;
+  $('#bTime').innerHTML=sl?sl.map(t=>{const busy=isBusy(B.ch,B.date,t,B.resched)||(B.date===TODAY&&tmin(t)<=nowMin()+20);return opt(tlabel(t),B.time===t,'data-m="'+t+'"','',busy)}).join(''):'<p class="hint">আগে তারিখ বেছে নিন।</p>';
+  ['bs1','bs2','bs3'].forEach((id,i)=>{$('#'+id).hidden=(i+1!==B.step)});
+  lis.forEach((li,i)=>{li.className=(i+1===B.step?'on':(i+1<B.step?'done':''))});
+  $('#bDet').hidden=B.stage!=='det';$('#bOtp').hidden=B.stage!=='otp';
+  $('#feeBox').innerHTML='<h3>ফি (নমুনা)</h3><div class="tbl-wrap" style="margin-top:12px"><table style="min-width:0"><tbody>'+TYPES.map(t=>'<tr'+(t.id===B.type?' style="background:var(--t-teal)"':'')+'><td>'+t.t+'</td><td style="text-align:right"><b>'+money(feeOf(B.ch,t.id))+'</b></td></tr>').join('')+'</tbody></table></div><p class="hint" style="margin-top:10px">'+CH[B.ch].t+' চেম্বারের ফি। ভিজিটের দিন পরিশোধ করতে হয়।</p>';
+}
+function resetBook(){
+  B=newB();$('#bDone').hidden=true;$('#bookForm').hidden=false;$('#stepper').hidden=false;$('#bookForm').reset();
+  $('#eName').textContent=$('#ePhone').textContent=$('#eMail').textContent=$('#e3').textContent=$('#eOtp').textContent='';
+}
+$('#bookForm').addEventListener('click',e=>{
+  const b=e.target.closest('.opt');if(!b||b.disabled)return;
+  if(b.hasAttribute('data-s'))B.svc=b.getAttribute('data-s');
+  if(b.hasAttribute('data-t'))B.type=b.getAttribute('data-t');
+  if(b.hasAttribute('data-c')){B.ch=b.getAttribute('data-c');B.date=null;B.time=null}
+  if(b.hasAttribute('data-d')){B.date=b.getAttribute('data-d');B.time=null}
+  if(b.hasAttribute('data-m'))B.time=b.getAttribute('data-m');
+  $('#e2').textContent='';drawBook();
+});
+$('#n1').addEventListener('click',()=>{B.step=2;drawBook()});
+$('#b2').addEventListener('click',()=>{B.step=1;drawBook()});
+$('#n2').addEventListener('click',()=>{
+  if(!B.date){$('#e2').textContent='দয়া করে একটি তারিখ বেছে নিন।';return}
+  if(!B.time){$('#e2').textContent='দয়া করে একটি সময় বেছে নিন।';return}
+  if(B.resched){finalizeResched();return}
+  B.step=3;B.stage='det';
+  const sp=SESSION.pid?P_(SESSION.pid):null;
+  if(sp){if(!$('#fName').value)$('#fName').value=sp.name;if(!$('#fPhone').value)$('#fPhone').value=toBn(sp.phone);if(!$('#fAge').value)$('#fAge').value=toBn(sp.age);if(!$('#fMail').value)$('#fMail').value=sp.email||''}
+  drawBook();
+});
+$('#b3').addEventListener('click',()=>{B.step=2;drawBook()});
+$('#otpBack').addEventListener('click',()=>{B.stage='det';drawBook()});
+$('#otpResend').addEventListener('click',()=>{sendOtp(B.det.phone);$('#fOtp').value='';toast('নতুন কোড পাঠানো হয়েছে')});
+let OTP=null;
+function sendOtp(phone){
+  OTP={phone:phone,code:String(1000+Math.floor(Math.random()*9000)),exp:Date.now()+5*60000,tries:0};
+  $('#otpTo').textContent=toBn(phone);$('#otpHint').textContent=toBn(OTP.code);
+}
+function checkOtp(code){
+  if(!OTP)return 'আগে কোড পাঠান।';
+  if(Date.now()>OTP.exp)return 'কোডের মেয়াদ শেষ। নতুন কোড নিন।';
+  if(OTP.tries>=3)return 'অনেকবার ভুল হয়েছে। নতুন কোড নিন।';
+  if(toEn(code).trim()!==OTP.code){OTP.tries++;return 'কোডটি মেলেনি। আবার দেখুন।'}
+  return '';
+}
+function finalizeResched(){
+  const a=A_(B.resched);if(!a)return;
+  if(isBusy(B.ch,B.date,B.time,a.id)){$('#e2').textContent='এই সময়টি এইমাত্র বুক হয়ে গেছে। অন্য সময় নিন।';drawBook();return}
+  a.d=B.date;a.time=B.time;a.ch=B.ch;a.fee=feeOf(B.ch,a.type);a.status='booked';save();
+  toast('সময় বদল হয়েছে: '+fdate(a.d,{day:'numeric',month:'long'})+', '+tlabel(a.time));
+  PT='appts';resetBook();go('portal');
+}
+$('#bookForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  if(B.stage==='otp'){
+    const er=checkOtp($('#fOtp').value);$('#eOtp').textContent=er;
+    if(!er)createBooking();return;
+  }
+  let ok=true;const name=$('#fName').value.trim(),ph=normPhone($('#fPhone').value),mail=$('#fMail').value.trim(),age=num($('#fAge').value);
+  $('#eName').textContent=name.length<2?'রোগীর নাম লিখুন।':'';if(name.length<2)ok=false;
+  $('#ePhone').textContent=phoneOk(ph)?'':'সঠিক মোবাইল নম্বর দিন, যেমন 01712345678।';if(!phoneOk(ph))ok=false;
+  $('#eMail').textContent=mailOk(mail)?'':'ইমেইল ঠিকানাটি সঠিক নয়।';if(!mailOk(mail))ok=false;
+  $('#e3').textContent=$('#fOk').checked?'':'এগিয়ে যেতে সম্মতি দিতে হবে।';if(!$('#fOk').checked)ok=false;
+  if(!ok)return;
+  B.det={name:name,phone:ph,email:mail,age:age||0,why:$('#fWhy').value.trim()};
+  const sp=SESSION.pid?P_(SESSION.pid):null;
+  if(sp&&sp.phone===ph){createBooking();return}
+  sendOtp(ph);B.stage='otp';$('#fOtp').value='';$('#eOtp').textContent='';drawBook();
+});
+function createBooking(){
+  const d=B.det;let p=byPhone(d.phone);
+  if(isBusy(B.ch,B.date,B.time)){toast('এই সময়টি এইমাত্র বুক হয়ে গেছে। অন্য সময় নিন।');B.step=2;B.stage='det';drawBook();return}
+  if(!p){p={id:nid('p'),name:d.name,age:d.age,sex:'',phone:d.phone,email:d.email,conds:[],allergies:[],meds:[],vitals:[],visits:[],reports:[],msgs:[],nextFu:null,target:{sys:130,dia:80,sugar:null},consent:[],medLog:{}};S.patients.push(p)}
+  else{if(d.email&&!p.email)p.email=d.email}
+  p.consent.push(Date.now());
+  const a={id:nid('a'),pid:p.id,d:B.date,time:B.time,ch:B.ch,type:B.type,svc:B.svc,status:'booked',paid:false,fee:feeOf(B.ch,B.type),why:d.why,created:Date.now(),via:'web'};
+  S.appts.push(a);save();SESSION.pid=p.id;B.done=true;showDone(a,p);
+}
+function showDone(a,p){
+  const s=SERVICES.filter(x=>x.id===a.svc)[0];
+  $('#bookForm').hidden=true;$('#stepper').hidden=true;
+  const rows=[['রোগী',esc(p.name)],['সেবা',s?s.t:'-'],['ধরন',TN[a.type]],['চেম্বার',CH[a.ch].t],['তারিখ',fdate(a.d,{weekday:'long',day:'numeric',month:'long'})],['সময়',tlabel(a.time)],['সিরিয়াল নম্বর','<b>'+toBn(serialOf(a))+'</b>'],['ফি (ভিজিটের দিন)',money(a.fee)],['আনুমানিক অপেক্ষা','১০–২০ মিনিট']];
+  const dn=$('#bDone');dn.hidden=false;
+  dn.innerHTML='<div class="ok">'+ico('check','width:34px;height:34px')+'</div><h2 style="font-size:26px">বুকিং নিশ্চিত হয়েছে</h2><p style="color:var(--muted);margin-top:8px">ডেমো সাইটে SMS বা ইমেইল যায় না। লাইভ সাইটে এখনই নিশ্চিতকরণ বার্তা যাবে এবং ২৪ ও ২ ঘণ্টা আগে রিমাইন্ডার আসবে।</p><div class="sum">'+rows.map(r=>'<div><span>'+r[0]+'</span><b>'+r[1]+'</b></div>').join('')+'</div>'+(a.ch==='onl'?'<p class="sec-note" style="text-align:left">ভিডিও কলের লিংক ভিজিটের ১৫ মিনিট আগে SMS ও পোর্টালে সক্রিয় হবে (লাইভ সাইটে)।</p>':'')+'<p class="hint" style="margin:12px 0">সঙ্গে আনবেন: আগের প্রেসক্রিপশন, রিপোর্ট ও চলতি ওষুধের তালিকা।</p><div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"><a class="btn btn-pri" href="'+gcal(a)+'" target="_blank" rel="noopener">'+ico('cal')+'Google Calendar-এ যোগ করুন</a><button class="btn btn-out" type="button" data-go="portal">আমার পোর্টালে দেখুন</button><button class="btn btn-out" type="button" id="again">আরেকটি বুক করুন</button></div>';
+  $('#again').addEventListener('click',()=>{resetBook();drawBook()});
+  window.scrollTo({top:0});
+}
+function startResched(id){
+  const a=A_(id);if(!a)return;
+  B=newB();B.resched=id;B.svc=a.svc||SERVICES[0].id;B.type=a.type;B.ch=a.ch;B.step=2;
+  go('book',{keepBook:true});
+}
+
+/* ================= patient portal ================= */
+let PCONF=null,PDEL=false,LO=null;
+const pt=()=>P_(SESSION.pid);
+const mkOtp=ph=>({phone:ph,code:String(1000+Math.floor(Math.random()*9000)),exp:Date.now()+300000,tries:0});
+function chkOtp(o,code){
+  if(!o)return 'আগে কোড পাঠান।';if(Date.now()>o.exp)return 'কোডের মেয়াদ শেষ। নতুন কোড নিন।';if(o.tries>=3)return 'অনেকবার ভুল হয়েছে। নতুন কোড নিন।';
+  if(toEn(code).trim()!==o.code){o.tries++;return 'কোডটি মেলেনি। আবার দেখুন।'}return '';
+}
+const upcoming=p=>S.appts.filter(a=>a.pid===p.id&&a.d>=TODAY&&(a.status==='booked'||a.status==='arrived')).sort((a,b)=>(a.d+a.time)<(b.d+b.time)?-1:1);
+const medCount=p=>{const lg=p.medLog[TODAY]||{};let exp=0,got=0;p.meds.forEach(m=>m.times.forEach(t=>{exp++;if(lg[m.id+'|'+t])got++}));return[got,exp]};
+function adherence(p){let exp=0,got=0;for(let i=1;i<=7;i++){const lg=p.medLog[addDays(TODAY,-i)];if(!lg)continue;p.meds.forEach(m=>m.times.forEach(t=>{exp++;if(lg[m.id+'|'+t])got++}))}return exp?Math.round(got/exp*100):null}
+
+function resetLogin(){LO=null;$('#lOtpBox').hidden=true;$('#lSend').hidden=false;$('#lGo').hidden=true;$('#lPhone').value='';$('#lOtp').value='';$('#eLogin').textContent=''}
+$('#loginForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  if(!$('#lOtpBox').hidden){
+    const er=chkOtp(LO,$('#lOtp').value);if(er){$('#eLogin').textContent=er;return}
+    SESSION.pid=byPhone(LO.phone).id;PT='over';resetLogin();renderPortal();return;
+  }
+  const ph=normPhone($('#lPhone').value);
+  if(!phoneOk(ph)){$('#eLogin').textContent='সঠিক মোবাইল নম্বর দিন, যেমন 01712345678।';return}
+  if(!byPhone(ph)){$('#eLogin').innerHTML='এই নম্বরে কোনো রেকর্ড নেই। <button class="link-more" type="button" data-go="book" style="margin:0">আগে অ্যাপয়েন্টমেন্ট বুক করুন</button>';return}
+  LO=mkOtp(ph);$('#eLogin').textContent='';$('#lOtpBox').hidden=false;$('#lSend').hidden=true;$('#lGo').hidden=false;$('#lHint').textContent=toBn(LO.code);$('#lOtp').focus();
+});
+$('#lResend').addEventListener('click',()=>{if(!LO)return;LO=mkOtp(LO.phone);$('#lHint').textContent=toBn(LO.code);$('#lOtp').value='';toast('নতুন কোড পাঠানো হয়েছে')});
+$('#lBack').addEventListener('click',resetLogin);
+$('#demoBtn').addEventListener('click',()=>{SESSION.pid='p1';PT='over';resetLogin();renderPortal();window.scrollTo({top:0})});
+
+function apptBlock(a){
+  const s=SERVICES.filter(x=>x.id===a.svc)[0];const conf=PCONF===a.id;
+  return '<div class="rx" style="margin-top:12px"><div style="align-items:flex-start"><span><b style="color:var(--head)">'+fdate(a.d,{weekday:'long',day:'numeric',month:'long'})+' · '+tlabel(a.time)+'</b><br><small style="color:var(--muted)">'+CH[a.ch].t+' · '+TN[a.type]+(s?' · '+s.t:'')+' · সিরিয়াল '+toBn(serialOf(a))+' · ফি '+money(a.fee)+'</small>'+(a.ch==='onl'?'<br><small style="color:var(--muted)">ভিডিও কলের লিংক ভিজিটের ১৫ মিনিট আগে এখানে সক্রিয় হবে (লাইভ সাইটে)</small>':'')+'</span><span style="display:flex;gap:8px;flex-wrap:wrap">'+(conf?'<span style="align-self:center;font-weight:600">বাতিল করবেন?</span><button class="btn btn-sm btn-cta" type="button" data-act="cancel-yes" data-id="'+a.id+'">হ্যাঁ, বাতিল</button><button class="btn btn-sm btn-out" type="button" data-act="cancel-no">না</button>':'<a class="btn btn-sm btn-out" href="'+gcal(a)+'" target="_blank" rel="noopener">'+ico('cal')+'ক্যালেন্ডারে যোগ করুন</a><button class="btn btn-sm btn-out" type="button" data-act="resched" data-id="'+a.id+'">সময় বদলান</button><button class="btn btn-sm btn-out" type="button" data-act="cancel-ask" data-id="'+a.id+'">বাতিল</button>')+'</span></div></div>';
+}
+function pOver(p){
+  const up=upcoming(p),n=up[0],mc=medCount(p),sb=lastV(p,'sys'),su=lastV(p,'sugar'),wt=lastV(p,'wt');
+  let h='<div class="grid g2" style="gap:22px;margin-bottom:22px"><div class="card"><h3 style="display:flex;gap:10px;align-items:center">'+ico('cal','color:var(--link)')+'পরবর্তী অ্যাপয়েন্টমেন্ট</h3>';
+  h+=n?apptBlock(n):'<p style="margin-top:12px">আসন্ন কোনো অ্যাপয়েন্টমেন্ট নেই।</p><button class="btn btn-cta btn-sm" type="button" data-go="book" style="margin-top:14px">অ্যাপয়েন্টমেন্ট নিন</button>';
+  if(p.nextFu&&!up.some(a=>a.d>=p.nextFu))h+='<p class="sec-note">ডাক্তার ফলো-আপের পরামর্শ দিয়েছেন: <b>'+fdate(p.nextFu)+'</b> এর কাছাকাছি। <button class="link-more" type="button" data-go="book" style="margin:0">এখনই বুক করুন</button></p>';
+  h+='</div><div class="card"><h3 style="display:flex;gap:10px;align-items:center">'+ico('act','color:var(--link)')+'সাম্প্রতিক স্বাস্থ্য-তথ্য</h3><div class="grid g3" style="margin-top:14px;gap:12px">';
+  h+='<div class="stat" style="background:var(--t-teal);border-radius:14px;padding:12px"><b style="font-size:22px">'+(sb?toBn(sb.sys+'/'+sb.dia):'-')+'</b><span>রক্তচাপ</span></div>';
+  h+='<div class="stat" style="background:var(--t-sky);border-radius:14px;padding:12px"><b style="font-size:22px">'+(su?toBn(su.sugar):'-')+'</b><span>শর্করা</span></div>';
+  h+='<div class="stat" style="background:var(--t-mint);border-radius:14px;padding:12px"><b style="font-size:22px">'+(wt?toBn(wt.wt):'-')+'</b><span>ওজন (কেজি)</span></div></div>';
+  h+='<p class="hint" style="margin-top:12px">'+(sb?'শেষ রিডিং: '+fdate(sb.d):'এখনও রিডিং নেই')+'। <button class="link-more" type="button" data-act="tab" data-tab="track" style="margin:0">রিডিং যোগ করুন</button></p></div></div>';
+  h+='<div class="grid g2" style="gap:22px"><div class="card"><h3 style="display:flex;gap:10px;align-items:center">'+ico('drop','color:var(--link)')+'আজকের ওষুধ</h3>';
+  h+=mc[1]?'<p style="margin-top:10px;color:var(--muted)">আজ '+toBn(mc[0])+'/'+toBn(mc[1])+' ডোজ খাওয়া হয়েছে।</p><div class="prog"><i style="width:'+Math.round(mc[0]/mc[1]*100)+'%"></i></div><button class="link-more" type="button" data-act="tab" data-tab="meds">ওষুধের তালিকা দেখুন '+ico('arrow')+'</button>':'<p style="margin-top:10px;color:var(--muted)">এখনও কোনো ওষুধ যোগ হয়নি।</p>';
+  const lastMsg=p.msgs[p.msgs.length-1];
+  h+='</div><div class="card"><h3 style="display:flex;gap:10px;align-items:center">'+ico('msg','color:var(--link)')+'ডাক্তারের সঙ্গে বার্তা</h3><p style="margin-top:10px;color:var(--muted)">'+(lastMsg?(lastMsg.from==='d'?'ডাক্তারের উত্তর এসেছে।':'আপনার বার্তার উত্তরের অপেক্ষায়।'):'ফলো-আপ প্রশ্ন থাকলে লিখে পাঠান।')+'</p><button class="link-more" type="button" data-act="tab" data-tab="msgs">বার্তা দেখুন '+ico('arrow')+'</button></div></div>';
+  return h;
+}
+function pAppts(p){
+  const up=upcoming(p);
+  const past=S.appts.filter(a=>a.pid===p.id&&up.indexOf(a)<0).sort((a,b)=>(a.d+a.time)<(b.d+b.time)?1:-1);
+  let h='<div class="card" style="margin-bottom:22px"><h3>আসন্ন অ্যাপয়েন্টমেন্ট</h3>'+(up.length?up.map(apptBlock).join(''):'<p style="margin-top:10px">কোনো আসন্ন অ্যাপয়েন্টমেন্ট নেই।</p><button class="btn btn-cta btn-sm" type="button" data-go="book" style="margin-top:12px">নতুন বুকিং</button>')+'</div>';
+  h+='<div class="card"><h3>আগের ভিজিট ও বুকিং</h3><div class="tbl-wrap" style="margin-top:14px"><table><thead><tr><th>তারিখ</th><th>চেম্বার</th><th>ধরন</th><th>নির্ণয়</th><th>অবস্থা</th></tr></thead><tbody>'+
+    (past.map(a=>{const v=p.visits.filter(x=>x.d===a.d)[0];return '<tr><td>'+fdate(a.d,{day:'numeric',month:'short',year:'numeric'})+'</td><td>'+CH[a.ch].t+'</td><td>'+TN[a.type]+'</td><td>'+(v?esc(v.dx):'-')+'</td><td>'+pill(a.status)+'</td></tr>'}).join('')||'<tr><td colspan="5">এখনও কোনো ভিজিট নেই।</td></tr>')+'</tbody></table></div></div>';
+  return h;
+}
+function pRx(p){
+  const vs=p.visits.filter(v=>v.rx).sort((a,b)=>a.d<b.d?1:-1);
+  let h='<div class="card" style="margin-bottom:22px"><h3 style="display:flex;gap:10px;align-items:center">'+ico('file','color:var(--link)')+'প্রেসক্রিপশন</h3>';
+  h+=vs.length?vs.map((v,i)=>'<div class="rx"><div><span><b style="color:var(--head)">'+esc(v.rx.dx)+'</b><br><small style="color:var(--muted)">'+fdate(v.d)+' · '+CH[v.ch].t+'</small></span><span style="display:flex;gap:8px"><button class="btn btn-out btn-sm" type="button" data-act="rx-open" data-i="'+i+'" aria-expanded="false">দেখুন</button><button class="btn btn-out btn-sm" type="button" data-act="rx-copy" data-id="'+v.id+'">'+ico('copy')+'টেক্সট কপি</button></span></div><pre hidden>'+esc(rxText(v,p))+'</pre></div>').join(''):'<p style="margin-top:10px">এখনও কোনো প্রেসক্রিপশন নেই।</p>';
+  h+='<p class="sec-note">এই ডেমো পেজ থেকে ফাইল নামানো যায় না, তাই টেক্সট কপির ব্যবস্থা রাখা হয়েছে। লাইভ সাইটে প্রতিটি প্রেসক্রিপশন ও রিপোর্ট পিডিএফ হিসেবে নামানো যাবে।</p></div>';
+  h+='<div class="card"><h3 style="display:flex;gap:10px;align-items:center">'+ico('upload','color:var(--link)')+'আমার রিপোর্ট</h3>'+(p.reports.length?'<div class="tbl-wrap" style="margin-top:12px"><table><thead><tr><th>তারিখ</th><th>ফাইল</th><th>আকার</th></tr></thead><tbody>'+p.reports.slice().reverse().map(r=>'<tr><td>'+fdate(r.d,{day:'numeric',month:'short'})+'</td><td>'+esc(r.name)+'</td><td>'+toBn(Math.max(1,Math.round(r.size/1024)))+' KB</td></tr>').join('')+'</tbody></table></div>':'<p style="margin-top:10px">কোনো রিপোর্ট আপলোড করা হয়নি।</p>')+
+    '<form class="form" data-form="upload" style="margin-top:16px" novalidate><div class="field"><label for="rFile">নতুন রিপোর্ট (পিডিএফ বা ছবি)</label><input class="in" type="file" id="rFile" accept=".pdf,image/*"></div><div class="err" id="eUp" role="alert"></div><div><button class="btn btn-pri btn-sm" type="submit">আপলোড করুন</button></div><p class="hint">ডেমোতে শুধু ফাইলের নাম সংরক্ষিত হয়, ফাইল কোথাও যায় না। ডাক্তার ভিজিটের আগেই এটি দেখতে পাবেন।</p></form></div>';
+  return h;
+}
+function vitalsCharts(p){
+  const bp=p.vitals.filter(v=>v.sys!=null&&v.dia!=null),sg=p.vitals.filter(v=>v.sugar!=null);
+  const tg=[];if(p.target&&p.target.sys)tg.push({y:p.target.sys},{y:p.target.dia});
+  let h='<h3 style="margin-bottom:10px">রক্তচাপ (mmHg)</h3>'+lineChart({label:'রক্তচাপের পরিবর্তন',unit:'mmHg',target:tg,tlabel:'ডাক্তারের লক্ষ্য '+(p.target&&p.target.sys?toBn(p.target.sys+'/'+p.target.dia):''),series:[{name:'সিস্টোলিক (ওপরের)',color:'var(--btn)',pts:bp.map(v=>({x:v.d,y:v.sys}))},{name:'ডায়াস্টোলিক (নিচের)',color:'var(--sky)',shape:'sq',pts:bp.map(v=>({x:v.d,y:v.dia}))}]});
+  if(sg.length)h+='<h3 style="margin:22px 0 10px">রক্তে শর্করা (mmol/L)</h3>'+lineChart({label:'শর্করার পরিবর্তন',unit:'mmol/L',dec:1,target:p.target&&p.target.sugar?[{y:p.target.sugar}]:[],tlabel:p.target&&p.target.sugar?'ডাক্তারের লক্ষ্য '+toBn(p.target.sugar):'',series:[{name:'শর্করা',color:'var(--btn)',pts:sg.map(v=>({x:v.d,y:v.sugar}))}]});
+  return h;
+}
+function vitalsTable(p){
+  return '<div class="tbl-wrap" style="margin-top:14px"><table><thead><tr><th>তারিখ</th><th>রক্তচাপ</th><th>শর্করা</th><th>ওজন</th><th>কে নিয়েছেন</th></tr></thead><tbody>'+p.vitals.slice().sort((a,b)=>a.d<b.d?1:-1).slice(0,8).map(v=>'<tr><td>'+fdate(v.d,{day:'numeric',month:'short'})+'</td><td>'+(v.sys!=null?toBn(v.sys+'/'+v.dia):'-')+'</td><td>'+(v.sugar!=null?toBn(v.sugar):'-')+'</td><td>'+(v.wt!=null?toBn(v.wt):'-')+'</td><td>'+(v.by==='clinic'?'ক্লিনিক':'রোগী')+'</td></tr>').join('')+'</tbody></table></div>';
+}
+function pTrack(p){
+  return '<div class="grid g2" style="gap:22px;align-items:start"><div class="card"><h3>নতুন রিডিং যোগ করুন</h3><form class="form" data-form="vital" style="margin-top:14px" novalidate><div class="field"><label for="vD">তারিখ</label><input class="in" type="date" id="vD" value="'+TODAY+'" max="'+TODAY+'"></div><div class="row2"><div class="field"><label for="vS">ওপরের চাপ</label><input class="in" id="vS" inputmode="numeric" placeholder="যেমন: ১২৮"></div><div class="field"><label for="vDi">নিচের চাপ</label><input class="in" id="vDi" inputmode="numeric" placeholder="যেমন: ৮২"></div></div><div class="row2"><div class="field"><label for="vSu">শর্করা (mmol/L)</label><input class="in" id="vSu" inputmode="decimal" placeholder="যেমন: ৭.২"></div><div class="field"><label for="vW">ওজন (কেজি)</label><input class="in" id="vW" inputmode="decimal" placeholder="যেমন: ৭৮"></div></div><div class="err" id="eV" role="alert"></div><div><button class="btn btn-pri" type="submit">রিডিং সংরক্ষণ করুন</button></div><p class="hint">যেগুলো মাপেননি, ফাঁকা রাখুন। ডাক্তার ভিজিটে এই গ্রাফ দেখবেন।</p></form></div><div class="card">'+vitalsCharts(p)+'</div></div><div class="card" style="margin-top:22px"><h3>সাম্প্রতিক রিডিং</h3>'+vitalsTable(p)+'</div>';
+}
+function pMeds(p){
+  const lg=p.medLog[TODAY]||{},mc=medCount(p),ad=adherence(p);
+  if(!p.meds.length)return '<div class="card"><h3>চলতি ওষুধ</h3><p style="margin-top:10px">ডাক্তার প্রেসক্রিপশন দিলে ওষুধের তালিকা ও সময় এখানে আসবে।</p></div>';
+  return '<div class="grid g2" style="gap:22px;align-items:start"><div class="card"><h3>আজকের ওষুধ</h3><p style="margin-top:8px;color:var(--muted)">আজ '+toBn(mc[0])+'/'+toBn(mc[1])+' ডোজ খাওয়া হয়েছে। খাওয়ার পর টিক দিন।</p><div class="prog"><i style="width:'+(mc[1]?Math.round(mc[0]/mc[1]*100):0)+'%"></i></div>'+p.meds.map(m=>'<div class="med"><div style="flex:1;min-width:0"><b style="color:var(--head)">'+esc(m.name)+'</b><br><small style="color:var(--muted)">'+toBn(m.dose)+(m.rule?' · '+esc(m.rule):'')+(m.days?' · '+toBn(m.days)+' দিন':'')+'</small></div><div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end">'+m.times.map(t=>'<label class="chk" style="align-items:center;gap:6px"><input type="checkbox" data-med="'+m.id+'|'+t+'"'+(lg[m.id+'|'+t]?' checked':'')+'><span>'+t+'</span></label>').join('')+'</div></div>').join('')+'</div><div class="card"><h3>গত ৭ দিনের নিয়মিততা</h3>'+(ad==null?'<p style="margin-top:10px">এখনও হিসাব করার মতো তথ্য নেই।</p>':'<p class="q" style="margin-top:10px">'+toBn(ad)+'%</p><div class="prog"><i style="width:'+ad+'%"></i></div><p class="hint" style="margin-top:10px">ডাক্তার ফলো-আপে এই তথ্য দেখতে পাবেন। লাইভ সাইটে ওষুধের সময় হলে SMS রিমাইন্ডার যাবে।</p>')+'</div></div>';
+}
+function threadHtml(p,v){
+  v=v||'p';
+  const who=m=>m.from===v?'আপনি':(m.from==='p'?esc(p.name):'ডা. আরিফ রহমান');
+  return '<div class="thread" id="thr">'+(p.msgs.length?p.msgs.map(m=>'<div class="msg'+(m.from===v?' me':'')+'"><span>'+esc(m.text)+'</span><small>'+who(m)+' · '+fts(m.t)+'</small></div>').join(''):'<p class="hint">এখনও কোনো বার্তা নেই।</p>')+'</div>';
+}
+function pMsgs(p){
+  return '<div class="card" style="max-width:720px"><h3>ডাক্তারের সঙ্গে বার্তা</h3><p class="sec-note">এটি জরুরি নয় এমন ফলো-আপ প্রশ্নের জন্য। বুকে ব্যথা, শ্বাসকষ্ট বা অজ্ঞান হলে সঙ্গে সঙ্গে জরুরি হটলাইনে ফোন করুন বা জরুরি বিভাগে যান।</p><div style="margin-top:16px">'+threadHtml(p)+'</div><form class="form" data-form="msg" style="margin-top:16px" novalidate><div class="field"><label for="mgT">আপনার প্রশ্ন</label><textarea class="in" id="mgT" maxlength="500"></textarea></div><div class="err" id="eMg" role="alert"></div><div><button class="btn btn-pri" type="submit">পাঠান</button></div></form></div>';
+}
+function pProf(p){
+  return '<div class="grid g2" style="gap:22px;align-items:start"><div class="card"><h3>আমার তথ্য</h3><form class="form" data-form="prof" style="margin-top:14px" novalidate><div class="field"><label for="pfN">নাম</label><input class="in" id="pfN" value="'+esc(p.name)+'"></div><div class="row2"><div class="field"><label for="pfA">বয়স</label><input class="in" id="pfA" inputmode="numeric" value="'+toBn(p.age||'')+'"></div><div class="field"><label for="pfP">মোবাইল</label><input class="in" id="pfP" value="'+toBn(p.phone)+'" readonly></div></div><div class="field"><label for="pfE">ইমেইল</label><input class="in" id="pfE" type="email" value="'+esc(p.email||'')+'"></div><div class="field"><label for="pfAl">অ্যালার্জি (কমা দিয়ে লিখুন)</label><input class="in" id="pfAl" value="'+esc(p.allergies.join(', '))+'" placeholder="যেমন: পেনিসিলিন"></div><div class="err" id="eP" role="alert"></div><div><button class="btn btn-pri" type="submit">সংরক্ষণ করুন</button></div><p class="hint">অ্যালার্জি ও চলতি রোগের তথ্য ডাক্তারকে সঠিক চিকিৎসায় সাহায্য করে।</p></form></div><div class="card"><h3>গোপনীয়তা ও সম্মতি</h3><p style="margin-top:10px;color:var(--muted)">আপনার সম্মতি নথিভুক্ত আছে: '+p.consent.map(c=>fts(c)).join('; ')+'।</p>'+(PDEL?'<p class="sec-note">আপনার সব তথ্য মুছে ফেলার অনুরোধ করবেন?</p><div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap"><button class="btn btn-cta btn-sm" type="button" data-act="del-yes">হ্যাঁ, অনুরোধ জমা দিন</button><button class="btn btn-out btn-sm" type="button" data-act="del-no">না</button></div>':'<button class="btn btn-out btn-sm" type="button" data-act="del-ask" style="margin-top:14px">'+ico('trash')+'আমার তথ্য মুছে ফেলার অনুরোধ</button>')+'<p class="hint" style="margin-top:12px">লাইভ সাইটে অনুরোধ স্টাফের কাছে যাবে এবং আইনি সংরক্ষণের সময় শেষে তথ্য মুছে ফেলা হবে।</p></div></div>';
+}
+const PTABS=[['over','সারসংক্ষেপ'],['appts','অ্যাপয়েন্টমেন্ট'],['rx','প্রেসক্রিপশন ও রিপোর্ট'],['track','স্বাস্থ্য-ট্র্যাকার'],['meds','ওষুধ'],['msgs','বার্তা'],['prof','প্রোফাইল']];
+function renderPortal(){
+  const p=SESSION.pid?pt():null;
+  $('#pLogin').hidden=!!p;$('#pDash').hidden=!p;
+  if(!p)return;
+  const body={over:pOver,appts:pAppts,rx:pRx,track:pTrack,meds:pMeds,msgs:pMsgs,prof:pProf}[PT](p);
+  $('#pDash').innerHTML='<div class="dash-top"><div><h2 style="font-size:28px">স্বাগতম, '+esc(p.name)+'</h2><p style="color:var(--muted)">রোগী আইডি: '+toBn(p.id.toUpperCase())+(p.visits.some(v=>v.sample)?' <span class="sample">নমুনা তথ্য</span>':'')+'</p></div><div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-cta btn-sm" type="button" data-go="book">নতুন বুকিং</button><button class="btn btn-out btn-sm" type="button" data-act="logout">লগআউট</button></div></div><div class="tabs" role="tablist" aria-label="পোর্টাল">'+PTABS.map(t=>'<button type="button" role="tab" data-act="tab" data-tab="'+t[0]+'" aria-selected="'+(t[0]===PT)+'">'+t[1]+'</button>').join('')+'</div><div role="tabpanel">'+body+'</div>';
+  const th=$('#thr');if(th)th.scrollTop=th.scrollHeight;
+}
+$('#pDash').addEventListener('click',e=>{
+  const b=e.target.closest('[data-act]');if(!b)return;const act=b.getAttribute('data-act'),p=pt();
+  if(act==='tab'){PT=b.getAttribute('data-tab');renderPortal();return}
+  if(act==='logout'){SESSION.pid=null;PT='over';renderPortal();toast('লগআউট হয়েছে');return}
+  if(act==='resched'){startResched(b.getAttribute('data-id'));return}
+  if(act==='cancel-ask'){PCONF=b.getAttribute('data-id');renderPortal();return}
+  if(act==='cancel-no'){PCONF=null;renderPortal();return}
+  if(act==='cancel-yes'){const a=A_(b.getAttribute('data-id'));if(a){a.status='cancelled';save()}PCONF=null;renderPortal();toast('অ্যাপয়েন্টমেন্ট বাতিল হয়েছে। সময়টি অন্য রোগীর জন্য খালি হলো।');return}
+  if(act==='rx-open'){const pre=b.closest('.rx').querySelector('pre');pre.hidden=!pre.hidden;b.textContent=pre.hidden?'দেখুন':'বন্ধ করুন';b.setAttribute('aria-expanded',!pre.hidden);return}
+  if(act==='rx-copy'){const v=p.visits.filter(x=>x.id===b.getAttribute('data-id'))[0];copyText(rxText(v,p),b.closest('.rx').querySelector('pre'));return}
+  if(act==='del-ask'){PDEL=true;renderPortal();return}
+  if(act==='del-no'){PDEL=false;renderPortal();return}
+  if(act==='del-yes'){PDEL=false;renderPortal();toast('অনুরোধ নথিভুক্ত হয়েছে (ডেমো)');return}
+});
+function copyText(txt,pre){
+  const fb=()=>{if(pre){pre.hidden=false;const r=document.createRange();r.selectNodeContents(pre);const s=getSelection();s.removeAllRanges();s.addRange(r)}toast('কপি করা যায়নি, লেখাটি নির্বাচিত হয়েছে। নিজে কপি করে নিন')};
+  try{navigator.clipboard.writeText(txt).then(()=>toast('টেক্সট কপি হয়েছে'),fb)}catch(x){fb()}
+}
+$('#pDash').addEventListener('change',e=>{
+  const c=e.target.closest('[data-med]');if(!c)return;const p=pt();
+  if(!p.medLog[TODAY])p.medLog[TODAY]={};p.medLog[TODAY][c.getAttribute('data-med')]=c.checked;save();
+  const mc=medCount(p),bar=$('#pDash .prog i');if(bar)bar.style.width=(mc[1]?Math.round(mc[0]/mc[1]*100):0)+'%';
+  const t=$('#pDash .card p');if(t&&PT==='meds')t.textContent='আজ '+toBn(mc[0])+'/'+toBn(mc[1])+' ডোজ খাওয়া হয়েছে। খাওয়ার পর টিক দিন।';
+});
+$('#pDash').addEventListener('submit',e=>{
+  e.preventDefault();const f=e.target.getAttribute('data-form'),p=pt();
+  if(f==='vital'){
+    const d=$('#vD').value||TODAY,s=num($('#vS').value),di=num($('#vDi').value),su=num($('#vSu').value),w=num($('#vW').value);let er='';
+    if((s==null)!==(di==null))er='রক্তচাপের ওপরের ও নিচের দুটি সংখ্যাই দিন।';
+    else if(s!=null&&(s<70||s>260||di<40||di>160||di>=s))er='রক্তচাপের সংখ্যা ঠিক মনে হচ্ছে না। আবার দেখুন।';
+    else if(su!=null&&(su<1.5||su>40))er='শর্করার সংখ্যা ঠিক মনে হচ্ছে না।';
+    else if(w!=null&&(w<20||w>250))er='ওজনের সংখ্যা ঠিক মনে হচ্ছে না।';
+    else if(s==null&&su==null&&w==null)er='অন্তত একটি রিডিং দিন।';
+    else if(d>TODAY)er='ভবিষ্যতের তারিখ দেওয়া যাবে না।';
+    $('#eV').textContent=er;if(er)return;
+    const v={d:d,by:'patient'};if(s!=null){v.sys=s;v.dia=di}if(su!=null)v.sugar=su;if(w!=null)v.wt=w;p.vitals.push(v);save();renderPortal();toast('রিডিং সংরক্ষিত হয়েছে');return;
+  }
+  if(f==='msg'){
+    const t=$('#mgT').value.trim();if(t.length<3){$('#eMg').textContent='প্রশ্নটি লিখুন।';return}
+    p.msgs.push({from:'p',t:Date.now(),text:t});save();renderPortal();toast('বার্তা পাঠানো হয়েছে। ডাক্তার সুবিধামতো উত্তর দেবেন।');return;
+  }
+  if(f==='prof'){
+    const n=$('#pfN').value.trim(),a=num($('#pfA').value),m=$('#pfE').value.trim();
+    if(n.length<2){$('#eP').textContent='নাম লিখুন।';return}if(!mailOk(m)){$('#eP').textContent='ইমেইল ঠিকানাটি সঠিক নয়।';return}
+    p.name=n;if(a)p.age=a;p.email=m;p.allergies=$('#pfAl').value.split(/[,،]/).map(x=>x.trim()).filter(Boolean);save();renderPortal();toast('তথ্য সংরক্ষিত হয়েছে');return;
+  }
+  if(f==='upload'){
+    const fl=$('#rFile').files[0];if(!fl){$('#eUp').textContent='একটি ফাইল বেছে নিন।';return}
+    p.reports.push({id:nid('rp'),d:TODAY,name:fl.name,size:fl.size});save();renderPortal();toast('রিপোর্ট যোগ হয়েছে (ডেমোতে শুধু নাম সংরক্ষিত)');return;
+  }
+});
+
+/* ================= doctor / staff panel ================= */
+const DTABS=[['today','আজকের তালিকা',['doc','rec']],['patients','রোগী',['doc','rec']],['rx','প্রেসক্রিপশন',['doc']],['sched','সময়সূচি',['doc','rec']],['msgs','বার্তা',['doc']],['reviews','মতামত যাচাই',['doc']],['stats','পরিসংখ্যান',['doc']],['audit','নিরাপত্তা ও লগ',['doc']]];
+const QUICK=['ওষুধ চালিয়ে যান, পরবর্তী ভিজিটে আলোচনা করব।','অনুগ্রহ করে চেম্বারে এসে দেখা করুন।','রিপোর্টগুলো পোর্টালে আপলোড করুন।'];
+let RESET_ASK=false;
+const unread=()=>S.patients.filter(p=>p.msgs.length&&p.msgs[p.msgs.length-1].from==='p').length;
+const pendingRev=()=>S.reviews.filter(r=>r.status==='pending').length;
+const lastVisit=p=>p.visits.slice().sort((a,b)=>a.d<b.d?1:-1)[0];
+const newRx=(pid,apptId)=>({pid:pid||'',apptId:apptId||null,dx:'',notes:'',meds:[{name:'',dose:'',rule:'',days:''}],advice:'',tests:'',fu:'',vit:{sys:'',dia:'',sugar:'',wt:''},prev:false});
+
+function renderDoc(){
+  $('#docGate').hidden=!!DOC.role;$('#docApp').hidden=!DOC.role;
+  if(!DOC.role)return;
+  const rec=DOC.role==='rec';
+  const tabs=DTABS.filter(t=>t[2].indexOf(DOC.role)>-1);
+  if(!tabs.some(t=>t[0]===DOC.tab))DOC.tab='today';
+  const badge=k=>k==='msgs'&&unread()?'<span class="bd">'+toBn(unread())+'</span>':(k==='reviews'&&pendingRev()?'<span class="bd">'+toBn(pendingRev())+'</span>':'');
+  const body={today:dToday,patients:dPatients,rx:dRx,sched:dSched,msgs:dMsgs,reviews:dReviews,stats:dStats,audit:dAudit}[DOC.tab]();
+  $('#docApp').innerHTML=`<div class="dbar"><div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap"><span class="role">${ico(rec?'user':'shield')}${rec?'রিসেপশনিস্ট':'ডাক্তার'} হিসেবে প্রবেশ</span><span class="hint">${rec?'চিকিৎসা-তথ্য দেখা যায় না':'সব তথ্য দেখা ও লেখা যায়'}</span></div><div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-out btn-sm" type="button" data-d="role" data-r="${rec?'doc':'rec'}">${rec?'ডাক্তার':'রিসেপশনিস্ট'} ভূমিকায় যান</button><button class="btn btn-out btn-sm" type="button" data-d="exit">বের হন</button></div></div><div class="tabs" role="tablist" aria-label="প্যানেল">${tabs.map(t=>`<button type="button" role="tab" data-d="tab" data-tab="${t[0]}" aria-selected="${t[0]===DOC.tab}">${t[1]}${badge(t[0])}</button>`).join('')}</div><div role="tabpanel" id="dBody">${body}</div>`;
+}
+
+/* ---- today ---- */
+function dToday(){
+  const rec=DOC.role==='rec';
+  const all=S.appts.filter(a=>a.d===DOC.date);
+  const list=all.filter(a=>DOC.chf==='all'||a.ch===DOC.chf).sort((a,b)=>a.time<b.time?-1:a.time>b.time?1:0);
+  const cnt=s=>all.filter(a=>a.status===s).length;
+  const coll=all.filter(a=>a.paid&&a.status!=='cancelled').reduce((x,a)=>x+a.fee,0);
+  const open=CHIDS.some(c=>slotsFor(c,DOC.date));
+  const rows=list.map(a=>{
+    const p=P_(a.pid);if(!p)return '';
+    return `<div class="apt"><div class="ser"><b>${a.via==='walkin'?'W':toBn(serialOf(a))}</b><small>${a.via==='walkin'?'সরাসরি':tlabel(a.time)}</small></div><div class="ai"><button class="plink" type="button" data-d="open-rec" data-pid="${p.id}">${esc(p.name)}</button> <span class="hint">${toBn(p.age)} বছর</span> ${a.type==='new'?'<span class="pill p-sky">নতুন</span>':''}${(!rec&&a.why)?`<br><small class="hint">${esc(a.why)}</small>`:''}</div><div class="am">${CH[a.ch].t} · ${TN[a.type]}<br><button type="button" class="paidb${a.paid?' on':''}" data-d="paid" data-id="${a.id}" aria-pressed="${a.paid}">${a.paid?'ফি আদায় ✓ '+money(a.fee):'ফি বাকি '+money(a.fee)}</button></div><div class="ac"><select class="in" data-d="status" data-id="${a.id}" aria-label="অবস্থা: ${esc(p.name)}">${Object.keys(ST).map(k=>`<option value="${k}"${a.status===k?' selected':''}>${ST[k][0]}</option>`).join('')}</select>${(!rec&&a.status!=='done'&&a.status!=='cancelled'&&a.status!=='noshow')?`<button class="btn btn-pri btn-sm" type="button" data-d="start" data-id="${a.id}">ভিজিট শুরু</button>`:''}</div></div>`;
+  }).join('');
+  return `<div class="tools"><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><button class="btn btn-out btn-sm" type="button" data-d="prev" aria-label="আগের দিন">←</button><div class="field" style="min-width:0"><label class="sr" for="dDate">তারিখ</label><input class="in" type="date" id="dDate" value="${DOC.date}" style="min-height:40px;width:auto"></div><button class="btn btn-out btn-sm" type="button" data-d="next" aria-label="পরের দিন">→</button><button class="btn btn-out btn-sm" type="button" data-d="today">আজ</button><b style="color:var(--head)">${fdate(DOC.date,{weekday:'long',day:'numeric',month:'long'})}</b></div><div class="chips">${['all'].concat(CHIDS).map(c=>`<button class="chip" type="button" data-d="chf" data-c="${c}" aria-pressed="${DOC.chf===c}">${c==='all'?'সব চেম্বার':CH[c].t}</button>`).join('')}</div></div>
+  <div class="kpis"><div class="card stat"><b>${toBn(all.filter(a=>a.status!=='cancelled').length)}</b><span>মোট বুকিং</span></div><div class="card stat"><b>${toBn(cnt('arrived')+cnt('inprogress'))}</b><span>এসেছেন / ভিজিটে</span></div><div class="card stat"><b>${toBn(cnt('done'))}</b><span>সম্পন্ন</span></div><div class="card stat"><b>${money(coll)}</b><span>আদায় হওয়া ফি</span></div></div>
+  ${rows?`<div class="aptl">${rows}</div>`:`<div class="card"><p>${open?'এই দিনে কোনো বুকিং নেই।':'এই দিনে কোনো চেম্বার খোলা নেই বা ছুটি দেওয়া আছে।'}</p><button class="btn btn-out btn-sm" type="button" data-d="today" style="margin-top:12px">আজকের দিনে ফিরুন</button></div>`}
+  <p class="hint" style="margin-top:14px">অবস্থা বদলালে রোগীর পোর্টালেও তা প্রতিফলিত হয়। "আসেননি" চিহ্নিত রোগীর সংখ্যা পরিসংখ্যানে যোগ হয়।</p>`;
+}
+
+/* ---- patients ---- */
+function plistHtml(){
+  const q=DOC.search.trim();
+  const l=S.patients.filter(p=>!q||(p.name+' '+p.phone+' '+toBn(p.phone)).indexOf(q)>-1||(p.name+toBn(p.phone)).indexOf(toBn(q))>-1).sort((a,b)=>{const x=lastVisit(a),y=lastVisit(b);return (y?y.d:'')<(x?x.d:'')?-1:1});
+  return l.length?l.map(p=>{const lv=lastVisit(p);return `<button type="button" class="prow" data-d="open-rec" data-pid="${p.id}"><span class="av c-teal">${initial(p.name)}</span><span class="pi"><b>${esc(p.name)}</b><small>${toBn(p.age)} বছর · ${toBn(p.phone)}</small></span><span class="pm">${lv?'শেষ ভিজিট: '+fdate(lv.d,{day:'numeric',month:'short'}):'নতুন রোগী'}${p.nextFu?'<br><small>ফলো-আপ: '+fdate(p.nextFu,{day:'numeric',month:'short'})+'</small>':''}</span></button>`}).join(''):'<p class="hint">কোনো রোগী পাওয়া যায়নি।</p>';
+}
+function dPatients(){
+  if(DOC.pid&&P_(DOC.pid))return dRecord(P_(DOC.pid));
+  return `<div class="tools"><div class="search" style="max-width:420px"><label class="sr" for="dSearch">রোগী খুঁজুন</label><input class="in" id="dSearch" type="search" placeholder="নাম বা মোবাইল নম্বর" value="${esc(DOC.search)}"></div><span class="hint">মোট ${toBn(S.patients.length)} জন রোগী</span></div><div class="plist" id="plist">${plistHtml()}</div>`;
+}
+function dRecord(p){
+  const rec=DOC.role==='rec';
+  const aps=S.appts.filter(a=>a.pid===p.id).sort((a,b)=>(a.d+a.time)<(b.d+b.time)?1:-1).slice(0,8);
+  let h=`<button class="link-more" type="button" data-d="back" style="margin:0 0 14px">← সব রোগী</button>`;
+  h+=`<div class="card" style="margin-bottom:22px"><div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;justify-content:space-between"><div style="display:flex;gap:14px;align-items:center;min-width:0"><span class="av c-teal" style="width:56px;height:56px;font-size:22px">${initial(p.name)}</span><div style="min-width:0"><h2 style="font-size:26px">${esc(p.name)}</h2><p class="hint">${toBn(p.age)} বছর${p.sex?' · '+p.sex:''} · ${toBn(p.phone)}${p.email?' · '+esc(p.email):''}</p></div></div>${rec?'':`<button class="btn btn-cta btn-sm" type="button" data-d="new-rx" data-pid="${p.id}">নতুন ভিজিট নোট ও প্রেসক্রিপশন</button>`}</div>${rec?'':`<div style="margin-top:14px">${p.allergies.length?`<span class="tagc al">অ্যালার্জি: ${esc(p.allergies.join(', '))}</span>`:'<span class="tagc">অ্যালার্জির তথ্য নেই</span>'}${p.conds.map(c=>`<span class="tagc">${esc(c)}</span>`).join('')}</div>`}</div>`;
+  if(rec){
+    h+=`<div class="card" style="margin-bottom:22px"><p>${ico('lock','color:var(--link)')} চিকিৎসা-সংক্রান্ত তথ্য (রোগ, ওষুধ, রিডিং, নোট) শুধু ডাক্তারের জন্য। রিসেপশনিস্ট শুধু যোগাযোগ ও বুকিং দেখতে পারেন।</p></div>`;
+  }else{
+    const bp=p.vitals.filter(v=>v.sys!=null&&v.dia!=null),sg=p.vitals.filter(v=>v.sugar!=null),tg=[];if(p.target&&p.target.sys)tg.push({y:p.target.sys},{y:p.target.dia});
+    h+=`<div class="grid g2" style="gap:22px;align-items:start;margin-bottom:22px"><div class="card"><h3>রোগের ট্রেন্ড</h3><div style="margin-top:12px">${lineChart({label:'রক্তচাপ',unit:'mmHg',target:tg,tlabel:'লক্ষ্য '+(p.target&&p.target.sys?toBn(p.target.sys+'/'+p.target.dia):''),series:[{name:'সিস্টোলিক',color:'var(--btn)',pts:bp.map(v=>({x:v.d,y:v.sys}))},{name:'ডায়াস্টোলিক',color:'var(--sky)',shape:'sq',pts:bp.map(v=>({x:v.d,y:v.dia}))}]})}</div>${sg.length?`<h3 style="margin:20px 0 10px">শর্করা (mmol/L)</h3>${lineChart({label:'শর্করা',unit:'mmol/L',dec:1,target:p.target&&p.target.sugar?[{y:p.target.sugar}]:[],tlabel:'লক্ষ্য '+(p.target&&p.target.sugar?toBn(p.target.sugar):''),series:[{name:'শর্করা',color:'var(--btn)',pts:sg.map(v=>({x:v.d,y:v.sugar}))}]})}`:''}</div>
+    <div class="card"><h3>চলতি ওষুধ</h3>${p.meds.length?p.meds.map(m=>`<div class="med"><div style="flex:1;min-width:0"><b style="color:var(--head)">${esc(m.name)}</b><br><small class="hint">${toBn(m.dose)}${m.rule?' · '+esc(m.rule):''}${m.days?' · '+toBn(m.days)+' দিন':''}</small></div></div>`).join(''):'<p style="margin-top:10px">কোনো ওষুধ চলছে না।</p>'}${adherence(p)!=null?`<p class="hint" style="margin-top:12px">গত ৭ দিনে রোগী ${toBn(adherence(p))}% ডোজ খেয়েছেন বলে জানিয়েছেন।</p>`:''}
+    <h3 style="margin:22px 0 10px">রোগীর তথ্য ও লক্ষ্যমাত্রা</h3><form class="form" data-df="clin" novalidate><div class="field"><label for="cC">চলতি রোগ (কমা দিয়ে)</label><input class="in" id="cC" value="${esc(p.conds.join(', '))}"></div><div class="field"><label for="cA">অ্যালার্জি (কমা দিয়ে)</label><input class="in" id="cA" value="${esc(p.allergies.join(', '))}"></div><div class="row2"><div class="field"><label for="tS">লক্ষ্য: ওপরের চাপ</label><input class="in" id="tS" inputmode="numeric" value="${p.target&&p.target.sys?toBn(p.target.sys):''}"></div><div class="field"><label for="tD">লক্ষ্য: নিচের চাপ</label><input class="in" id="tD" inputmode="numeric" value="${p.target&&p.target.dia?toBn(p.target.dia):''}"></div></div><div class="field"><label for="tU">লক্ষ্য: শর্করা (mmol/L)</label><input class="in" id="tU" inputmode="decimal" value="${p.target&&p.target.sugar?toBn(p.target.sugar):''}"></div><div class="err" id="eC" role="alert"></div><div><button class="btn btn-pri btn-sm" type="submit">সংরক্ষণ</button></div></form></div></div>`;
+    h+=`<div class="card" style="margin-bottom:22px"><h3>ক্লিনিকে নেওয়া রিডিং যোগ করুন</h3><form class="form" data-df="vit" style="margin-top:12px" novalidate><div class="row4"><div class="field"><label for="dvS">ওপরের চাপ</label><input class="in" id="dvS" inputmode="numeric"></div><div class="field"><label for="dvD">নিচের চাপ</label><input class="in" id="dvD" inputmode="numeric"></div><div class="field"><label for="dvU">শর্করা</label><input class="in" id="dvU" inputmode="decimal"></div><div class="field"><label for="dvW">ওজন</label><input class="in" id="dvW" inputmode="decimal"></div></div><div class="err" id="eVv" role="alert"></div><div><button class="btn btn-out btn-sm" type="submit">রিডিং যোগ করুন</button></div></form></div>`;
+    h+=`<div class="card" style="margin-bottom:22px"><h3>ভিজিটের টাইমলাইন</h3><div class="tl" style="margin-top:16px">${p.visits.length?p.visits.slice().sort((a,b)=>a.d<b.d?1:-1).map(v=>`<div class="it"><span class="yr">${fdate(v.d)} · ${CH[v.ch].t} · ${TN[v.type]}</span><b>${esc(v.dx)}</b><span>${esc(v.notes||'')}${v.rx&&v.rx.meds.length?'<br>ওষুধ: '+v.rx.meds.map(m=>esc(m.name)+' '+toBn(m.dose)).join('; '):''}${v.rx&&v.rx.advice?'<br>পরামর্শ: '+esc(v.rx.advice):''}${v.rx&&v.rx.tests?'<br>পরীক্ষা: '+esc(v.rx.tests):''}</span></div>`).join(''):'<p class="hint">এখনও কোনো ভিজিট নেই।</p>'}</div></div>`;
+    h+=`<div class="card" style="margin-bottom:22px"><h3>রোগীর আপলোড করা রিপোর্ট</h3>${p.reports.length?'<ul style="margin:10px 0 0;padding-left:20px">'+p.reports.map(r=>`<li>${esc(r.name)} <span class="hint">(${fdate(r.d,{day:'numeric',month:'short'})})</span></li>`).join('')+'</ul>':'<p style="margin-top:10px">কোনো রিপোর্ট নেই।</p>'}</div>`;
+  }
+  h+=`<div class="grid g2" style="gap:22px;align-items:start"><div class="card"><h3>বুকিংয়ের ইতিহাস</h3><div class="tbl-wrap" style="margin-top:12px"><table><thead><tr><th>তারিখ</th><th>চেম্বার</th><th>অবস্থা</th></tr></thead><tbody>${aps.map(a=>`<tr><td>${fdate(a.d,{day:'numeric',month:'short'})} ${a.via==='walkin'?'':tlabel(a.time)}</td><td>${CH[a.ch].t}</td><td>${pill(a.status)}</td></tr>`).join('')||'<tr><td colspan="3">কোনো বুকিং নেই।</td></tr>'}</tbody></table></div></div><div class="card"><h3>সম্মতির রেকর্ড</h3><p style="margin-top:10px;color:var(--muted)">${p.consent.length?p.consent.map(c=>fts(c)).join('; '):'কোনো সম্মতি নথিভুক্ত নেই'}</p><p class="hint" style="margin-top:10px">প্রতিটি বুকিংয়ে রোগী গোপনীয়তা নীতিতে সম্মতি দেন। এই রেকর্ড আইনি প্রয়োজনে রাখা হয়।</p></div></div>`;
+  return h;
+}
+
+/* ---- prescription composer ---- */
+function rxPreviewText(r,p){
+  const meds=r.meds.filter(m=>m.name.trim()).map(m=>({name:m.name.trim(),dose:m.dose.trim(),rule:m.rule.trim(),days:num(m.days)||0}));
+  return rxText({d:TODAY,rx:{dx:r.dx.trim()||'-',meds:meds,advice:r.advice.trim(),tests:r.tests.trim(),fu:+r.fu||0}},p);
+}
+function dRx(){
+  if(DOC.rxDone){
+    const p=P_(DOC.rxDone.pid),v=p.visits.filter(x=>x.id===DOC.rxDone.vid)[0];
+    return `<div class="card done-box" style="max-width:680px;margin-inline:auto"><div class="ok">${ico('check','width:34px;height:34px')}</div><h2 style="font-size:26px">প্রেসক্রিপশন সংরক্ষিত হয়েছে</h2><p style="color:var(--muted);margin-top:8px">${esc(p.name)}-এর পোর্টালে প্রেসক্রিপশন, ওষুধের তালিকা${v.rx.fu?' ও ফলো-আপের তারিখ ('+fdate(p.nextFu)+')':''} যুক্ত হয়েছে।</p><div class="rx" style="text-align:left;margin-top:16px"><pre style="border-top:0;border-radius:14px">${esc(rxText(v,p))}</pre></div><div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:16px"><button class="btn btn-pri" type="button" data-d="rx-copy">${ico('copy')}টেক্সট কপি</button><button class="btn btn-out" type="button" data-d="rx-done-today">আজকের তালিকা</button><button class="btn btn-out" type="button" data-d="open-rec" data-pid="${p.id}">রোগীর রেকর্ড</button></div></div>`;
+  }
+  if(!DOC.rx)DOC.rx=newRx();
+  const r=DOC.rx,p=r.pid?P_(r.pid):null;
+  const today=S.appts.filter(a=>a.d===TODAY&&a.status!=='cancelled'&&a.status!=='done'&&a.status!=='noshow');
+  let h=`<datalist id="drugl">${DRUGS.map(d=>`<option value="${d}">`).join('')}</datalist><datalist id="dxl">${DXS.map(d=>`<option value="${d}">`).join('')}</datalist><datalist id="rulel"><option value="সকালে"><option value="খাবারের আগে"><option value="খাবারের পরে"><option value="রাতে"></datalist>`;
+  h+=`<div class="grid g2" style="gap:22px;align-items:start"><div class="card"><h3>নতুন ভিজিট ও প্রেসক্রিপশন</h3><div class="form" style="margin-top:14px"><div class="field"><label for="rxP">রোগী</label><select class="in" id="rxP" data-rx="pid"><option value="">রোগী বেছে নিন</option>${S.patients.map(x=>`<option value="${x.id}"${r.pid===x.id?' selected':''}>${esc(x.name)} (${toBn(x.phone)})</option>`).join('')}</select></div>${today.length&&!p?`<div class="field"><span class="lbl">অথবা আজকের অপেক্ষমাণ রোগী থেকে</span><div class="chips">${today.map(a=>`<button type="button" class="chip" data-d="rx-from" data-id="${a.id}">${esc(P_(a.pid).name)}</button>`).join('')}</div></div>`:''}`;
+  if(p){
+    const lb=lastV(p,'sys'),lv=lastVisit(p);
+    h+=`<div class="banner">${p.allergies.length?`<span class="tagc al">অ্যালার্জি: ${esc(p.allergies.join(', '))}</span>`:''}${p.conds.map(c=>`<span class="tagc">${esc(c)}</span>`).join('')}<p class="hint" style="margin-top:8px">${lb?'শেষ রক্তচাপ '+toBn(lb.sys+'/'+lb.dia)+' ('+fdate(lb.d,{day:'numeric',month:'short'})+')। ':''}${lv?'শেষ ভিজিট '+fdate(lv.d,{day:'numeric',month:'short'})+': '+esc(lv.dx)+'।':'প্রথমবার আসছেন।'}${p.meds.length?' চলতি ওষুধ: '+p.meds.map(m=>esc(m.name)).join(', ')+'।':''}</p></div>`;
+    h+=`<div class="field"><label for="rxT">নমুনা টেমপ্লেট</label><div style="display:flex;gap:8px;flex-wrap:wrap"><select class="in" id="rxT" data-rx="tpl" style="flex:1 1 200px"><option value="">টেমপ্লেট বেছে নিন</option>${Object.keys(TEMPL).map(k=>`<option value="${k}">${TEMPL[k].n}</option>`).join('')}</select><button class="btn btn-out btn-sm" type="button" data-d="rx-prevcopy"${lv&&lv.rx?'':' disabled'}>আগের প্রেসক্রিপশন কপি</button></div><p class="hint">টেমপ্লেটের ওষুধ ও মাত্রা শুধু নমুনা। ডাক্তার যাচাই করে সংশোধন করবেন।</p></div>
+    <div class="field"><label for="rxDx">নির্ণয়</label><input class="in" id="rxDx" list="dxl" data-rx="dx" value="${esc(r.dx)}"></div>
+    <div class="field"><label for="rxN">ভিজিট নোট (শুধু ডাক্তারের জন্য)</label><textarea class="in" id="rxN" data-rx="notes">${esc(r.notes)}</textarea></div>
+    <div class="field"><span class="lbl">আজকের রিডিং (ঐচ্ছিক)</span><div class="row4"><input class="in" aria-label="ওপরের চাপ" placeholder="ওপরের চাপ" inputmode="numeric" data-rx="v:sys" value="${esc(r.vit.sys)}"><input class="in" aria-label="নিচের চাপ" placeholder="নিচের চাপ" inputmode="numeric" data-rx="v:dia" value="${esc(r.vit.dia)}"><input class="in" aria-label="শর্করা" placeholder="শর্করা" inputmode="decimal" data-rx="v:sugar" value="${esc(r.vit.sugar)}"><input class="in" aria-label="ওজন" placeholder="ওজন" inputmode="decimal" data-rx="v:wt" value="${esc(r.vit.wt)}"></div></div>`;
+  }
+  h+=`</div></div>`;
+  if(p){
+    h+=`<div class="card"><h3>ওষুধ ও পরামর্শ</h3><div class="form" style="margin-top:14px"><div>${r.meds.map((m,i)=>`<div class="rxrow"><input class="in" aria-label="ওষুধের নাম" placeholder="ওষুধ" list="drugl" data-rx="m:${i}:name" value="${esc(m.name)}"><input class="in" aria-label="মাত্রা" placeholder="১+০+১" data-rx="m:${i}:dose" value="${esc(m.dose)}"><input class="in" aria-label="নিয়ম" placeholder="নিয়ম" list="rulel" data-rx="m:${i}:rule" value="${esc(m.rule)}"><input class="in" aria-label="কত দিন" placeholder="দিন" inputmode="numeric" data-rx="m:${i}:days" value="${esc(m.days)}"><button type="button" class="btn btn-out btn-sm" data-d="rx-delm" data-i="${i}" aria-label="ওষুধ মুছুন">${ico('trash')}</button></div>`).join('')}</div><div><button class="btn btn-out btn-sm" type="button" data-d="rx-addm">${ico('plus')}ওষুধ যোগ করুন</button></div>
+    <div class="field"><label for="rxA">পরামর্শ</label><textarea class="in" id="rxA" data-rx="advice">${esc(r.advice)}</textarea></div>
+    <div class="field"><label for="rxTe">পরীক্ষা</label><input class="in" id="rxTe" data-rx="tests" value="${esc(r.tests)}" placeholder="যেমন: ইসিজি, HbA1c"></div>
+    <div class="field"><label for="rxF">পরবর্তী ভিজিট</label><select class="in" id="rxF" data-rx="fu">${[['','ফলো-আপ লাগবে না'],['7','৭ দিন পর'],['14','১৪ দিন পর'],['28','৪ সপ্তাহ পর'],['42','৬ সপ্তাহ পর'],['90','৩ মাস পর']].map(o=>`<option value="${o[0]}"${r.fu===o[0]?' selected':''}>${o[1]}</option>`).join('')}</select><p class="hint">নির্বাচন করলে রোগীর পোর্টালে ফলো-আপের তারিখ ও রিমাইন্ডার দেখাবে।</p></div>
+    <div class="err" id="eRx" role="alert"></div><div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-out" type="button" data-d="rx-prev">${r.prev?'প্রিভিউ বন্ধ করুন':'প্রিভিউ দেখুন'}</button><button class="btn btn-cta" type="button" data-d="rx-save">সংরক্ষণ ও রোগীর পোর্টালে পাঠান</button></div>${r.prev?`<div class="rx"><pre style="border-top:0;border-radius:14px">${esc(rxPreviewText(r,p))}</pre></div>`:''}</div></div>`;
+  }else h+=`<div class="card"><p class="hint">আগে রোগী বেছে নিন। রোগীর অ্যালার্জি, চলতি ওষুধ ও শেষ ভিজিটের তথ্য এখানে দেখা যাবে।</p></div>`;
+  return h+'</div>';
+}
+function applyTemplate(k){
+  const t=TEMPL[k];if(!t)return;const r=DOC.rx;
+  r.dx=t.dx;r.meds=t.meds.length?t.meds.map(m=>({name:m[0],dose:m[1],rule:m[2],days:String(m[3])})):[{name:'',dose:'',rule:'',days:''}];r.advice=t.advice;r.tests=t.tests;r.fu=t.fu?String(t.fu):'';
+}
+function saveRx(){
+  const r=DOC.rx,p=P_(r.pid),err=m=>{const e=$('#eRx');if(e)e.textContent=m};
+  if(!p)return err('রোগী বেছে নিন।');
+  if(!r.dx.trim())return err('নির্ণয় লিখুন।');
+  const meds=r.meds.filter(m=>m.name.trim()||m.dose.trim());
+  for(const m of meds){if(!m.name.trim())return err('ওষুধের নাম লিখুন।');if(!m.dose.trim())return err('"'+m.name+'"-এর মাত্রা লিখুন, যেমন ১+০+১।')}
+  const s=num(r.vit.sys),d=num(r.vit.dia),u=num(r.vit.sugar),w=num(r.vit.wt);
+  if((s==null)!==(d==null))return err('রক্তচাপের দুটি সংখ্যাই দিন।');
+  if(s!=null&&(s<70||s>260||d<40||d>160||d>=s))return err('রক্তচাপের সংখ্যা ঠিক মনে হচ্ছে না।');
+  if(u!=null&&(u<1.5||u>40))return err('শর্করার সংখ্যা ঠিক মনে হচ্ছে না।');
+  if(w!=null&&(w<20||w>250))return err('ওজনের সংখ্যা ঠিক মনে হচ্ছে না।');
+  const a=r.apptId?A_(r.apptId):null,ch=a?a.ch:'dhm',type=a?a.type:(p.visits.length?'fu':'new');
+  const fu=+r.fu||0,mm=meds.map(m=>({name:m.name.trim(),dose:m.dose.trim(),rule:m.rule.trim(),days:num(m.days)||0}));
+  const v={id:nid('v'),d:TODAY,ch:ch,type:type,dx:r.dx.trim(),notes:r.notes.trim(),rx:{dx:r.dx.trim(),meds:mm,advice:r.advice.trim(),tests:r.tests.trim(),fu:fu},fee:a?a.fee:feeOf(ch,type),paid:a?a.paid:false,sample:false};
+  p.visits.push(v);
+  if(mm.length)p.meds=mm.map(m=>mkMed([m.name,m.dose,m.rule,m.days]));
+  if(s!=null||u!=null||w!=null){const x={d:TODAY,by:'clinic'};if(s!=null){x.sys=s;x.dia=d}if(u!=null)x.sugar=u;if(w!=null)x.wt=w;p.vitals.push(x)}
+  if(fu)p.nextFu=addDays(TODAY,fu);
+  if(a)a.status='done';else S.appts.push({id:nid('a'),pid:p.id,d:TODAY,time:'00:00',ch:ch,type:type,svc:'',status:'done',paid:false,fee:v.fee,why:'',created:Date.now(),via:'walkin'});
+  audit('প্রেসক্রিপশন সংরক্ষণ: '+p.name);save();
+  DOC.rxDone={pid:p.id,vid:v.id};DOC.rx=null;renderDoc();toast('প্রেসক্রিপশন সংরক্ষিত হয়েছে');window.scrollTo({top:0});
+}
+
+/* ---- schedule ---- */
+function dSched(){
+  let h='<div class="grid g3" style="gap:22px;margin-bottom:22px">';
+  CHIDS.forEach(c=>{
+    const sc=S.sched[c];
+    const out=S.appts.filter(a=>a.ch===c&&a.d>=TODAY&&(a.status==='booked'||a.status==='arrived')&&(sc.days.indexOf(dow(a.d))<0||tmin(a.time)<tmin(sc.from)||tmin(a.time)+STEP>tmin(sc.to))).length;
+    h+=`<div class="card"><h3>${CH[c].t}</h3><p class="hint" style="margin-top:6px">${slotList(sc).length} টি স্লট, প্রতিটি ${toBn(STEP)} মিনিট</p><div class="opts" style="grid-template-columns:repeat(auto-fill,minmax(92px,1fr));margin-top:14px">${ORDER.map(d=>opt(DAYN[d],sc.days.indexOf(d)>-1,'data-d="day" data-ch="'+c+'" data-day="'+d+'"')).join('')}</div><div class="row2" style="margin-top:14px"><div class="field"><label for="sf_${c}">শুরু</label><input class="in" type="time" id="sf_${c}" data-d="time" data-ch="${c}" data-k="from" value="${sc.from}"></div><div class="field"><label for="st_${c}">শেষ</label><input class="in" type="time" id="st_${c}" data-d="time" data-ch="${c}" data-k="to" value="${sc.to}"></div></div>${out?`<p class="sec-note">${toBn(out)}টি আসন্ন বুকিং এই নতুন সময়সূচির বাইরে পড়েছে। রোগীদের জানাতে হবে।</p>`:''}</div>`;
+  });
+  h+='</div>';
+  const bl=S.blocks.filter(b=>b.d>=TODAY).sort((a,b)=>a.d<b.d?-1:1);
+  h+=`<div class="grid g2" style="gap:22px;align-items:start"><div class="card"><h3>ছুটি বা কনফারেন্সের জন্য দিন বন্ধ করুন</h3><form class="form" data-df="block" style="margin-top:14px" novalidate><div class="row2"><div class="field"><label for="bkD">তারিখ</label><input class="in" type="date" id="bkD" min="${TODAY}"></div><div class="field"><label for="bkC">চেম্বার</label><select class="in" id="bkC"><option value="all">সব চেম্বার</option>${CHIDS.map(c=>`<option value="${c}">${CH[c].t}</option>`).join('')}</select></div></div><div class="field"><label for="bkR">কারণ (ঐচ্ছিক)</label><input class="in" id="bkR" placeholder="যেমন: কনফারেন্স"></div><div class="err" id="eBk" role="alert"></div><div><button class="btn btn-pri btn-sm" type="submit">দিন বন্ধ করুন</button></div><p class="hint">বন্ধ করলে ওই দিন রোগীর বুকিং পাতা থেকে সরে যায়।</p></form></div><div class="card"><h3>বন্ধ থাকা দিন</h3>${bl.length?bl.map(b=>`<div class="med"><div style="flex:1;min-width:0"><b style="color:var(--head)">${fdate(b.d,{weekday:'long',day:'numeric',month:'long'})}</b><br><small class="hint">${b.ch==='all'?'সব চেম্বার':CH[b.ch].t}${b.reason?' · '+esc(b.reason):''}</small></div><button class="btn btn-out btn-sm" type="button" data-d="unblock" data-id="${b.id}">খুলে দিন</button></div>`).join(''):'<p style="margin-top:10px">কোনো দিন বন্ধ নেই।</p>'}</div></div>`;
+  return h;
+}
+
+/* ---- messages ---- */
+function dMsgs(){
+  const th=S.patients.filter(p=>p.msgs.length).sort((a,b)=>b.msgs[b.msgs.length-1].t-a.msgs[a.msgs.length-1].t);
+  if(!th.length)return '<div class="card"><p>এখনও কোনো বার্তা নেই।</p></div>';
+  if(!DOC.mpid||!th.some(p=>p.id===DOC.mpid))DOC.mpid=th[0].id;
+  const p=P_(DOC.mpid);
+  return `<div class="msgl"><div class="plist">${th.map(x=>{const l=x.msgs[x.msgs.length-1];return `<button type="button" class="prow${x.id===DOC.mpid?' on':''}" data-d="mthread" data-pid="${x.id}"><span class="av c-sky">${initial(x.name)}</span><span class="pi"><b>${esc(x.name)}${l.from==='p'?' <span class="pill p-wait">উত্তর বাকি</span>':''}</b><small>${esc(l.text.slice(0,48))}${l.text.length>48?'…':''}</small></span></button>`}).join('')}</div><div class="card"><h3>${esc(p.name)}</h3>${threadHtml(p,'d')}<form class="form" data-df="reply" style="margin-top:16px" novalidate><div class="chips">${QUICK.map((q,i)=>`<button type="button" class="chip" data-d="quick" data-i="${i}">${esc(q.slice(0,22))}…</button>`).join('')}</div><div class="field"><label for="dRep">উত্তর</label><textarea class="in" id="dRep" maxlength="500"></textarea></div><div class="err" id="eRep" role="alert"></div><div><button class="btn btn-pri btn-sm" type="submit">উত্তর পাঠান</button></div></form></div></div>`;
+}
+
+/* ---- reviews ---- */
+function dReviews(){
+  const pend=S.reviews.filter(r=>r.status==='pending'),pub=S.reviews.filter(r=>r.status==='approved').sort((a,b)=>b.created-a.created);
+  const card=(r,btns)=>`<div class="card rev" style="box-shadow:none">${stars(r.r)}<p style="margin-top:8px;color:var(--fg)">${esc(r.t)}</p><div class="who" style="justify-content:space-between;flex-wrap:wrap"><div style="display:flex;gap:12px;align-items:center"><span class="av c-${r.col||'teal'}">${initial(r.name)}</span><div><b>${esc(r.name)}</b><small>${esc(r.tag)}${r.sample?'<span class="sample">নমুনা</span>':''}</small></div></div><div style="display:flex;gap:8px">${btns}</div></div></div>`;
+  return `<div class="card" style="margin-bottom:22px"><h3>যাচাইয়ের অপেক্ষায় (${toBn(pend.length)})</h3><div class="grid g2" style="margin-top:14px;gap:16px">${pend.map(r=>card(r,`<button class="btn btn-pri btn-sm" type="button" data-d="rv-ok" data-id="${r.id}">প্রকাশ করুন</button><button class="btn btn-out btn-sm" type="button" data-d="rv-no" data-id="${r.id}">বাতিল</button>`)).join('')||'<p class="hint">কোনো নতুন মতামত নেই।</p>'}</div></div><div class="card"><h3>প্রকাশিত (${toBn(pub.length)})</h3><div class="grid g2" style="margin-top:14px;gap:16px">${pub.map(r=>card(r,`<button class="btn btn-out btn-sm" type="button" data-d="rv-no" data-id="${r.id}">সরিয়ে ফেলুন</button>`)).join('')}</div></div>`;
+}
+
+/* ---- stats ---- */
+function dStats(){
+  const from30=addDays(TODAY,-29),from90=addDays(TODAY,-89);
+  const done30=S.appts.filter(a=>a.status==='done'&&a.d>=from30&&a.d<=TODAY);
+  const n30=done30.filter(a=>a.type==='new').length;
+  const d90=S.appts.filter(a=>a.status==='done'&&a.d>=from90&&a.d<=TODAY).length,ns90=S.appts.filter(a=>a.status==='noshow'&&a.d>=from90&&a.d<=TODAY).length;
+  const nsr=d90+ns90?Math.round(ns90/(d90+ns90)*100):0;
+  const rev=done30.filter(a=>a.paid).reduce((x,a)=>x+a.fee,0);
+  const weeks=[];for(let i=7;i>=0;i--){const end=addDays(TODAY,-7*i),st=addDays(end,-6);weeks.push({l:fshort(end),v:S.appts.filter(a=>a.status==='done'&&a.d>=st&&a.d<=end).length})}
+  const dx={};S.patients.forEach(p=>p.visits.forEach(v=>{if(v.d>=from90)dx[v.dx]=(dx[v.dx]||0)+1}));
+  const dxl=Object.keys(dx).map(k=>({l:k,v:dx[k]})).sort((a,b)=>b.v-a.v).slice(0,5);
+  const chl=CHIDS.map(c=>({l:CH[c].t,v:done30.filter(a=>a.ch===c).length}));
+  return `<div class="kpis"><div class="card stat"><b>${toBn(done30.length)}</b><span>গত ৩০ দিনে রোগী দেখা</span></div><div class="card stat"><b>${toBn(done30.length?Math.round(n30/done30.length*100):0)}%</b><span>নতুন রোগী (বাকিরা ফলো-আপ)</span></div><div class="card stat"><b>${toBn(nsr)}%</b><span>না-আসার হার (৯০ দিন)</span></div><div class="card stat"><b>${money(rev)}</b><span>আদায় হওয়া ফি (৩০ দিন)</span></div></div><div class="grid g2" style="gap:22px;align-items:start"><div class="card"><h3>সপ্তাহে রোগী দেখা (গত ৮ সপ্তাহ)</h3><p class="hint" style="margin-bottom:12px">প্রতিটি স্তম্ভ সপ্তাহের শেষ তারিখ অনুযায়ী</p>${vbars(weeks,'গত আট সপ্তাহে সম্পন্ন ভিজিট')}</div><div class="card"><h3>সবচেয়ে সাধারণ নির্ণয় (৯০ দিন)</h3><div style="margin-top:14px">${dxl.length?hbars(dxl):'<p class="hint">তথ্য নেই।</p>'}</div><h3 style="margin-top:24px">চেম্বার অনুযায়ী (৩০ দিন)</h3><div style="margin-top:14px">${hbars(chl)}</div></div></div><p class="hint" style="margin-top:14px">সব সংখ্যা এখনকার বুকিং ও ভিজিটের তথ্য থেকে হিসাব হয়। ডেমোর তথ্য নমুনা।</p>`;
+}
+
+/* ---- audit ---- */
+function dAudit(){
+  const withC=S.patients.filter(p=>p.consent.length).length;
+  return `<div class="grid g2" style="gap:22px;align-items:start"><div class="card"><h3 style="display:flex;gap:10px;align-items:center">${ico('lock','color:var(--link)')}কে কখন কী করেছেন</h3><div class="tbl-wrap" style="margin-top:14px"><table><thead><tr><th>সময়</th><th>কে</th><th>কাজ</th></tr></thead><tbody>${S.audit.slice(0,25).map(l=>`<tr><td>${fts(l.t)}</td><td>${l.who}</td><td>${esc(l.text)}</td></tr>`).join('')||'<tr><td colspan="3">কোনো লগ নেই।</td></tr>'}</tbody></table></div><p class="hint" style="margin-top:10px">লাইভ সাইটে প্রতিটি রেকর্ড খোলা, বদল ও প্রেসক্রিপশন এভাবে নথিভুক্ত হয় এবং মুছে ফেলা যায় না।</p></div><div style="display:grid;gap:22px"><div class="card"><h3>সম্মতি ও ডেটা সুরক্ষা</h3><ul class="clist"><li>${toBn(withC)}/${toBn(S.patients.length)} জন রোগীর সম্মতি নথিভুক্ত আছে</li><li>রিসেপশনিস্ট চিকিৎসা-তথ্য দেখতে পান না</li><li>লাইভ সাইটে: ২-ধাপ যাচাই, এনক্রিপ্টেড ব্যাকআপ, রোগীর অনুরোধে তথ্য এক্সপোর্ট</li></ul></div><div class="card"><h3>ডেমো ডেটা</h3><p class="hint" style="margin-top:8px">এই পেজের সব বুকিং, বার্তা ও রেকর্ড শুধু আপনার ব্রাউজারে থাকে এবং প্রতিদিন নতুন নমুনা তথ্য দিয়ে সাজানো হয়।</p>${RESET_ASK?'<p class="sec-note">সব ডেমো তথ্য মুছে নতুন করে সাজানো হবে। নিশ্চিত?</p><div style="display:flex;gap:10px;margin-top:12px"><button class="btn btn-cta btn-sm" type="button" data-d="reset-yes">হ্যাঁ, রিসেট করুন</button><button class="btn btn-out btn-sm" type="button" data-d="reset-no">না</button></div>':'<button class="btn btn-out btn-sm" type="button" data-d="reset-ask" style="margin-top:12px">'+ico('refresh')+'ডেমো ডেটা রিসেট</button>'}</div></div></div>`;
+}
+
+/* ---- events ---- */
+$('#docGate').addEventListener('click',e=>{
+  const b=e.target.closest('[data-role]');if(!b)return;
+  DOC.role=b.getAttribute('data-role');DOC.tab='today';DOC.date=firstOpenDay(S.sched,TODAY);DOC.pid=null;DOC.chf='all';
+  audit('প্যানেলে প্রবেশ');renderDoc();window.scrollTo({top:0});
+});
+const dApp=$('#docApp');
+dApp.addEventListener('click',e=>{
+  const b=e.target.closest('[data-d]');if(!b||b.tagName==='SELECT'||b.tagName==='INPUT')return;
+  const k=b.getAttribute('data-d'),id=b.getAttribute('data-id');
+  switch(k){
+    case 'tab':DOC.tab=b.getAttribute('data-tab');if(DOC.tab==='patients')DOC.pid=null;DOC.rxDone=null;RESET_ASK=false;renderDoc();return;
+    case 'role':DOC.role=b.getAttribute('data-r');DOC.pid=null;audit('ভূমিকা বদল');renderDoc();return;
+    case 'exit':DOC.role=null;DOC.rx=null;DOC.rxDone=null;DOC.pid=null;renderDoc();return;
+    case 'prev':DOC.date=addDays(DOC.date,-1);renderDoc();return;
+    case 'next':DOC.date=addDays(DOC.date,1);renderDoc();return;
+    case 'today':DOC.tab='today';DOC.date=firstOpenDay(S.sched,TODAY);renderDoc();return;
+    case 'chf':DOC.chf=b.getAttribute('data-c');renderDoc();return;
+    case 'open-rec':{const p=P_(b.getAttribute('data-pid'));DOC.pid=p.id;DOC.tab='patients';DOC.rxDone=null;audit('রোগীর রেকর্ড খুলেছেন: '+p.name);renderDoc();window.scrollTo({top:0});return}
+    case 'back':DOC.pid=null;renderDoc();return;
+    case 'paid':{const a=A_(id);a.paid=!a.paid;audit((a.paid?'ফি আদায় চিহ্নিত: ':'ফি বাকি চিহ্নিত: ')+P_(a.pid).name);save();renderDoc();return}
+    case 'start':{const a=A_(id);a.status='inprogress';save();DOC.rx=newRx(a.pid,a.id);DOC.rxDone=null;DOC.tab='rx';audit('ভিজিট শুরু: '+P_(a.pid).name);renderDoc();window.scrollTo({top:0});return}
+    case 'new-rx':DOC.rx=newRx(b.getAttribute('data-pid'),null);DOC.rxDone=null;DOC.tab='rx';renderDoc();window.scrollTo({top:0});return;
+    case 'rx-from':{const a=A_(id);DOC.rx=newRx(a.pid,a.id);renderDoc();return}
+    case 'rx-addm':DOC.rx.meds.push({name:'',dose:'',rule:'',days:''});renderDoc();return;
+    case 'rx-delm':{DOC.rx.meds.splice(+b.getAttribute('data-i'),1);if(!DOC.rx.meds.length)DOC.rx.meds.push({name:'',dose:'',rule:'',days:''});renderDoc();return}
+    case 'rx-prev':DOC.rx.prev=!DOC.rx.prev;renderDoc();return;
+    case 'rx-prevcopy':{const lv=lastVisit(P_(DOC.rx.pid));if(lv&&lv.rx){const r=DOC.rx;r.dx=lv.rx.dx;r.meds=lv.rx.meds.length?lv.rx.meds.map(m=>({name:m.name,dose:m.dose,rule:m.rule,days:String(m.days||'')})):r.meds;r.advice=lv.rx.advice||'';r.tests=lv.rx.tests||'';r.fu=lv.rx.fu?String(lv.rx.fu):'';renderDoc();toast('আগের প্রেসক্রিপশন কপি হয়েছে। প্রয়োজনে বদলে নিন।')}return}
+    case 'rx-save':saveRx();return;
+    case 'rx-copy':{const p=P_(DOC.rxDone.pid),v=p.visits.filter(x=>x.id===DOC.rxDone.vid)[0];copyText(rxText(v,p),$('#docApp pre'));return}
+    case 'rx-done-today':DOC.rxDone=null;DOC.tab='today';renderDoc();return;
+    case 'day':{const sc=S.sched[b.getAttribute('data-ch')],d=+b.getAttribute('data-day'),i=sc.days.indexOf(d);if(i>-1)sc.days.splice(i,1);else sc.days.push(d);audit('সময়সূচি বদল: '+CH[b.getAttribute('data-ch')].t);save();renderDoc();return}
+    case 'unblock':S.blocks=S.blocks.filter(x=>x.id!==id);audit('বন্ধ দিন খুলে দেওয়া হয়েছে');save();renderDoc();return;
+    case 'mthread':DOC.mpid=b.getAttribute('data-pid');renderDoc();return;
+    case 'quick':{const t=$('#dRep');t.value=QUICK[+b.getAttribute('data-i')];t.focus();return}
+    case 'rv-ok':{const r=S.reviews.filter(x=>x.id===id)[0];r.status='approved';r.created=Date.now();audit('মতামত প্রকাশ: '+r.name);save();renderDoc();toast('মতামত প্রকাশিত হয়েছে। সাইটের মতামত পাতায় দেখা যাবে।');return}
+    case 'rv-no':{const r=S.reviews.filter(x=>x.id===id)[0];r.status='rejected';audit('মতামত সরানো: '+r.name);save();renderDoc();return}
+    case 'reset-ask':RESET_ASK=true;renderDoc();return;
+    case 'reset-no':RESET_ASK=false;renderDoc();return;
+    case 'reset-yes':S=makeSeed();save();RESET_ASK=false;SESSION.pid=null;DOC.pid=null;DOC.rx=null;DOC.rxDone=null;DOC.mpid=null;renderDoc();renderReviews();toast('ডেমো ডেটা নতুন করে সাজানো হয়েছে');return;
+  }
+});
+dApp.addEventListener('change',e=>{
+  const t=e.target,k=t.getAttribute('data-d');
+  if(k==='status'){const a=A_(t.getAttribute('data-id'));a.status=t.value;audit('অবস্থা বদল ('+ST[t.value][0]+'): '+P_(a.pid).name);save();renderDoc();return}
+  if(t.id==='dDate'){if(t.value){DOC.date=t.value;renderDoc()}return}
+  if(k==='time'){
+    const c=t.getAttribute('data-ch'),key=t.getAttribute('data-k'),sc=S.sched[c],old=sc[key];sc[key]=t.value;
+    if(!t.value||slotList(sc).length<1){sc[key]=old;toast('শেষের সময় শুরুর সময়ের পরে হতে হবে');renderDoc();return}
+    audit('সময়সূচি বদল: '+CH[c].t);save();renderDoc();return;
+  }
+  const rx=t.getAttribute('data-rx');
+  if(rx==='pid'){DOC.rx=newRx(t.value,null);renderDoc();return}
+  if(rx==='tpl'){applyTemplate(t.value);renderDoc();return}
+  if(rx==='fu'){DOC.rx.fu=t.value}
+});
+dApp.addEventListener('input',e=>{
+  const t=e.target;
+  if(t.id==='dSearch'){DOC.search=t.value;const l=$('#plist');if(l)l.innerHTML=plistHtml();return}
+  const rx=t.getAttribute&&t.getAttribute('data-rx');if(!rx||!DOC.rx||t.tagName==='SELECT')return;
+  if(rx.indexOf('m:')===0){const a=rx.split(':');DOC.rx.meds[+a[1]][a[2]]=t.value;return}
+  if(rx.indexOf('v:')===0){DOC.rx.vit[rx.slice(2)]=t.value;return}
+  DOC.rx[rx]=t.value;
+});
+dApp.addEventListener('submit',e=>{
+  e.preventDefault();const f=e.target.getAttribute('data-df');
+  if(f==='clin'){
+    const p=P_(DOC.pid),s=num($('#tS').value),d=num($('#tD').value),u=num($('#tU').value);
+    if((s==null)!==(d==null)){$('#eC').textContent='লক্ষ্যমাত্রার দুটি সংখ্যাই দিন বা দুটিই ফাঁকা রাখুন।';return}
+    p.conds=$('#cC').value.split(/[,،]/).map(x=>x.trim()).filter(Boolean);p.allergies=$('#cA').value.split(/[,،]/).map(x=>x.trim()).filter(Boolean);
+    p.target={sys:s,dia:d,sugar:u};audit('রোগীর তথ্য হালনাগাদ: '+p.name);save();renderDoc();toast('সংরক্ষিত হয়েছে');return;
+  }
+  if(f==='vit'){
+    const p=P_(DOC.pid),s=num($('#dvS').value),d=num($('#dvD').value),u=num($('#dvU').value),w=num($('#dvW').value);let er='';
+    if((s==null)!==(d==null))er='রক্তচাপের দুটি সংখ্যাই দিন।';else if(s!=null&&(s<70||s>260||d<40||d>160||d>=s))er='রক্তচাপের সংখ্যা ঠিক মনে হচ্ছে না।';else if(s==null&&u==null&&w==null)er='অন্তত একটি রিডিং দিন।';
+    $('#eVv').textContent=er;if(er)return;
+    const x={d:TODAY,by:'clinic'};if(s!=null){x.sys=s;x.dia=d}if(u!=null)x.sugar=u;if(w!=null)x.wt=w;p.vitals.push(x);audit('রিডিং যোগ: '+p.name);save();renderDoc();toast('রিডিং যোগ হয়েছে');return;
+  }
+  if(f==='block'){
+    const d=$('#bkD').value,c=$('#bkC').value;
+    if(!d||d<TODAY){$('#eBk').textContent='আজ বা ভবিষ্যতের একটি তারিখ বেছে নিন।';return}
+    const hit=S.appts.filter(a=>a.d===d&&(c==='all'||a.ch===c)&&(a.status==='booked'||a.status==='arrived')).length;
+    S.blocks.push({id:nid('b'),d:d,ch:c,reason:$('#bkR').value.trim()});audit('দিন বন্ধ: '+fdate(d,{day:'numeric',month:'long'}));save();renderDoc();
+    toast(hit?'দিনটি বন্ধ হয়েছে। '+toBn(hit)+' জন রোগীর বুকিং আছে, তাদের জানাতে হবে।':'দিনটি বন্ধ হয়েছে। রোগীর বুকিং পাতা থেকে সরে গেছে।');return;
+  }
+  if(f==='reply'){
+    const t=$('#dRep').value.trim();if(t.length<2){$('#eRep').textContent='উত্তর লিখুন।';return}
+    const p=P_(DOC.mpid);p.msgs.push({from:'d',t:Date.now(),text:t});audit('বার্তার উত্তর: '+p.name);save();renderDoc();toast('উত্তর পাঠানো হয়েছে');return;
+  }
+});
+
+/* ================= global events + init ================= */
+document.addEventListener('click',e=>{
+  const g=e.target.closest('[data-go]');
+  if(!g||g.hasAttribute('data-post'))return;
+  e.preventDefault();
+  const svc=g.getAttribute('data-svc');
+  go(g.getAttribute('data-go'));
+  if(svc){resetBook();B.svc=svc;drawBook()}
+});
+$('#menuBtn').addEventListener('click',function(){const o=$('#mnav').classList.toggle('open');this.setAttribute('aria-expanded',o)});
+$('#noticeX').addEventListener('click',()=>{$('#notice').hidden=true});
+window.addEventListener('scroll',()=>{$('#hdr').classList.toggle('sc',window.scrollY>30)},{passive:true});
+$$('.nav a,.mnav a').forEach(a=>{a.setAttribute('tabindex','0');a.setAttribute('role','link');a.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();a.click()}})});
+renderReviews();
+let h0='';try{h0=(location.hash||'').replace('#','')}catch(x){}
+go(PAGES.indexOf(h0)>-1?h0:'home',{silent:true,noScroll:true});
+window.__app={S:()=>S,SESSION,DOC};
+})();
+
+</script>
